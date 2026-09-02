@@ -55,7 +55,8 @@ def describe_profile(profile: dict) -> str:
     grade = profile.get("grade_level") or "Oberstufe"
     lines = [
         f"Interessensbereich: {interest_text}",
-        f"Wunschort: {profile.get('location') or 'Berlin'}, akzeptierter Umkreis: {profile.get('radius_km') or 30} km",
+        f"Wunschort: {profile.get('location') or 'Berlin'}",
+        f"Umkreis, den er taeglich faehrt: hoechstens {profile.get('radius_km') or 30} km",
         f"Klassenstufe: {grade}",
         f"Verguetung: {COMPENSATION_LABELS.get(profile.get('compensation') or 'any', 'egal')}",
     ]
@@ -88,7 +89,14 @@ Dein Suchwinkel fuer diesen Durchlauf ({angle_key}):
 {angle_text}
 
 Nutze WebSearch fuer die Suche und WebFetch, um die Seiten wirklich zu oeffnen und die Angaben abzulesen.
-Suche in der Region um den Wunschort, der Umkreis darf grosszuegig ausgelegt werden, aber bleib im erreichbaren Bereich.
+
+DER UMKREIS IST EINE HARTE GRENZE:
+Der Arbeitsort muss innerhalb des angegebenen Umkreises um den Wunschort liegen. Der Schueler faehrt
+taeglich hin, ein Praktikum in einer anderen Stadt ist wertlos. Nimm ein Angebot nur auf, wenn der
+konkrete Arbeitsort im Umkreis liegt.
+Nenne in "city" den TATSAECHLICHEN Arbeitsort, nicht den Firmensitz und nicht "deutschlandweit". Bietet
+ein Arbeitgeber mehrere Standorte an, schreib den Standort hin, der im Umkreis liegt, und nur den.
+Findest du keinen Standort im Umkreis, gehoert das Angebot nicht in die Liste.
 
 {FIELD_SPEC}
 

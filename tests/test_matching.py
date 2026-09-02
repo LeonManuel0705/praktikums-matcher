@@ -53,9 +53,15 @@ class TestGeo:
     def test_district_resolves_via_token_overlap(self):
         assert geocode("Berlin (10627), Wilmersdorfer Str. 60, Charlottenburg") is not None
 
-    @pytest.mark.parametrize("value", ["Remote", "Homeoffice", "bundesweit"])
+    @pytest.mark.parametrize("value", ["Remote", "Homeoffice", "ortsunabhängig"])
     def test_remote_detection(self, value):
         assert is_remote(value)
+
+    @pytest.mark.parametrize("value", ["bundesweit", "deutschlandweit"])
+    def test_nationwide_is_not_the_same_as_remote(self, value):
+        from backend.app.geo import is_nationwide
+        assert is_nationwide(value)
+        assert not is_remote(value)
 
     def test_city_is_not_remote(self):
         assert not is_remote("Potsdam")
@@ -423,3 +429,57 @@ class TestAgentSandbox:
         source = inspect.getsource(rerank)
         for flag in ("--setting-sources", "--strict-mcp-config", "cwd=sandbox_dir()", "env=sandbox_env()"):
             assert flag in source
+
+
+class TestLocationResolution:
+    def test_frankfurt_am_main_is_not_frankfurt_oder(self):
+        from backend.app.geo import geocode, haversine_km
+        text = "Firmensitz: Taunusanlage, 60325 Frankfurt am Main"
+        distance = haversine_km(geocode("Potsdam"), geocode(text))
+        assert distance > 300
+
+    def test_nearest_of_several_named_places_wins(self):
+        from backend.app.geo import geocode, nearest_place
+        found = nearest_place(geocode("Potsdam"), "Berlin (10719); auch Düsseldorf, Frankfurt (Main), Hamburg")
+        assert found is not None
+        assert found[1] == "berlin"
+        assert found[0] < 35
+
+    def test_all_named_places_are_found(self):
+        from backend.app.geo import find_places
+        names = {name for name, _ in find_places("Berlin, Hamburg und München")}
+        assert names == {"berlin", "hamburg", "muenchen"}
+
+    def test_longer_name_wins_over_its_prefix(self):
+        from backend.app.geo import find_places
+        names = [name for name, _ in find_places("Berlin-Adlershof")]
+        assert names == ["berlin adlershof"]
+
+    def test_nationwide_is_recognised(self):
+        from backend.app.geo import is_nationwide
+        assert is_nationwide("Deutschlandweit, Bewerbung bei deiner Wunschfiliale")
+        assert not is_nationwide("Potsdam")
+
+    def test_far_away_offer_falls_far_behind(self):
+        from backend.app.scoring import score_offer
+        profile = {"interests": ["ai_tech"], "location": "Potsdam", "radius_km": 35,
+                   "start_date": "2027-03-01", "end_date": "2027-03-26", "compensation": "any", "free_text": ""}
+        offer = {"title": "Praktikum IT", "description": "Programmieren.", "compensation_kind": "unknown",
+                 "start_date_hint": "ab sofort", "categories": ["ai_tech"]}
+        near = score_offer(profile, {**offer, "city": "Potsdam"}).score
+        far = score_offer(profile, {**offer, "city": "60325 Frankfurt am Main"}).score
+        assert near - far >= 40
+
+    def test_slightly_outside_is_barely_punished(self):
+        from backend.app.scoring import score_offer
+        profile = {"interests": ["ai_tech"], "location": "Potsdam", "radius_km": 35,
+                   "start_date": "2027-03-01", "end_date": "2027-03-26", "compensation": "any", "free_text": ""}
+        offer = {"title": "Praktikum IT", "description": "Programmieren.", "compensation_kind": "unknown",
+                 "start_date_hint": "ab sofort", "categories": ["ai_tech"]}
+        inside = score_offer(profile, {**offer, "city": "Berlin-Adlershof"}).score
+        just_outside = score_offer(profile, {**offer, "city": "Brandenburg an der Havel"}).score
+        assert inside - just_outside <= 5
+
+    def test_location_now_outweighs_interest(self):
+        from backend.app.config import WEIGHTS
+        assert WEIGHTS["location"] > WEIGHTS["interest"]

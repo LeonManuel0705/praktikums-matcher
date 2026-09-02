@@ -61,6 +61,13 @@ Stand: 2026-09-02
 - [x] G2 13 schwerwiegende und 9 mittlere Befunde behoben, 12 Regressionstests dazu
 - [x] G3 LLM-Feinschliff für den Freitext nachgereicht, bewertet alle Treffer in parallelen Stapeln
 
+## Umkreis, auf Zuruf ergänzt
+- [x] U1 Ortsauflösung findet alle genannten Städte, längste Namen zuerst, nächstgelegene zählt
+- [x] U2 Frankfurt-Fehler behoben: kein Token-Raten mehr, mehrdeutige Namen zur nächsten Deutung
+- [x] U3 Gewichtung auf Ort 45, Interesse 30, Zeitraum 15, Vergütung 10, per Env einstellbar
+- [x] U4 Agenten-Prompt: Umkreis als harte Grenze, tatsächlicher Arbeitsort statt Firmensitz
+- [x] U5 Frankfurter Beispiel von über 80 auf 53 Prozent, lokale Angebote unverändert 90 plus
+
 ## Kosten, auf Zuruf ergänzt
 - [x] K1 Kosten je Suchwinkel gemessen statt geschätzt, Sonnet gegen Haiku verglichen
 - [x] K2 Haiku als Standard, straffere Budgets, weniger Runden

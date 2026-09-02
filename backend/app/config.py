@@ -34,8 +34,8 @@ COST_PER_TURN = 0.004
 FORCED_PROVIDER = os.environ.get("PM_PROVIDER", "")
 
 WEIGHTS = {
-    "interest": 0.40,
-    "location": 0.25,
-    "compensation": 0.15,
-    "timeframe": 0.20,
+    "interest": float(os.environ.get("PM_WEIGHT_INTEREST", "0.30")),
+    "location": float(os.environ.get("PM_WEIGHT_LOCATION", "0.45")),
+    "compensation": float(os.environ.get("PM_WEIGHT_COMPENSATION", "0.10")),
+    "timeframe": float(os.environ.get("PM_WEIGHT_TIMEFRAME", "0.15")),
 }

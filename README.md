@@ -154,14 +154,23 @@ zur Verfügung, keins davon mit Zugriff auf das Dateisystem oder die Shell.
 
 ## Der Matching-Score
 
-Vier Kriterien, gewichtet wie im Konzept vorgegeben:
+Vier Kriterien. Die Startgewichtung aus dem Konzept (Interesse 40, Ort 25, Vergütung 15, Zeitraum 20)
+hat sich in der Praxis als zu ortsblind erwiesen: ein Frankfurter Angebot konnte trotz 400 km Entfernung
+weit oben landen. Auf Zuruf wiegt der Ort jetzt am schwersten. Über `PM_WEIGHT_*` ist jede Gewichtung
+einstellbar.
 
 | Kriterium | Gewicht | Wie gerechnet wird |
 |---|---|---|
-| Interesse | 40 % | Bereichsabgleich plus Treffer deiner Freitext-Stichworte in Titel und Beschreibung, mit Synonymen |
-| Ort | 25 % | Echte Luftlinie über Koordinaten. Innerhalb des Umkreises voll, darüber linear abfallend |
-| Vergütung | 15 % | Abgleich mit deinem Wunsch. Fehlende Angabe zählt neutral, nicht negativ |
-| Zeitraum | 20 % | Überlappung deines Wunschzeitraums mit dem Angebot, deutsche Datumsangaben werden geparst |
+| Ort | 45 % | Luftlinie zum nächstgelegenen in der Anzeige genannten Ort. Im Umkreis leicht fallend, darüber bis zum 2,5-fachen Umkreis auf null |
+| Interesse | 30 % | Bereichsabgleich plus Treffer deiner Freitext-Stichworte in Titel und Beschreibung, mit Synonymen |
+| Zeitraum | 15 % | Überlappung deines Wunschzeitraums mit dem Angebot, deutsche Datumsangaben werden geparst |
+| Vergütung | 10 % | Abgleich mit deinem Wunsch. Fehlende Angabe zählt neutral, nicht negativ |
+
+Zum Ort im Einzelnen: nennt eine Anzeige mehrere Städte, zählt die dir nächstgelegene. Mehrdeutige Namen
+wie Frankfurt werden zur nächstgelegenen Deutung aufgelöst, das bestraft nie zu Unrecht. "Remote" zählt
+90 %, "deutschlandweit" ohne konkreten Standort 70 %, ein konkret genannter Standort schlägt beides.
+Der Suchagent bekommt den Umkreis außerdem als harte Grenze in den Auftrag: er soll den tatsächlichen
+Arbeitsort eintragen und Angebote ohne Standort im Umkreis gar nicht erst melden.
 
 Der Ring auf jeder Karte zeigt nicht nur den Gesamtwert: er besteht aus vier Bögen, deren Länge das Gewicht
 abbildet und deren Füllung den Teilscore. Man sieht also sofort, welches Kriterium einen Treffer runterzieht.

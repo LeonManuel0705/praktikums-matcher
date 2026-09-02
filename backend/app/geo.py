@@ -102,7 +102,9 @@ GAZETTEER: dict[str, tuple[float, float]] = {
 
 UMLAUTS = {"ä": "ae", "ö": "oe", "ü": "ue", "ß": "ss"}
 NOISE_TOKENS = {"deutschland", "germany", "de", "bei", "raum", "kreis", "landkreis", "am", "an", "der", "im"}
-REMOTE_HINTS = {"remote", "homeoffice", "home office", "hybrid", "ortsunabhaengig", "bundesweit", "deutschlandweit"}
+REMOTE_HINTS = {"remote", "homeoffice", "home office", "hybrid", "ortsunabhaengig"}
+NATIONWIDE_HINTS = {"deutschlandweit", "bundesweit", "an allen standorten", "standortuebergreifend",
+                    "nationwide", "vor ort in deiner naehe", "wunschfiliale"}
 
 
 def normalize(value: str) -> str:
@@ -121,28 +123,68 @@ def is_remote(value: str) -> bool:
     return any(normalize(hint) in text for hint in REMOTE_HINTS)
 
 
+NORMALIZED_PLACES = {normalize(name): coords for name, coords in GAZETTEER.items()}
+AMBIGUOUS_PLACES = {
+    "frankfurt": ("frankfurt am main", "frankfurt oder"),
+    "halle": ("halle saale",),
+}
+MAX_PLACE_WORDS = max(len(name.split()) for name in NORMALIZED_PLACES)
+
+
+def is_nationwide(value: str) -> bool:
+    text = normalize(value)
+    return any(normalize(hint) in text for hint in NATIONWIDE_HINTS)
+
+
+def find_places(value: str) -> list[tuple[str, tuple[float, float]]]:
+    tokens = normalize(value).split()
+    used = [False] * len(tokens)
+    found: list[tuple[str, tuple[float, float]]] = []
+
+    for size in range(min(MAX_PLACE_WORDS, len(tokens)), 0, -1):
+        for start in range(len(tokens) - size + 1):
+            if any(used[start : start + size]):
+                continue
+            candidate = " ".join(tokens[start : start + size])
+            if candidate in NORMALIZED_PLACES:
+                matches = [(candidate, NORMALIZED_PLACES[candidate])]
+            elif candidate in AMBIGUOUS_PLACES:
+                matches = [(candidate, NORMALIZED_PLACES[normalize(name)])
+                           for name in AMBIGUOUS_PLACES[candidate]]
+            else:
+                continue
+            for index in range(start, start + size):
+                used[index] = True
+            found.extend(matches)
+    return found
+
+
+def nearest_place(origin: tuple[float, float], value: str) -> tuple[float, str] | None:
+    places = find_places(value)
+    if not places:
+        return None
+    name, coords = min(places, key=lambda item: haversine_km(origin, item[1]))
+    return haversine_km(origin, coords), name
+
+
 def geocode(value: str) -> tuple[float, float] | None:
     key = normalize(value)
     if not key:
         return None
-    if key in GAZETTEER:
-        return GAZETTEER[key]
+    if key in NORMALIZED_PLACES:
+        return NORMALIZED_PLACES[key]
+
+    places = find_places(value)
+    if places:
+        return max(places, key=lambda item: len(item[0]))[1]
 
     prefix_matches = [
-        (name, coords) for name, coords in GAZETTEER.items()
-        if key.startswith(name) or name.startswith(key)
+        (name, coords) for name, coords in NORMALIZED_PLACES.items()
+        if name.startswith(key + " ") or key.startswith(name + " ")
     ]
     if prefix_matches:
-        best_name, best_coords = min(prefix_matches, key=lambda item: (-len(item[0]), item[0]))
-        return best_coords
-
-    tokens = set(key.split())
-    best: tuple[int, tuple[float, float]] | None = None
-    for name, coords in GAZETTEER.items():
-        overlap = len(tokens & set(name.split()))
-        if overlap and (best is None or overlap > best[0]):
-            best = (overlap, coords)
-    return best[1] if best else None
+        return min(prefix_matches, key=lambda item: (-len(item[0]), item[0]))[1]
+    return None
 
 
 def haversine_km(a: tuple[float, float], b: tuple[float, float]) -> float:

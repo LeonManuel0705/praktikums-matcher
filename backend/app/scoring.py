@@ -4,7 +4,7 @@ from datetime import date
 
 from .config import WEIGHTS
 from .dateparse import overlap_ratio, parse_window
-from .geo import distance_between, geocode, is_remote, normalize
+from .geo import geocode, is_nationwide, is_remote, nearest_place, normalize
 
 STOPWORDS = {
     "und", "oder", "der", "die", "das", "ein", "eine", "einen", "einem", "eines", "mit", "fuer", "von", "bei", "im",
@@ -154,18 +154,24 @@ def score_interest(profile: dict, offer: dict) -> tuple[Criterion, list[str]]:
 
 def score_location(profile: dict, offer: dict) -> Criterion:
     weight = WEIGHTS["location"]
-    origin = profile.get("location") or ""
+    origin_coords = geocode(profile.get("location") or "")
     city = offer.get("city") or ""
     radius = max(int(profile.get("radius_km") or 30), 1)
 
-    if is_remote(city):
-        return Criterion("location", "Ort", weight, 0.9, "remote möglich")
-    if not geocode(city):
+    if origin_coords is None:
+        return Criterion("location", "Ort", weight, 0.4, "dein Wunschort ist nicht einzuordnen")
+
+    found = nearest_place(origin_coords, city)
+    if found is None:
+        if is_remote(city):
+            return Criterion("location", "Ort", weight, 0.9, "remote möglich")
+        if is_nationwide(city):
+            return Criterion("location", "Ort", weight, 0.7, "deutschlandweit, Standort vor Ort möglich")
         return Criterion("location", "Ort", weight, 0.4, f"Ort „{city or 'unbekannt'}“ nicht einzuordnen")
 
-    distance = distance_between(origin, city)
-    if distance is None:
-        return Criterion("location", "Ort", weight, 0.4, "dein Wunschort ist nicht einzuordnen")
+    distance, place = found
+    if is_remote(city) and distance > radius:
+        return Criterion("location", "Ort", weight, 0.9, "remote möglich")
 
     rounded = round(distance)
     if distance <= radius:
@@ -174,7 +180,11 @@ def score_location(profile: dict, offer: dict) -> Criterion:
 
     overshoot = (distance - radius) / (radius * OUTSIDE_REACH)
     score = (1.0 - INSIDE_FALLOFF) * max(0.0, 1.0 - overshoot)
-    return Criterion("location", "Ort", weight, score, f"{rounded} km, {round(distance - radius)} km über deinem Umkreis")
+    nearest_note = f" ({place.title()})" if distance > radius else ""
+    return Criterion(
+        "location", "Ort", weight, score,
+        f"{rounded} km{nearest_note}, {round(distance - radius)} km über deinem Umkreis",
+    )
 
 
 def score_compensation(profile: dict, offer: dict) -> Criterion:

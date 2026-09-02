@@ -76,7 +76,7 @@ def normalize_offer(raw: dict) -> dict | None:
     return {
         "title": title,
         "company": company,
-        "city": clean_text(raw.get("city"), 120) or "unbekannt",
+        "city": clean_text(raw.get("city"), 220) or "unbekannt",
         "compensation_kind": compensation_kind if compensation_kind in ALLOWED_COMPENSATION else "unknown",
         "compensation_text": clean_text(raw.get("compensation_text"), 160),
         "description": clean_text(raw.get("description"), 800),
