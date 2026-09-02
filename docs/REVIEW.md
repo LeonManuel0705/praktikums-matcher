@@ -53,7 +53,7 @@ Der Agentenprozess bekam damit:
 | MCP-Werkzeuge (Gmail, Drive, Kalender) | 49 | 0 |
 | Arbeitsverzeichnis | Projektwurzel mit `app.db` samt Passwort-Hashes | eigenes leeres Verzeichnis unter `TMPDIR` |
 | Umgebung | vollständig geerbt, inklusive API-Schlüssel | sieben Variablen, keine Schlüssel |
-| Einstellungen | globale Allow-Liste mit `Bash(curl:*)` und `Read(//Users/leon/**)` | keine geerbten Einstellungen |
+| Einstellungen | globale Allow-Liste mit Shell-Freigaben und Lesezugriff auf das Home-Verzeichnis | keine geerbten Einstellungen |
 
 Der gefährliche Weg war nicht der eigene Freitext, sondern die Anzeigen selbst: der Agent soll ja fremde
 Seiten öffnen. Wer eine Jobbörse oder eine dort verlinkte Anzeige kontrolliert, hätte Anweisungen in den
