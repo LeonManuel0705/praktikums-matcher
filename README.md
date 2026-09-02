@@ -40,15 +40,58 @@ Die App wählt automatisch den ersten verfügbaren Provider. `GET /api/providers
 
 | Provider | Braucht | Status |
 |---|---|---|
-| `anthropic_api` | `ANTHROPIC_API_KEY` | Anthropic-Websuche über `web_search_20260209`, ungetestet mangels Key |
+| `anthropic_api` | `ANTHROPIC_API_KEY` | Anthropic-Websuche über `web_search_20260209`, durch Vertragstests abgesichert |
 | `claude_cli` | Claude Code auf dem Rechner | Standard hier, nutzt die bestehende Anmeldung, kein Key nötig |
-| `tavily` | `TAVILY_API_KEY` und `ANTHROPIC_API_KEY` | Tavily sucht, Claude extrahiert, ungetestet mangels Key |
+| `tavily` | `TAVILY_API_KEY` und `ANTHROPIC_API_KEY` | Tavily sucht, Claude extrahiert, durch Vertragstests abgesichert |
 | `corpus` | nichts | Offline-Rückfall auf den geprüften Grundstock |
 
 Erzwingen lässt sich einer über `PM_PROVIDER=corpus ./scripts/run.sh` oder pro Suche über den Request-Body.
 
 Weitere Umgebungsvariablen: `PM_CLAUDE_MODEL` (Standard `claude-sonnet-5`), `PM_CLAUDE_BINARY`,
 `PM_SEARCH_TIMEOUT`, `PM_DB_PATH`.
+
+### Was eine Suche kostet
+
+Gemessen, nicht geschätzt. Derselbe Suchwinkel, identischer Prompt, zwei Modelle:
+
+| Modell | Kosten je Suchwinkel | Dauer | Treffer |
+|---|---|---|---|
+| `claude-sonnet-5` | 0,38 USD | 107 s | 0 |
+| `claude-haiku-4-5` | 0,24 USD | 108 s | 1 |
+
+Haiku war billiger und in diesem Vergleich sogar ergiebiger, deshalb ist es der Standard.
+
+Der Kostentreiber sind nicht die Suchanfragen (je 0,01 USD), sondern die **abgerufenen Seiten**: ihr
+Volltext landet als Eingabe im Kontext und wird in jeder folgenden Runde mitgelesen. Das sind rund
+0,10 USD pro Suchwinkel. Deshalb ist die Zahl der Seitenabrufe die wirksamste Stellschraube.
+
+Verlauf der Optimierung, jeweils eine vollständige Suche:
+
+| Stand | Konfiguration | Kosten | Dauer |
+|---|---|---|---|
+| Anfang | Sonnet, 6 Suchen / 10 Abrufe, 26 Runden, 4 Winkel gleichzeitig | ~1,54 USD | über 8 min |
+| nach dem Aufwandsbudget | Sonnet, 6/10, 4 Winkel | ~0,95 USD | 2,7 min |
+| jetzt | Haiku, 4/5, 18 Runden, Wellen mit Budgetprüfung | 0,17 bis 0,33 USD | 75 bis 90 s |
+
+### Der Kostendeckel
+
+Vor jedem Suchwinkel wird geprüft, ob er noch ins Budget passt (`EXPECTED_ANGLE_COST`, gemessen bei
+0,13 USD). Passt er nicht, entfällt er samt allen folgenden. Nach jedem Winkel meldet die Binary ihre
+tatsächlichen Kosten über `total_cost_usd`, die werden aufaddiert und in der Datenbank festgehalten.
+Ein einzelner Winkel, der aus dem Ruder läuft, wird zusätzlich bei der dreifachen Erwartung abgebrochen.
+
+Die Suchtiefe wählst du in der App:
+
+| Tiefe | Höchstkosten |
+|---|---|
+| sparsam | 0,20 USD, in der Praxis reicht das für einen Suchwinkel |
+| normal | 0,40 USD, zwei bis drei Suchwinkel |
+| gründlich | 0,80 USD, alle vier Suchwinkel |
+
+Weniger Suchwinkel heißt weniger Fundstellen. Das ist der ehrliche Preis der Sparsamkeit, deshalb steht
+der Deckel neben der Trefferzahl und läuft während der Suche mit.
+
+Serverseitig begrenzt `PM_COST_CEILING_USD` (Standard 1,00 USD), was ein Client überhaupt anfordern darf.
 
 ### Aufwandsbudget
 
@@ -59,10 +102,14 @@ Laufzeit einer Suche von über acht auf 2,7 Minuten gedrückt, bei gleicher Ausb
 
 | Variable | Standard | Bedeutung |
 |---|---|---|
-| `PM_BUDGET_SEARCHES` | 6 | Suchanfragen pro Winkel, dem Agenten im Prompt vorgegeben |
-| `PM_BUDGET_FETCHES` | 10 | Seitenabrufe pro Winkel, dem Agenten im Prompt vorgegeben |
-| `PM_CAP_SEARCHES` | 12 | harte Obergrenze, danach wird der Winkel beendet |
-| `PM_CAP_FETCHES` | 18 | harte Obergrenze, danach wird der Winkel beendet |
+| `PM_BUDGET_SEARCHES` | 4 | Suchanfragen pro Winkel, dem Agenten im Prompt vorgegeben |
+| `PM_BUDGET_FETCHES` | 5 | Seitenabrufe pro Winkel, dem Agenten im Prompt vorgegeben |
+| `PM_CAP_SEARCHES` | 6 | harte Obergrenze, danach wird der Winkel beendet |
+| `PM_CAP_FETCHES` | 7 | harte Obergrenze, danach wird der Winkel beendet |
+| `PM_MAX_COST_USD` | 0.40 | Standard-Kostendeckel je Suche |
+| `PM_COST_CEILING_USD` | 1.00 | serverseitige Obergrenze, die kein Client überschreiten kann |
+| `PM_EXPECTED_ANGLE_COST` | 0.13 | gemessene Erwartung je Suchwinkel, steuert die Budgetprüfung |
+| `PM_WAVE_SIZE` | 2 | wie viele Suchwinkel gleichzeitig starten |
 
 ## Wer darf sich überhaupt bewerben
 
@@ -139,7 +186,7 @@ curl -X POST localhost:8000/api/searches/1/rescore -b cookies.txt
 
 ## Geprüft
 
-- 77 Unit-Tests für Geo, Datumsparsen, Bewertung, Normalisierung und die Regressionen aus dem Review
+- 102 Unit-Tests für Geo, Datumsparsen, Bewertung, Normalisierung und die Regressionen aus dem Review
 - Ein Playwright-Klickpfad durch den ganzen Ablauf, von der Registrierung bis zum Abmelden
 - Ein Fanout aus 25 Review-Agenten über fünf Dimensionen, jeder Befund gegengeprüft. Ergebnis und
   Behebung in [docs/REVIEW.md](docs/REVIEW.md)
@@ -159,7 +206,7 @@ backend/app/
   search/         Provider, Prompts, Normalisierung
   rerank.py       optionaler Feinschliff des Freitexts durch ein Modell
 frontend/src/     React, eigenes Design-System, keine UI-Bibliothek
-tests/            77 Tests für Geo, Datum, Scoring, Normalisierung, Regressionen
+tests/            102 Tests: Geo, Datum, Scoring, Zugänglichkeit, Kostendeckel, Provider-Verträge
 ```
 
 ## Tests
@@ -173,8 +220,12 @@ tests/            77 Tests für Geo, Datum, Scoring, Normalisierung, Regressione
 - Der Grundstock in `backend/data/seed_offers.json` ist eine Momentaufnahme vom 2. September 2026 mit
   67 Angeboten aus zwei Recherchen.
   Praktikumsanzeigen laufen ab, die Links können ins Leere führen.
-- Eine Live-Suche startet vier Agentenprozesse mit echter Websuche. Sie dauert rund drei Minuten und kostet
-  Guthaben auf dem Konto, mit dem Claude Code angemeldet ist.
+- Eine Live-Suche kostet echtes Guthaben auf dem Konto, mit dem Claude Code angemeldet ist. Der Deckel
+  begrenzt das je Suche, siehe oben. Die Kosten je Suchwinkel schwanken mit der Größe der abgerufenen
+  Seiten, deshalb ist die Budgetprüfung eine Erwartung und keine Garantie auf den Cent.
+- `anthropic_api` und `tavily` sind nur gegen einen Attrappen-Client geprüft: Anfrageform, Modellwahl,
+  Werkzeugtypen, `pause_turn`-Fortsetzung und Ablehnung. Ob sie gegen die echten Dienste laufen, ist
+  mangels Schlüssel offen.
 - Je voller der Grundstock, desto häufiger findet die Live-Suche etwas, das schon drinsteht. Das Protokoll
   weist das als "waren schon bekannt" aus, statt es als neuen Treffer zu zählen.
 - Sessions liegen unverschlüsselt in SQLite, das Cookie ist nicht auf `secure` gesetzt. Für lokalen Betrieb

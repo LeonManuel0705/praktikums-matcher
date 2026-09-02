@@ -25,14 +25,22 @@ const EMPTY: Profile = {
   free_text: null,
 }
 
+const DEPTHS: { key: string; label: string }[] = [
+  { key: "sparsam", label: "sparsam" },
+  { key: "normal", label: "normal" },
+  { key: "gruendlich", label: "gründlich" },
+]
+
 interface Props {
   initial: Profile | null
   onSaved: (profile: Profile) => void
-  onSearch: () => void
+  onSearch: (depth: string) => void
   searching: boolean
+  depthCosts: Record<string, number>
 }
 
-export function ProfileForm({ initial, onSaved, onSearch, searching }: Props) {
+export function ProfileForm({ initial, onSaved, onSearch, searching, depthCosts }: Props) {
+  const [depth, setDepth] = useState("normal")
   const [profile, setProfile] = useState<Profile>(initial ?? EMPTY)
   const [dirty, setDirty] = useState(initial === null)
   const [anchors, setAnchors] = useState<Anchor[]>([])
@@ -206,12 +214,34 @@ export function ProfileForm({ initial, onSaved, onSearch, searching }: Props) {
 
       {error && <p className="notice" style={{ marginBottom: 14 }}>{error}</p>}
 
+      <div className="field-group">
+        <div className="slider-head">
+          <span className="field-label" style={{ marginBottom: 0 }}>Suchtiefe</span>
+          <span className="slider-value" style={{ color: "var(--c-pay)" }}>
+            höchstens {(depthCosts[depth] ?? 0.4).toFixed(2)} USD
+          </span>
+        </div>
+        <div className="segmented">
+          {DEPTHS.map(({ key, label }) => (
+            <button
+              key={key}
+              type="button"
+              className={depth === key ? "segment segment-on" : "segment"}
+              aria-pressed={depth === key}
+              onClick={() => setDepth(key)}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      </div>
+
       <div className="button-row">
         <button className="button button-quiet" type="button" onClick={save} disabled={saving || !dirty}>
           {saving ? <Loader2 size={16} className="status-live" /> : null}
           Profil speichern
         </button>
-        <button className="button" type="button" onClick={onSearch} disabled={searching || dirty}>
+        <button className="button" type="button" onClick={() => onSearch(depth)} disabled={searching || dirty}>
           <Search size={16} />
           {searching ? "Suche läuft" : "Suche starten"}
         </button>

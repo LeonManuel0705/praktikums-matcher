@@ -3,6 +3,7 @@ import json
 import sqlite3
 from dataclasses import dataclass, field
 
+from .config import COST_CEILING_USD, MAX_COST_USD
 from .db import now, session
 from .eligibility import classify
 from .scoring import score_offer
@@ -16,6 +17,8 @@ class JobHandle:
     search_id: int
     task: asyncio.Task | None = None
     cancelled: bool = False
+    spent_usd: float = 0.0
+    budget_usd: float = MAX_COST_USD
     seen_urls: set[str] = field(default_factory=set)
     seen_pairs: set[tuple[str, str]] = field(default_factory=set)
 
@@ -31,11 +34,12 @@ def add_event(search_id: int, kind: str, message: str) -> None:
         )
 
 
-def create_search(user_id: int, profile: dict, provider_name: str) -> int:
+def create_search(user_id: int, profile: dict, provider_name: str, budget_usd: float = MAX_COST_USD) -> int:
     with session() as conn:
         cursor = conn.execute(
-            "INSERT INTO searches (user_id, profile_snapshot, provider, status, created_at) VALUES (?, ?, ?, ?, ?)",
-            (user_id, json.dumps(profile, ensure_ascii=False), provider_name, "running", now()),
+            """INSERT INTO searches (user_id, profile_snapshot, provider, status, budget_usd, created_at)
+               VALUES (?, ?, ?, ?, ?, ?)""",
+            (user_id, json.dumps(profile, ensure_ascii=False), provider_name, "running", budget_usd, now()),
         )
         return int(cursor.lastrowid)
 
@@ -95,7 +99,20 @@ async def run_search(search_id: int, profile: dict, provider) -> None:
     def publish(offers: list[dict], angle: str) -> list[dict]:
         return store_offers(search_id, profile, offers, angle, handle)
 
-    ctx = SearchContext(profile=profile, log=log, publish=publish, cancelled=lambda: handle.cancelled)
+    def spend(usd: float, note: str) -> None:
+        if usd <= 0:
+            return
+        handle.spent_usd += usd
+        with session() as conn:
+            conn.execute("UPDATE searches SET cost_usd = ? WHERE id = ?", (round(handle.spent_usd, 6), search_id))
+
+    def budget_left() -> float:
+        return handle.budget_usd - handle.spent_usd
+
+    ctx = SearchContext(
+        profile=profile, log=log, publish=publish,
+        cancelled=lambda: handle.cancelled, spend=spend, budget_left=budget_left,
+    )
 
     try:
         log(f"Recherche startet über {provider.label}", "start")
@@ -111,7 +128,7 @@ async def run_search(search_id: int, profile: dict, provider) -> None:
         with session() as conn:
             total = conn.execute("SELECT COUNT(*) FROM matches WHERE search_id = ?", (search_id,)).fetchone()[0]
         finish_search(search_id, "done")
-        log(f"Recherche fertig, {total} Angebote bewertet", "done")
+        log(f"Recherche fertig, {total} Angebote bewertet, {handle.spent_usd:.3f} USD verbraucht", "done")
     except asyncio.CancelledError:
         finish_search(search_id, "cancelled")
         log("Suche abgebrochen", "done")
@@ -123,13 +140,15 @@ async def run_search(search_id: int, profile: dict, provider) -> None:
         JOBS.pop(search_id, None)
 
 
-def start_search(user_id: int, profile: dict, preferred_provider: str | None = None) -> tuple[int, str]:
+def start_search(user_id: int, profile: dict, preferred_provider: str | None = None,
+                 budget_usd: float | None = None) -> tuple[int, str]:
     provider = pick_provider(preferred_provider)
     if provider is None:
         raise RuntimeError("Kein Suchprovider verfügbar")
 
-    search_id = create_search(user_id, profile, provider.name)
-    handle = JobHandle(search_id=search_id)
+    budget = MAX_COST_USD if budget_usd is None else min(max(budget_usd, 0.01), COST_CEILING_USD)
+    search_id = create_search(user_id, profile, provider.name, budget)
+    handle = JobHandle(search_id=search_id, budget_usd=budget)
     JOBS[search_id] = handle
     handle.task = asyncio.create_task(run_search(search_id, profile, provider))
     return search_id, provider.name

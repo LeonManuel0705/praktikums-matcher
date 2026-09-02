@@ -1,4 +1,5 @@
 import json
+import os
 import sys
 import time
 import urllib.error
@@ -35,7 +36,7 @@ call("/api/profile", {"interests": ["ai_tech"], "location": "Potsdam", "radius_k
      method="PUT")
 print("Profil gespeichert: KI/Tech, Potsdam 35 km, Januar 2027, LLM-Wunsch\n")
 
-started = call("/api/searches", {})
+started = call("/api/searches", {"depth": os.environ.get("PM_DEPTH", "normal")})
 search_id = started["search_id"]
 print(f"Suche {search_id} gestartet über {started['provider']}\n")
 
@@ -51,7 +52,8 @@ while time.time() - begin < 900:
     time.sleep(2)
 
 final = call(f"/api/searches/{search_id}")
-print(f"\nStatus: {final['status']}  Dauer: {time.time() - begin:.0f}s  Treffer: {len(final['results'])}\n")
+print(f"\nStatus: {final['status']}  Dauer: {time.time() - begin:.0f}s  "
+      f"Treffer: {len(final['results'])}  Kosten: {final['cost_usd']:.4f} von {final['budget_usd']:.2f} USD\n")
 for offer in final["results"][:8]:
     print(f"  {offer['score']:3d}%  {offer['title'][:52]:52} | {offer['company'][:20]:20} | {offer['city'][:18]}")
     for criterion in offer["breakdown"]["criteria"]:

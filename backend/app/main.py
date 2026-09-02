@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field, field_validator
 
-from .config import SESSION_COOKIE, SESSION_TTL_HOURS, WEIGHTS
+from .config import COST_CEILING_USD, DEPTHS, MAX_COST_USD, SESSION_COOKIE, SESSION_TTL_HOURS, WEIGHTS
 from .db import init_db, now, row_to_offer, session
 from .auth import create_session, destroy_session, hash_password, is_valid_email, resolve_session, verify_password
 from .jobs import add_event, cancel_search, start_search
@@ -230,7 +230,14 @@ def geo_preview(location: str, radius_km: int = 30):
 
 @app.get("/api/providers")
 def providers():
-    return {"providers": provider_status(), "weights": WEIGHTS, "rerank_available": rerank_available()}
+    return {
+        "providers": provider_status(),
+        "weights": WEIGHTS,
+        "rerank_available": rerank_available(),
+        "max_cost_usd": MAX_COST_USD,
+        "cost_ceiling_usd": COST_CEILING_USD,
+        "depths": DEPTHS,
+    }
 
 
 @app.put("/api/weights")
@@ -261,18 +268,32 @@ async def post_search(payload: dict = Body(default={}), user: dict = Depends(cur
         raise HTTPException(status_code=400, detail="Bitte zuerst das Wunsch-Profil ausfüllen")
 
     profile = {**profile, "grade_level": user.get("grade_level")}
+    depth = str(payload.get("depth") or "").lower()
+    budget = DEPTHS.get(depth)
+    if budget is None and payload.get("budget_usd") is not None:
+        try:
+            budget = float(payload["budget_usd"])
+        except (TypeError, ValueError) as exc:
+            raise HTTPException(status_code=400, detail="Budget muss eine Zahl sein") from exc
+
     try:
-        search_id, provider_name = start_search(int(user["id"]), profile, payload.get("provider"))
+        search_id, provider_name = start_search(int(user["id"]), profile, payload.get("provider"), budget)
     except RuntimeError as exc:
         raise HTTPException(status_code=503, detail=str(exc)) from exc
-    return {"search_id": search_id, "provider": provider_name}
+    from .jobs import JOBS
+    handle = JOBS.get(search_id)
+    return {
+        "search_id": search_id,
+        "provider": provider_name,
+        "budget_usd": round(handle.budget_usd, 4) if handle else MAX_COST_USD,
+    }
 
 
 @app.get("/api/searches")
 def list_searches(user: dict = Depends(current_user)):
     with session() as conn:
         rows = conn.execute(
-            """SELECT s.id, s.status, s.provider, s.created_at, s.finished_at,
+            """SELECT s.id, s.status, s.provider, s.created_at, s.finished_at, s.cost_usd, s.budget_usd,
                       (SELECT COUNT(*) FROM matches m WHERE m.search_id = s.id) AS result_count
                FROM searches s WHERE s.user_id = ? ORDER BY s.id DESC LIMIT 20""",
             (int(user["id"]),),
@@ -314,6 +335,8 @@ def get_search(search_id: int, after_event: int = 0, user: dict = Depends(curren
         "status": search["status"],
         "provider": search["provider"],
         "error": search["error"],
+        "cost_usd": round(float(search["cost_usd"] or 0), 4),
+        "budget_usd": round(float(search["budget_usd"] or MAX_COST_USD), 4),
         "created_at": search["created_at"],
         "finished_at": search["finished_at"],
         "events": [dict(event) for event in events],

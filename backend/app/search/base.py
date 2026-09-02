@@ -16,6 +16,8 @@ class SearchContext:
     log: Callable[[str, str], None]
     publish: Callable[[list[dict], str], list[dict]]
     cancelled: Callable[[], bool]
+    spend: Callable[[float, str], None] = lambda usd, note: None
+    budget_left: Callable[[], float] = lambda: float("inf")
 
 
 class SearchProvider(Protocol):

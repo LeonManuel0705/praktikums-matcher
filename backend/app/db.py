@@ -43,6 +43,8 @@ CREATE TABLE IF NOT EXISTS searches (
     provider TEXT NOT NULL,
     status TEXT NOT NULL,
     error TEXT,
+    cost_usd REAL NOT NULL DEFAULT 0,
+    budget_usd REAL NOT NULL DEFAULT 0,
     created_at TEXT NOT NULL,
     finished_at TEXT
 );
@@ -127,6 +129,11 @@ def init_db() -> None:
         ):
             if column not in existing:
                 conn.execute(f"ALTER TABLE offers ADD COLUMN {column} {definition}")
+
+        search_columns = {row["name"] for row in conn.execute("PRAGMA table_info(searches)")}
+        for column in ("cost_usd", "budget_usd"):
+            if column not in search_columns:
+                conn.execute(f"ALTER TABLE searches ADD COLUMN {column} REAL NOT NULL DEFAULT 0")
 
 
 def row_to_offer(row: sqlite3.Row) -> dict:

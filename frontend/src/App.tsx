@@ -31,6 +31,7 @@ export default function App() {
   const [reranking, setReranking] = useState(false)
   const [rerankNote, setRerankNote] = useState("")
   const [onlyEligible, setOnlyEligible] = useState(true)
+  const [depthCosts, setDepthCosts] = useState<Record<string, number>>({})
   useEffect(() => {
     document.documentElement.dataset.theme = theme
     localStorage.setItem("pm-theme", theme)
@@ -50,7 +51,11 @@ export default function App() {
       .catch(() => undefined)
       .finally(() => setBooted(true))
     api.providers()
-      .then((data) => { setProviders(data.providers); setRerankAvailable(data.rerank_available) })
+      .then((data) => {
+        setProviders(data.providers)
+        setRerankAvailable(data.rerank_available)
+        setDepthCosts(data.depths ?? {})
+      })
       .catch(() => undefined)
   }, [])
 
@@ -89,11 +94,11 @@ export default function App() {
     return () => { stopped = true; window.clearTimeout(timer) }
   }, [searchId])
 
-  const startSearch = useCallback(async () => {
+  const startSearch = useCallback(async (depth: string) => {
     setError("")
     setRerankNote("")
     try {
-      const { search_id } = await api.startSearch()
+      const { search_id } = await api.startSearch(depth)
       setSearch(null)
       setSearchId(search_id)
     } catch (err) {
@@ -199,6 +204,7 @@ export default function App() {
               onSaved={setProfile}
               onSearch={startSearch}
               searching={running}
+              depthCosts={depthCosts}
             />
           </div>
 
@@ -207,15 +213,28 @@ export default function App() {
               <span className={running ? "status-dot status-live" : "status-dot"}
                     style={{ background: running ? "var(--c-location)" : "var(--ink-faint)" }} />
               <span className="results-count">{results.length}</span>
-              <span className="results-label">
-                {running ? "Treffer bisher, die Recherche läuft noch" : "bewertete Treffer"}
+              <div className="results-meta">
+                <span className="results-label">
+                  {running ? "Treffer bisher, die Recherche läuft noch" : "bewertete Treffer"}
+                </span>
                 {hidden > 0 && (
-                  <span className="source-note" style={{ display: "block" }}>
+                  <span className="source-note">
                     {hidden} ausgeblendet, weil Studium, Ausbildung oder Berufserfahrung verlangt wird
                   </span>
                 )}
-              </span>
-              <div style={{ marginLeft: "auto", display: "flex", gap: 10, alignItems: "center" }}>
+                {search && search.budget_usd > 0 && (
+                  <span className="cost-line">
+                    <span className="cost-bar">
+                      <span
+                        className="cost-fill"
+                        style={{ width: `${Math.min(100, (search.cost_usd / search.budget_usd) * 100)}%` }}
+                      />
+                    </span>
+                    {search.cost_usd.toFixed(2)} von {search.budget_usd.toFixed(2)} USD verbraucht
+                  </span>
+                )}
+              </div>
+              <div className="results-actions">
                 {allResults.length > 0 && (
                   <div className="tabs filter-toggle">
                     <button type="button" className={onlyEligible ? "tab tab-on" : "tab"}

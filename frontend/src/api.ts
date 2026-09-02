@@ -30,19 +30,23 @@ export const api = {
   saveProfile: (profile: Profile) =>
     request<Profile>("/api/profile", { method: "PUT", body: JSON.stringify(profile) }),
   providers: () =>
-    request<{ providers: ProviderInfo[]; weights: Record<string, number>; rerank_available: boolean }>(
-      "/api/providers",
-    ),
+    request<{
+      providers: ProviderInfo[]
+      weights: Record<string, number>
+      rerank_available: boolean
+      max_cost_usd: number
+      depths: Record<string, number>
+    }>("/api/providers"),
   geoPreview: (location: string, radius: number) =>
     request<{ anchors: Anchor[] }>(
       `/api/geo/preview?location=${encodeURIComponent(location)}&radius_km=${radius}`,
     ),
   listSearches: () =>
     request<{ searches: { id: number; status: string; result_count: number }[] }>("/api/searches"),
-  startSearch: (provider?: string) =>
-    request<{ search_id: number; provider: string }>("/api/searches", {
+  startSearch: (depth?: string) =>
+    request<{ search_id: number; provider: string; budget_usd: number }>("/api/searches", {
       method: "POST",
-      body: JSON.stringify(provider ? { provider } : {}),
+      body: JSON.stringify(depth ? { depth } : {}),
     }),
   getSearch: (id: number, afterEvent = 0) =>
     request<SearchState>(`/api/searches/${id}?after_event=${afterEvent}`),

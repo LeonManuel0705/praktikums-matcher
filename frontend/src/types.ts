@@ -69,6 +69,8 @@ export interface SearchState {
   status: "running" | "done" | "failed" | "cancelled"
   provider: string
   error: string | null
+  cost_usd: number
+  budget_usd: number
   events: SearchEvent[]
   results: Offer[]
 }

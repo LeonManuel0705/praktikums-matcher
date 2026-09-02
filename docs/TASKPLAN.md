@@ -61,6 +61,15 @@ Stand: 2026-09-02
 - [x] G2 13 schwerwiegende und 9 mittlere Befunde behoben, 12 Regressionstests dazu
 - [x] G3 LLM-Feinschliff für den Freitext nachgereicht, bewertet alle Treffer in parallelen Stapeln
 
+## Kosten, auf Zuruf ergänzt
+- [x] K1 Kosten je Suchwinkel gemessen statt geschätzt, Sonnet gegen Haiku verglichen
+- [x] K2 Haiku als Standard, straffere Budgets, weniger Runden
+- [x] K3 Suchwinkel laufen in Wellen mit Budgetprüfung vor dem Start
+- [x] K4 Echte Kosten aus `total_cost_usd`, aufaddiert und in der Datenbank festgehalten
+- [x] K5 Suchtiefe in der Oberfläche wählbar, Kosten laufen sichtbar mit
+- [x] K6 Vertragstests für die beiden Provider ohne Schlüssel
+- [x] K7 Von 1,54 USD auf 0,17 bis 0,33 USD je Suche
+
 ## Zugänglichkeit, auf Zuruf ergänzt
 - [x] H1 Prüfung, wer sich bewerben darf: offen, nur_studierende, unklar
 - [x] H2 Suchagenten melden Angebote mit Studienpflicht gar nicht erst

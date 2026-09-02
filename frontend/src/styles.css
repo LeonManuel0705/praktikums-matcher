@@ -429,6 +429,22 @@ body {
   gap: 14px;
   padding: 16px 20px;
   margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.results-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.results-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .results-count {
@@ -442,6 +458,33 @@ body {
 .results-label {
   font-size: 13px;
   color: var(--ink-soft);
+  line-height: 1.35;
+}
+
+.cost-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+.cost-bar {
+  width: 76px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--c-track);
+  overflow: hidden;
+}
+
+.cost-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--c-pay);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .status-dot {

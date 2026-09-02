@@ -13,14 +13,21 @@ from ..config import (
     BUDGET_SEARCHES,
     CLAUDE_BINARY,
     CLAUDE_MODEL,
+    COST_PER_FETCH,
+    COST_PER_TURN,
+    COST_PER_WEB_SEARCH,
+    EXPECTED_ANGLE_COST,
     HARD_CAP_FETCHES,
     HARD_CAP_SEARCHES,
+    MAX_COST_USD,
+    MAX_TURNS,
+    RUNAWAY_FACTOR,
     SEARCH_TIMEOUT_SECONDS,
+    WAVE_SIZE,
 )
 from .base import SearchContext, extract_json_payload, normalize_offer, parse_offer_lines
 from .prompts import ANGLES, build_prompt
 
-MAX_TURNS = "26"
 STREAM_LIMIT = 16 * 1024 * 1024
 STDERR_TAIL = 4000
 
@@ -32,6 +39,12 @@ def sandbox_dir() -> str:
     path = Path(tempfile.gettempdir()) / "praktikums-matcher-agent"
     path.mkdir(parents=True, exist_ok=True)
     return str(path)
+
+
+def affordable_count(budget_left: float, wave_size: int) -> int:
+    if EXPECTED_ANGLE_COST <= 0:
+        return wave_size
+    return max(0, min(wave_size, int(budget_left / EXPECTED_ANGLE_COST)))
 
 
 def sandbox_env() -> dict[str, str]:
@@ -96,15 +109,41 @@ class ClaudeCliProvider:
             raise RuntimeError("Claude-Binary nicht gefunden")
 
         today = datetime.now(timezone.utc).date()
-        ctx.log(f"{len(ANGLES)} Suchwinkel starten parallel", "start")
-        tasks = [asyncio.create_task(self._run_angle(binary, ctx, key, text, today)) for key, text in ANGLES]
-        try:
-            await asyncio.gather(*tasks)
-        except BaseException:
-            for task in tasks:
-                task.cancel()
-            await asyncio.gather(*tasks, return_exceptions=True)
-            raise
+        waves = [ANGLES[i : i + WAVE_SIZE] for i in range(0, len(ANGLES), max(WAVE_SIZE, 1))]
+        ctx.log(
+            f"{len(ANGLES)} Suchwinkel in {len(waves)} Wellen, Kostendeckel {ctx.budget_left():.2f} USD",
+            "start",
+        )
+
+        for index, wave in enumerate(waves):
+            if ctx.cancelled():
+                return
+
+            left = ctx.budget_left()
+            bezahlbar = affordable_count(left, len(wave))
+            if bezahlbar <= 0:
+                entfallen = sum(len(w) for w in waves[index:])
+                ctx.log(
+                    f"Restbudget {left:.2f} USD reicht für keinen weiteren Suchwinkel, "
+                    f"{entfallen} entfallen",
+                    "warn",
+                )
+                return
+
+            wave = wave[:bezahlbar]
+            names = ", ".join(key for key, _ in wave)
+            ctx.log(
+                f"Welle {index + 1} von {len(waves)}: {names}, noch {left:.2f} USD frei",
+                "wave",
+            )
+            tasks = [asyncio.create_task(self._run_angle(binary, ctx, key, text, today)) for key, text in wave]
+            try:
+                await asyncio.gather(*tasks)
+            except BaseException:
+                for task in tasks:
+                    task.cancel()
+                await asyncio.gather(*tasks, return_exceptions=True)
+                raise
 
     async def _run_angle(self, binary: str, ctx: SearchContext, key: str, angle_text: str, today: date) -> None:
         prompt = build_prompt(ctx.profile, key, angle_text, today,
@@ -136,8 +175,13 @@ class ClaudeCliProvider:
         final_text = ""
         searches = 0
         fetches = 0
+        turns = 0
         streamed = 0
         already_known = 0
+        reported_cost = 0.0
+
+        def estimate() -> float:
+            return (searches * COST_PER_WEB_SEARCH + fetches * COST_PER_FETCH + turns * COST_PER_TURN)
         try:
             async with asyncio.timeout(PER_ANGLE_TIMEOUT):
                 while True:
@@ -181,6 +225,7 @@ class ClaudeCliProvider:
                                 fetches += 1
                                 ctx.log(f"[{key}] liest: {short_host(str(payload.get('url', '')))}", "fetch")
 
+                        turns += 1
                         if searches > HARD_CAP_SEARCHES or fetches > HARD_CAP_FETCHES:
                             ctx.log(
                                 f"[{key}] Aufwandsgrenze erreicht bei {searches} Suchanfragen und "
@@ -188,8 +233,19 @@ class ClaudeCliProvider:
                                 "warn",
                             )
                             break
+                        if estimate() > EXPECTED_ANGLE_COST * RUNAWAY_FACTOR:
+                            ctx.log(
+                                f"[{key}] läuft aus dem Ruder, geschätzt {estimate():.2f} USD, "
+                                f"beende diesen Suchwinkel",
+                                "warn",
+                            )
+                            break
                     elif kind == "result":
                         final_text = str(event.get("result") or "")
+                        try:
+                            reported_cost = float(event.get("total_cost_usd") or 0.0)
+                        except (TypeError, ValueError):
+                            reported_cost = 0.0
                         if event.get("is_error"):
                             ctx.log(f"[{key}] Agent meldet Fehler: {final_text[:160]}", "warn")
         except TimeoutError:
@@ -205,12 +261,15 @@ class ClaudeCliProvider:
             if stderr and process.returncode not in (0, None):
                 ctx.log(f"[{key}] Prozess endete mit Code {process.returncode}: {stderr[-200:]}", "warn")
 
+        ctx.spend(reported_cost or estimate(), key)
         trailing = [offer for offer in (normalize_offer(item) for item in extract_json_payload(final_text)) if offer]
         fresh_trailing = ctx.publish(trailing, key)
         added = streamed + len(fresh_trailing)
         already_known += len(trailing) - len(fresh_trailing)
         known_note = f", {already_known} waren schon bekannt" if already_known else ""
+        preis = f"{reported_cost:.3f} USD" if reported_cost else f"~{estimate():.3f} USD geschätzt"
         ctx.log(
-            f"[{key}] fertig: {searches} Suchanfragen, {fetches} Seiten gelesen, {added} neue Treffer{known_note}",
+            f"[{key}] fertig: {searches} Suchanfragen, {fetches} Seiten gelesen, "
+            f"{added} neue Treffer{known_note}, {preis}",
             "angle_done",
         )
