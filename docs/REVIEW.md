@@ -17,6 +17,7 @@ nachvollzogen und behoben.
 | Bereichserkennung traf Wortfragmente | „Detailhandel" galt als KI/Tech, weil „ai" in „detail" steckt | Vergleich nur noch an Wortgrenzen |
 | Monatsbereiche über den Jahreswechsel | „Dezember bis Februar 2027" wurde zu Februar bis Dezember 2027 | Jahr der früheren Monate wird zurückgerollt |
 | Freitext ungetrennt im Agenten-Prompt | Ein Schüler hätte dem Suchagenten Anweisungen unterschieben können | Freitext steht in einem markierten Block, Trennmarken werden entfernt, Länge begrenzt |
+| **Agentenprozess lief ohne jede Eindämmung** | siehe eigenen Abschnitt unten | Sandkasten-Verzeichnis, minimale Umgebung, gesperrte Werkzeuge, keine geerbten Einstellungen, kein MCP |
 | stderr des Agenten wurde nie geleert | Ab 64 KiB blockiert das Kind, der Suchwinkel läuft ins Zeitlimit | stderr wird nebenher in einer eigenen Aufgabe geleert |
 | stdout-Zeilen über 64 KiB | Eine große Werkzeugausgabe beendete den Suchwinkel mit einem Fehler | Puffergrenze auf 16 MiB, überlange Zeilen werden übersprungen |
 | Fehler in einem Suchwinkel | Die drei anderen liefen weiter und schrieben in eine bereits beendete Suche | Geschwister werden abgebrochen und abgewartet |
@@ -38,6 +39,29 @@ nachvollzogen und behoben.
 | Suchen blieben nach einem Serverneustart ewig auf „läuft" | Beim Start werden sie abgeschlossen und protokolliert |
 | Umkreis-Karte zeigte Anker des alten Ortes | Karte leert sich, wenn das Ortsfeld leer ist |
 | Zustand blieb nach dem Abmelden stehen | Fehler, Hinweise und Suchbezug werden zurückgesetzt |
+
+## Der schwerste Befund im Detail
+
+Der Gegenprüfer hat nicht nur gelesen, sondern die Binary mit genau den Flags gestartet, die im Code
+standen. Ergebnis: `--allowedTools` schränkt den Werkzeugsatz **nicht** ein, es erweitert nur Freigaben.
+Der Agentenprozess bekam damit:
+
+| | vorher | nachher |
+|---|---|---|
+| Werkzeuge insgesamt | 77 | 21 bis 24 |
+| davon Bash, Read, Write, Edit, Task | alle vorhanden | keins |
+| MCP-Werkzeuge (Gmail, Drive, Kalender) | 49 | 0 |
+| Arbeitsverzeichnis | Projektwurzel mit `app.db` samt Passwort-Hashes | eigenes leeres Verzeichnis unter `TMPDIR` |
+| Umgebung | vollständig geerbt, inklusive API-Schlüssel | sieben Variablen, keine Schlüssel |
+| Einstellungen | globale Allow-Liste mit `Bash(curl:*)` und `Read(//Users/leon/**)` | keine geerbten Einstellungen |
+
+Der gefährliche Weg war nicht der eigene Freitext, sondern die Anzeigen selbst: der Agent soll ja fremde
+Seiten öffnen. Wer eine Jobbörse oder eine dort verlinkte Anzeige kontrolliert, hätte Anweisungen in den
+Seitentext schreiben können, die in einem Kontext mit vollen lokalen Rechten landen.
+
+Behoben durch `--disallowedTools`, `--setting-sources ""`, `--strict-mcp-config`, ein eigenes
+Arbeitsverzeichnis und eine gefilterte Umgebung. Nachgemessen: der Agent findet weiterhin echte Angebote,
+sieht aber kein einziges gefährliches Werkzeug mehr. Fünf Tests halten das fest.
 
 ## Nicht übernommen
 

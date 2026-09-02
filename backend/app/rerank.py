@@ -5,7 +5,7 @@ from .config import ANTHROPIC_API_KEY, CLAUDE_MODEL
 from .db import row_to_offer, session
 from .scoring import score_offer
 from .search.base import extract_json_payload
-from .search.claude_cli import resolve_binary
+from .search.claude_cli import BLOCKED_TOOLS, resolve_binary, sandbox_dir, sandbox_env
 
 BATCH_SIZE = 20
 MAX_PARALLEL = 4
@@ -41,10 +41,15 @@ async def _ask_claude_cli(prompt: str) -> str:
     binary = resolve_binary()
     process = await asyncio.create_subprocess_exec(
         binary, "-p", prompt, "--output-format", "json", "--model", CLAUDE_MODEL,
-        "--disallowedTools", "WebSearch", "WebFetch", "Bash", "Read", "Write", "Edit",
+        "--disallowedTools", *BLOCKED_TOOLS, "WebSearch", "WebFetch",
+        "--setting-sources", "",
+        "--strict-mcp-config",
         stdin=asyncio.subprocess.DEVNULL,
         stdout=asyncio.subprocess.PIPE,
         stderr=asyncio.subprocess.DEVNULL,
+        start_new_session=True,
+        cwd=sandbox_dir(),
+        env=sandbox_env(),
     )
     try:
         stdout, _ = await asyncio.wait_for(process.communicate(), timeout=TIMEOUT)

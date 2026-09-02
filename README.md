@@ -86,6 +86,21 @@ Der Suchagent bekommt zusätzlich die Anweisung, Angebote mit Studienpflicht gar
 In der Ergebnisliste steht der Schalter standardmäßig auf "Für dich möglich", `nur_studierende` ist also
 ausgeblendet. Wie viele das betrifft, steht daneben, und über "Alle" sind sie weiterhin einsehbar.
 
+## Wie der Suchagent eingehegt ist
+
+Der Agent öffnet fremde Webseiten. Eine manipulierte Anzeige könnte versuchen, ihm Anweisungen
+unterzuschieben. Deshalb läuft der Prozess bewusst eingeschränkt:
+
+- `--disallowedTools` sperrt Bash, Read, Write, Edit, Task und Konsorten
+- `--setting-sources ""` verhindert, dass er die globale Allow-Liste des Rechners erbt
+- `--strict-mcp-config` schneidet angebundene Dienste wie Gmail oder Drive ab
+- eigenes leeres Arbeitsverzeichnis unter `TMPDIR` statt der Projektwurzel mit der Datenbank
+- gefilterte Umgebung: sieben Variablen, keine API-Schlüssel
+- der Freitext des Profils steht in einem markierten Block, nicht zwischen den Anweisungen
+
+Gemessen: statt 77 Werkzeugen inklusive Bash und 49 MCP-Werkzeugen stehen dem Agenten noch 21 bis 24
+zur Verfügung, keins davon mit Zugriff auf das Dateisystem oder die Shell.
+
 ## Der Matching-Score
 
 Vier Kriterien, gewichtet wie im Konzept vorgegeben:

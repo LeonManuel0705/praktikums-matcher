@@ -387,3 +387,39 @@ class TestEligibility:
                       {"title": "b", "description": "Schüler"},
                       {"title": "c", "description": "nichts"}):
             assert classify(offer)[1].strip()
+
+
+class TestAgentSandbox:
+    def test_dangerous_tools_are_blocked(self):
+        from backend.app.search.claude_cli import BLOCKED_TOOLS
+        for tool in ("Bash", "Read", "Write", "Edit", "Task"):
+            assert tool in BLOCKED_TOOLS
+
+    def test_environment_carries_no_secrets(self, monkeypatch):
+        from backend.app.search.claude_cli import sandbox_env
+        monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-geheim")
+        monkeypatch.setenv("TAVILY_API_KEY", "tv-geheim")
+        env = sandbox_env()
+        assert "ANTHROPIC_API_KEY" not in env
+        assert "TAVILY_API_KEY" not in env
+        assert "PATH" in env and "HOME" in env
+
+    def test_sandbox_directory_is_outside_the_project(self):
+        from pathlib import Path
+        from backend.app.search.claude_cli import sandbox_dir
+        project = Path(__file__).resolve().parent.parent
+        assert project not in Path(sandbox_dir()).resolve().parents
+
+    def test_hardening_flags_are_passed(self):
+        import inspect
+        from backend.app.search import claude_cli
+        source = inspect.getsource(claude_cli)
+        for flag in ("--disallowedTools", "--setting-sources", "--strict-mcp-config", "cwd=sandbox_dir()", "env=sandbox_env()"):
+            assert flag in source
+
+    def test_rerank_uses_the_same_hardening(self):
+        import inspect
+        from backend.app import rerank
+        source = inspect.getsource(rerank)
+        for flag in ("--setting-sources", "--strict-mcp-config", "cwd=sandbox_dir()", "env=sandbox_env()"):
+            assert flag in source

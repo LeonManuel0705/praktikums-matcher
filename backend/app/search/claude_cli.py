@@ -3,6 +3,8 @@ import json
 import os
 import shutil
 import signal
+import tempfile
+from pathlib import Path
 from datetime import date, timezone, datetime
 from urllib.parse import urlparse
 
@@ -21,6 +23,19 @@ from .prompts import ANGLES, build_prompt
 MAX_TURNS = "26"
 STREAM_LIMIT = 16 * 1024 * 1024
 STDERR_TAIL = 4000
+
+BLOCKED_TOOLS = ["Bash", "Read", "Write", "Edit", "NotebookEdit", "Task", "Agent", "Glob", "Grep", "TodoWrite"]
+KEEP_ENV = ("PATH", "HOME", "USER", "LOGNAME", "LANG", "LC_ALL", "TMPDIR", "SHELL", "TERM")
+
+
+def sandbox_dir() -> str:
+    path = Path(tempfile.gettempdir()) / "praktikums-matcher-agent"
+    path.mkdir(parents=True, exist_ok=True)
+    return str(path)
+
+
+def sandbox_env() -> dict[str, str]:
+    return {key: os.environ[key] for key in KEEP_ENV if key in os.environ}
 PER_ANGLE_TIMEOUT = min(SEARCH_TIMEOUT_SECONDS, 420)
 
 
@@ -98,7 +113,10 @@ class ClaudeCliProvider:
             binary, "-p", prompt,
             "--output-format", "stream-json",
             "--verbose",
-            "--allowedTools", "WebSearch", "WebFetch", "ToolSearch",
+            "--allowedTools", "WebSearch", "WebFetch",
+            "--disallowedTools", *BLOCKED_TOOLS,
+            "--setting-sources", "",
+            "--strict-mcp-config",
             "--max-turns", MAX_TURNS,
             "--model", CLAUDE_MODEL,
         ]
@@ -110,6 +128,8 @@ class ClaudeCliProvider:
             stderr=asyncio.subprocess.PIPE,
             limit=STREAM_LIMIT,
             start_new_session=True,
+            cwd=sandbox_dir(),
+            env=sandbox_env(),
         )
         stderr_task = asyncio.create_task(_drain(process.stderr))
 
