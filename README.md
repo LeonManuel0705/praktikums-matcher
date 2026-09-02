@@ -69,22 +69,26 @@ Laufzeit einer Suche von über acht auf 2,7 Minuten gedrückt, bei gleicher Ausb
 Die erste Fassung hat einen entscheidenden Punkt übersehen: sehr viele Praktikumsanzeigen verlangen eine
 laufende Immatrikulation. Für einen Schüler sind die wertlos. Eine Prüfung des ersten Grundstocks hat es
 deutlich gezeigt: von 57 recherchierten Angeboten waren nur 9 wirklich zugänglich, 23 verlangten
-ausdrücklich ein Studium.
+ausdrücklich ein Studium. Eine zweite Recherche, die von vornherein nur nach zugänglichen Stellen
+gesucht hat, hat den Grundstock auf 67 Angebote gebracht, davon 21 ausdrücklich offen.
 
 Jedes Angebot bekommt deshalb eine Einstufung:
 
 | Einstufung | Bedeutung |
 |---|---|
 | `offen` | Schüler oder Abiturienten ohne Studium dürfen sich bewerben |
-| `nur_studierende` | Anzeige verlangt Immatrikulation, Studienbescheinigung, Bachelor oder Master |
+| `qualifikation_noetig` | Anzeige verlangt Immatrikulation, Studienbescheinigung, Bachelor, Master, eine abgeschlossene Ausbildung oder Berufserfahrung |
 | `unklar` | Die Anzeige sagt nichts über die Voraussetzungen |
 
 Die Einstufung entsteht auf zwei Wegen: der Suchagent liest sie aus dem Anforderungsteil der Anzeige, und
 unabhängig davon prüft `eligibility.py` den Text auf Signalwörter, an Wortgrenzen statt als Teilstring.
 Der Suchagent bekommt zusätzlich die Anweisung, Angebote mit Studienpflicht gar nicht erst zu melden.
 
-In der Ergebnisliste steht der Schalter standardmäßig auf "Für dich möglich", `nur_studierende` ist also
-ausgeblendet. Wie viele das betrifft, steht daneben, und über "Alle" sind sie weiterhin einsehbar.
+Bei Berufserfahrung zählt der Zusammenhang: "du sammelst erste Berufserfahrung" ist ein Angebot und
+bleibt drin, "Voraussetzung: mehrjährige Berufserfahrung" schließt aus.
+
+In der Ergebnisliste steht der Schalter standardmäßig auf "Für dich möglich", `qualifikation_noetig` ist
+also ausgeblendet. Wie viele das betrifft, steht daneben, und über "Alle" sind sie weiterhin einsehbar.
 
 ## Wie der Suchagent eingehegt ist
 
@@ -135,7 +139,7 @@ curl -X POST localhost:8000/api/searches/1/rescore -b cookies.txt
 
 ## Geprüft
 
-- 61 Unit-Tests für Geo, Datumsparsen, Bewertung, Normalisierung und die Regressionen aus dem Review
+- 77 Unit-Tests für Geo, Datumsparsen, Bewertung, Normalisierung und die Regressionen aus dem Review
 - Ein Playwright-Klickpfad durch den ganzen Ablauf, von der Registrierung bis zum Abmelden
 - Ein Fanout aus 25 Review-Agenten über fünf Dimensionen, jeder Befund gegengeprüft. Ergebnis und
   Behebung in [docs/REVIEW.md](docs/REVIEW.md)
@@ -155,7 +159,7 @@ backend/app/
   search/         Provider, Prompts, Normalisierung
   rerank.py       optionaler Feinschliff des Freitexts durch ein Modell
 frontend/src/     React, eigenes Design-System, keine UI-Bibliothek
-tests/            61 Tests für Geo, Datum, Scoring, Normalisierung, Regressionen
+tests/            77 Tests für Geo, Datum, Scoring, Normalisierung, Regressionen
 ```
 
 ## Tests
@@ -166,7 +170,8 @@ tests/            61 Tests für Geo, Datum, Scoring, Normalisierung, Regressione
 
 ## Grenzen dieses Prototyps
 
-- Der Grundstock in `backend/data/seed_offers.json` ist eine Momentaufnahme vom 2. September 2026.
+- Der Grundstock in `backend/data/seed_offers.json` ist eine Momentaufnahme vom 2. September 2026 mit
+  67 Angeboten aus zwei Recherchen.
   Praktikumsanzeigen laufen ab, die Links können ins Leere führen.
 - Eine Live-Suche startet vier Agentenprozesse mit echter Websuche. Sie dauert rund drei Minuten und kostet
   Guthaben auf dem Konto, mit dem Claude Code angemeldet ist.

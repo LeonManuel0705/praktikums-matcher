@@ -1,6 +1,493 @@
 {
   "offers": [
     {
+      "title": "Praktikum softwarenahe Technik",
+      "company": "deZem GmbH",
+      "city": "Berlin",
+      "compensation_kind": "unknown",
+      "compensation_text": "Keine Angabe zu einer Verguetung auf der Angebotsseite.",
+      "description": "Praktikum bei einem Berliner Anbieter von Energiemanagement-Systemen (Team mit 25+ Mitarbeitenden, Bueros in Charlottenburg-Wilmersdorf). Das Unternehmen sucht laut Seite Schuelerinnen und Schueler mit technisch-naturwissenschaftlichem Fokus oder Informatikschwerpunkt. Man wird direkt ins Team eingebunden und bekommt echte Aufgaben, die dem Team und den Kunden helfen. Wichtig: Erfahrung mit Linux, Raspberry Pi und Python sowie erste eigene Softwareprojekte sind Voraussetzung fuer den Software-Bereich, nicht erst Lerninhalt des Praktikums. Bewerbung per E-Mail an sekretariat@dezem.de (Herr Georg Riegel, Geschaeftsfuehrer).",
+      "url": "https://www.xn--schlerpraktikum-1vb.de/praktikumsplatz/dezem/88",
+      "source": "xn--schlerpraktikum-1vb.de (schuelerpraktikum.de)",
+      "start_date_hint": "jederzeit",
+      "end_date_hint": "",
+      "duration_hint": "Angebotskopf nennt 3 Wochen; fuer den Software-Bereich sind laut Seite mindestens 4 Wochen Voraussetzung, in der Ausschr",
+      "categories": [
+        "ai_tech"
+      ],
+      "target_group": "schuelerpraktikum",
+      "eligibility": "offen",
+      "evidence": "'Praktikum softwarenahe Technik' / 'deZem GmbH' / 'Ort des Praktikums: Wilmersdorfer Str. 60, 10627 Berlin'; 'Du hast dich intensiv mit Linux/Raspberry Pi's/Python beschaeftigt und kannst programmiertechnische Loesung entwickeln?'; 'Dann bewirb dich jetzt auf einen Praktikumsplatz bei uns! Du wirst direkt ins Team eingebunden und darfst selbst Hand anlegen. Du bekommst echte Aufgaben, die dem deZe",
+      "found_via": "schuelerboersen",
+      "eligibility_evidence": "'Start: jederzeit | Dauer: 3 Wochen | Mindestalter: 16' sowie 'Wir suchen aufgeweckte, intelligente und qualifizierte Schueler und Schuelerinnen mit einem technischen- naturwissenschaftlichen Fokus oder einem Informatikschwerpunkt.' Kein Wort zu Studium, Immatrikulation oder Studienbescheinigung auf der gesamten Seite.",
+      "eligibility_reason": "Angabe aus der Anzeige"
+    },
+    {
+      "title": "Schuelerpraktikum im Bereich Technology, Data & Innovation",
+      "company": "Deutsche Bank AG",
+      "city": "Deutschlandweit; laut Seite ist ein Praktikum in Eschborn/Frankfurt moeglich, sonst Bewerbung direkt bei der Wunschfilia",
+      "compensation_kind": "unknown",
+      "compensation_text": "Keine Angabe zu einer Verguetung auf der Angebotsseite.",
+      "description": "Zweiwoechiges Schuelerpraktikum im IT- und Innovationsbereich einer Grossbank. Laut Seite warten 'zwei abwechslungsreiche Wochen mit Robotern, Apps & kuenstlicher Intelligenz'. Man schaut Kolleginnen und Kollegen ueber die Schulter, lernt im Schnelldurchlauf verschiedene bankfachliche Taetigkeiten kennen, wird ins Tagesgeschaeft einbezogen, kann bei einem Kundentermin dabei sein und uebernimmt selbststaendig kleine Aufgaben. Es gibt einen festen Ansprechpartner und ein vorab zugeschicktes 'Workbook'. Bewerbung persoenlich in der Wunschfiliale. Achtung: Schuelerpraktika sind laut Seite vor allem in den Filialen moeglich, der Technology-, Data- & Innovation-Bereich wird zusaetzlich genannt und ist in Eschborn/Frankfurt angesiedelt.",
+      "url": "https://www.xn--schlerpraktikum-1vb.de/praktikumsplatz/deutschebank/16574",
+      "source": "xn--schlerpraktikum-1vb.de (schuelerpraktikum.de)",
+      "start_date_hint": "jederzeit Bewerbung bei der Wunschfiliale, 'am besten so frueh wie moeglich - spaetestens drei Wochen vor dem Termin'",
+      "end_date_hint": "",
+      "duration_hint": "'Ein Schuelerpraktikum dauert in der Regel ein bis zwei Wochen'; die Ausschreibung selbst spricht von zwei Wochen",
+      "categories": [
+        "ai_tech",
+        "business"
+      ],
+      "target_group": "schuelerpraktikum",
+      "eligibility": "offen",
+      "evidence": "Ueberschrift auf der Seite (dort abgeschnitten dargestellt): 'Schuelerpraktikum im Bereich Technology, Data & Inn'; 'Wenn du Spass an digitalen Trends hast & herausfinden willst, ob eine digitale berufliche Zukunft zu dir passt, kannst du mit dem Schuelerpraktikum im IT-Bereich unserer Bank auf Entdeckungsreise gehen. Auf dich warten zwei abwechslungsreiche Wochen mit Robotern, Apps & kuenstlicher",
+      "found_via": "schuelerboersen",
+      "eligibility_evidence": "'Fuer ein Schuelerpraktikum kannst du dich jederzeit bei deiner Wunschfiliale vor Ort bewerben. Einfach vorbeigehen und dich persoenlich vorstellen.' und 'Schuelerpraktika sind in unseren Filialen, aber auch im Technology, Data & Innovation Bereich unserer Bank moeglich.' Die Seite spricht durchgaengig von Schuelerpraktikanten; Studium, Immatrikulation oder Studienbescheinigung werden nirgends als",
+      "eligibility_reason": "Angabe aus der Anzeige"
+    },
+    {
+      "title": "Schulpraktikum / Orientierungspraktikum (m/w/d)",
+      "company": "Deloitte GmbH",
+      "city": "Berlin (10719); laut Anzeige auch Duesseldorf, Frankfurt (Main), Hamburg, Hannover, Mannheim, Muenchen und Stuttgart",
+      "compensation_kind": "unknown",
+      "compensation_text": "Keine Angabe zu einer Verguetung in der Anzeige.",
+      "description": "Einblick in das Tagesgeschaeft einer der fuehrenden Pruefungs- und Beratungsgesellschaften. Man hospitiert gemeinsam mit einer Betreuungsperson bei Terminen und gibt in der Bewerbung an, welcher Bereich am meisten interessiert: Audit & Assurance, Tax & Legal, Sekretariat oder National Office - People. Ziel ist Berufsorientierung, inklusive der Frage, ob eine Ausbildung oder ein duales Studium bei Deloitte der passende naechste Schritt ist. Verlangt werden sehr gute schulische Leistungen. Bewerbung mit Lebenslauf, Zeugnissen und Anschreiben inklusive konkretem Zeitraum und praeferiertem Fachbereich ueber das Online-Formular; Ansprechpartnerin Leonie Hinker, Rueckfragen an educationDE@deloitte.de. Auf AUBI-plus ist die Anzeige dem Beruf 'Steuerfachangestellter / Steuerfachangestellte' zugeor",
+      "url": "https://www.aubi-plus.de/schuelerpraktikum/deloitte-gmbh-steuerfachangestellter-berlin-35499/",
+      "source": "aubi-plus.de",
+      "start_date_hint": "01.08.2026 (Datum laut Anzeige, liegt bereits in der Vergangenheit); 'Bewerbungsfrist: Offen', 'Praktikumsplaetze: Freie",
+      "end_date_hint": "",
+      "duration_hint": "Schulpraktikum: 'Innerhalb der Berufsorientierungsphase der Schule oder in den Schulferien dauert dein Praktikum mindest",
+      "categories": [
+        "business"
+      ],
+      "target_group": "schuelerpraktikum",
+      "eligibility": "offen",
+      "evidence": "'Schulpraktikum / Orientierungspraktikum (m/w/d)' / 'Deloitte GmbH' / '10719 Berlin' / '01.08.2026' / 'Schuelerpraktikumsangebot'; 'Dann gib in deiner Bewerbung an, welcher Bereich (Audit & Assurance, Tax & Legal, Sekretariat oder National Office - People) dich am meisten interessiert und komm zu uns als Schulpraktikant (m/w/d) oder Orientierungspraktikant (m/w/d)!'; 'Praxiseinblick: In deinem Pra",
+      "found_via": "schuelerboersen",
+      "eligibility_evidence": "'Voraussetzungen: Aktuell bist du Schueler:in oder hast deinen Schulabschluss - ein Studium oder eine Ausbildung wurde noch nicht begonnen oder abgeschlossen und bringst sehr gute schulische Leistungen mit.' Zusaetzlich in den Stellendetails: 'Mindestabschluss: Kein Schulabschluss'. Das Angebot ist damit ausdruecklich fuer Schuelerinnen und Schueler ohne Immatrikulation und schliesst Studierende s",
+      "eligibility_reason": "Angabe aus der Anzeige"
+    },
+    {
+      "title": "Praktikumstage im Herbst - Praktikumswoche Berlin (Tagespraktika, Berufsfelder frei waehlbar)",
+      "company": "Praktikumswoche Berlin (Vermittlungsplattform stafftastic; Partner laut Seite u. a. IHK Berlin, HWK Berlin, Senat Bildun",
+      "city": "Berlin",
+      "compensation_kind": "unknown",
+      "compensation_text": "Keine Angabe zu einer Verguetung. Die Seite sagt lediglich zur Teilnahmegebuehr: 'Nein, als Schuelerin oder Schueler musst du kein Geld fuer die Teilnahme an de",
+      "description": "Aktionszeitraum mit Tagespraktika: pro Tag lernt man ein anderes Unternehmen kennen. Man legt ein Profil an, waehlt Berufsfelder aus und bestimmt die Tage, an denen man Zeit hat; danach wird man automatisch an passende Unternehmen vermittelt. Zur Auswahl stehen 22 Berufsfelder, darunter 'EDV & IT', 'Verwaltungs- & Finanzbuero', 'Steuern & Recht' und 'Medien & Marketing'. In der Schulwoche vor den Herbstferien ist eine Teilnahme in Absprache mit der Schule auch waehrend der Schulzeit moeglich, dafuer gibt es ein Formular auf der Seite zum Download.",
+      "url": "https://praktikumswoche.de/berlin",
+      "source": "praktikumswoche.de",
+      "start_date_hint": "12.10.2026, Anmeldeschluss 02.10.2026",
+      "end_date_hint": "30.10.2026",
+      "duration_hint": "Herbstferien + 1 Schulwoche vorab (12.10.2026 - 30.10.2026), taeglich ein neues Unternehmen; die Tage waehlt man selbst ",
+      "categories": [
+        "ai_tech",
+        "business"
+      ],
+      "target_group": "schuelerpraktikum",
+      "eligibility": "offen",
+      "evidence": "'Mit der Praktikumswoche Berlin lernst du jeden Tag spannende, unterschiedliche Berufsfelder kennen. Taeglich ein neues Unternehmen - an den Tagen, an denen du Zeit hast.'; 'Wann: Herbstferien + 1 Schulwoche vorab (12.10.2026 - 30.10.2026)'; FAQ: 'Die Praktikumswoche findet vor und in den Herbstferien + Schlwoche vorab (12.10. - 30.10.2026) statt. Du waehlst die Tage aus, an denen du in unterschie",
+      "found_via": "schuelerboersen",
+      "eligibility_evidence": "FAQ 'Gibt es ein Mindestalter fuer die Praktikumswoche?': 'Ja, du musst mindestens 15 Jahre alt sein. Die freiwilligen Praktika in den Ferien gelten als Beschaeftigung. Durch die Kinderarbeitsschutzverordnung Paragraf 2 ist es erst ab 15 Jahren moeglich bei der Praktikumswoche teilzunehmen.' Das Angebot richtet sich ausdruecklich an Schuelerinnen und Schueler ('Nein, als Schuelerin oder Schueler m",
+      "eligibility_reason": "Angabe aus der Anzeige"
+    },
+    {
+      "title": "Schueler- oder Orientierungspraktikum kaufmaennisch (m/w/d)",
+      "company": "Brillux GmbH & Co. KG",
+      "city": "Potsdam",
+      "compensation_kind": "unknown",
+      "compensation_text": "Die Anzeige enthaelt keine Angabe zu Verguetung oder Bezahlung.",
+      "description": "Kaufmaennisches Schueler-, Ferien- oder freiwilliges Orientierungspraktikum in der Brillux-Niederlassung Potsdam (14482). Laut Anzeige umfasst das Praktikum die Beratung der Kunden ueber die Produkte, die Kontrolle des Wareneingangs, optimale Lagerhaltung und die Betreuung des Farbmischsystems.",
+      "url": "https://www.aubi-plus.de/schuelerpraktikum/brillux-gmbh-co-kg-kaufmann-fuer-gross-und-aussenhandelsmanagement-potsdam-31887/",
+      "source": "aubi-plus.de",
+      "start_date_hint": "Nach Absprache; Bewerbungsfrist offen, Bewerbung moeglichst frueh (3-4 Monate im Voraus)",
+      "end_date_hint": "",
+      "duration_hint": "fuer eine, zwei oder drei Wochen, abhaengig von Interessen, Kenntnissen und Faehigkeiten",
+      "categories": [
+        "business"
+      ],
+      "target_group": "schuelerpraktikum",
+      "eligibility": "offen",
+      "evidence": "'Beratung der Kunden ueber unsere Produkte, Kontrolle des Wareneingangs, Optimale Lagerhaltung, Betreuung des Farbmischsystems'; Dauer: 'fuer eine, zwei oder drei Wochen - abhaengig von deinen Interessen, Kenntnissen und Faehigkeiten'; Beginn: 'Nach Absprache'",
+      "found_via": "schuelerboersen",
+      "eligibility_evidence": "Mindestqualifikation laut Anzeige: 'Kein Schulabschluss'; Praktikumsart: 'Schuelerpraktikum', 'Freiwilliges Praktikum (nach Absprache)', 'Ferienpraktikum'. Kein Hinweis auf Studium, Immatrikulation, Studienbescheinigung, Bachelor, Master oder Pflichtpraktikum im Rahmen des Studiums.",
+      "eligibility_reason": "Angabe aus der Anzeige"
+    },
+    {
+      "title": "Praktikum im Bereich Technik",
+      "company": "deZem GmbH",
+      "city": "Berlin",
+      "compensation_kind": "unknown",
+      "compensation_text": "Die Anzeige enthaelt keine Angabe zu Verguetung oder Bezahlung.",
+      "description": "Schuelerpraktikum im technischen Bereich bei der deZem GmbH (Energiemanagement-Systeme, Wilmersdorfer Str. 60, 10627 Berlin). Die Anzeige richtet sich an technikaffine Schueler mit gutem physikalischem Verstaendnis und Interesse an Elektronik; Bewerbung per Mail an sekretariat@dezem.de.",
+      "url": "https://www.xn--schlerpraktikum-1vb.de/praktikumsplatz/dezem/16577",
+      "source": "xn--schlerpraktikum-1vb.de (schuelerpraktikum.de)",
+      "start_date_hint": "jederzeit",
+      "end_date_hint": "",
+      "duration_hint": "2 Wochen",
+      "categories": [
+        "ai_tech"
+      ],
+      "target_group": "schuelerpraktikum",
+      "eligibility": "offen",
+      "evidence": "'Du hast ein gutes physikalisches Verstaendnis, bist technikaffin und magst Elektronik? Her mit deiner Bewerbung an sekretariat@dezem.de'; 'Start: jederzeit | Dauer: 2 Wochen'",
+      "found_via": "schuelerboersen",
+      "eligibility_evidence": "'Mindestalter: 14', Zielgruppe der Anzeige sind Schuelerinnen und Schueler. Die Begriffe Studium, Studierende, immatrikuliert, Immatrikulation, Bachelor, Master, Hochschule und Pflichtpraktikum kommen auf der Seite nicht vor.",
+      "eligibility_reason": "Angabe aus der Anzeige"
+    },
+    {
+      "title": "Lerne die Welt des Grosshandels kennen - Bueroarbeit, Online-Shop und mehr!",
+      "company": "Laynel",
+      "city": "Berlin (Tempelhof-Schoeneberg)",
+      "compensation_kind": "unknown",
+      "compensation_text": "Die Anzeige enthaelt keine Angabe zu Verguetung oder Bezahlung.",
+      "description": "Zweiwoechiges Schuelerpraktikum bei Laynel, einem Grosshandel fuer Friseurbedarf (Lorenzweg 1, 12099 Berlin), der Salons, Barber und Endkunden ueber mehrere Online-Shops beliefert. Die Anzeige verspricht Einblick in Bueroarbeit und den Betrieb des Online-Shops; Ansprechpartner ist Herr Moutasem Alsabh. Der Beschreibungstext auf der Seite besteht nur aus diesem einen Satz, Details zu den Aufgaben fehlen.",
+      "url": "https://www.xn--schlerpraktikum-1vb.de/praktikumsplatz/25102",
+      "source": "xn--schlerpraktikum-1vb.de (schuelerpraktikum.de)",
+      "start_date_hint": "jederzeit",
+      "end_date_hint": "",
+      "duration_hint": "2 Wochen",
+      "categories": [
+        "business"
+      ],
+      "target_group": "schuelerpraktikum",
+      "eligibility": "offen",
+      "evidence": "'Lerne die Welt des Grosshandels kennen - Bueroarbeit, Online-Shop und mehr!'; Branche: 'Grosshandel fuer Friseurbedarf', Lorenzweg 1, 12099 Berlin; 'Start: jederzeit | Dauer: 2 Wochen'",
+      "found_via": "schuelerboersen",
+      "eligibility_evidence": "'Mindestalter: 14'; keine Angabe zur Klassenstufe. Die Begriffe Studium, Studierende, immatrikuliert, Immatrikulation, Bachelor, Master, Hochschule und Pflichtpraktikum kommen auf der Seite nicht vor.",
+      "eligibility_reason": "Angabe aus der Anzeige"
+    },
+    {
+      "title": "Praktikum bei der Landeshauptstadt Potsdam im Rahmen der Schulausbildung (Schuelerpraktikum)",
+      "company": "Landeshauptstadt Potsdam (Stadtverwaltung)",
+      "city": "Potsdam",
+      "compensation_kind": "unknown",
+      "compensation_text": "Eine Aufwandsentschaedigung von bis zu 450 Euro brutto im Monat wird laut Seite nur fuer Pflichtpraktika ab einer Mindestdauer von einem Monat gezahlt; fuer ein",
+      "description": "Die Stadtverwaltung Potsdam vergibt Praktikumsplaetze in drei Kategorien: im Rahmen der Schulausbildung (z. B. Schuelerpraktikum), im Rahmen eines Studiums als Pflichtpraktikum und im Rahmen einer anerkannten Ausbildung. Jahrespraktika im Rahmen des Fachabiturs sind ausgeschlossen. Schuelerinnen und Schueler bewerben sich mit Anschreiben und einer Kopie des letzten Schulzeugnisses; Studierende muessen zusaetzlich Studienzulassung und Pflichtpraktikums-Nachweis einreichen. Die Bearbeitung der Bewerbung dauert laut Seite etwa 4 Wochen bis 3 Monate, man sollte sich also frueh bewerben.",
+      "url": "https://www.potsdam.de/de/praktikum-der-landeshauptstadt-potsdam",
+      "source": "potsdam.de",
+      "start_date_hint": "",
+      "end_date_hint": "",
+      "duration_hint": "",
+      "categories": [
+        "business"
+      ],
+      "target_group": "schuelerpraktikum",
+      "eligibility": "offen",
+      "evidence": "Im Rahmen der Schulausbildung (z.B. Schuelerpraktikum) ... ausgeschlossen sind Jahrespraktika im Rahmen des Fachabiturs. Fuer Pflichtpraktika ab der Mindestdauer von 1 Monat kann eine Aufwandsentschaedigung von bis zu 450 Euro (Brutto) im Monat gezahlt werden. Bearbeitungsdauer etwa 4 Wochen bis 3 Monate.",
+      "found_via": "berlin-programme",
+      "eligibility_evidence": "Im Rahmen der Schulausbildung (z.B. Schuelerpraktikum) ... Fuer Schueler*innen: Kopie des letzten Schulzeugnisses",
+      "eligibility_reason": "Angabe aus der Anzeige"
+    },
+    {
+      "title": "Praktikumswoche Westbrandenburg 2026 (Tagespraktika in den Herbstferien)",
+      "company": "IHK Potsdam (Praktikumswoche Westbrandenburg, mit Agentur fuer Arbeit Potsdam und Neuruppin, Handwerkskammer Potsdam, Wi",
+      "city": "Potsdam / Westbrandenburg",
+      "compensation_kind": "unknown",
+      "compensation_text": "Die Seite macht keine Angabe zu einer Verguetung.",
+      "description": "Bei der Praktikumswoche schnuppern Schuelerinnen und Schueler ab 15 Jahren tageweise in regionale Unternehmen hinein und wechseln taeglich den Betrieb, statt zwei Wochen an einem Ort zu sitzen. Betriebe wie Teilnehmende legen selbst fest, an welchen Tagen im Aktionszeitraum sie mitmachen, das Portal matcht dann automatisch. Der Sommerferien-Zeitraum (13. Juli bis 7. August 2026) ist bereits abgelaufen, offen ist noch der Herbstferien-Zeitraum vom 19. bis 30. Oktober 2026. Anmeldung ueber das Portal praktikumswoche.de/westbrandenburg. Welche Branchen konkret dabei sind, nennt die Seite nicht; laut Seite koennen sich 84 Prozent der teilnehmenden Schueler danach eine Ausbildung in einem der besuchten Unternehmen vorstellen.",
+      "url": "https://www.potsdam.de/de/praktikumswoche-westbrandenburg-2026-jetzt-noch-mitmachen",
+      "source": "potsdam.de",
+      "start_date_hint": "19. Oktober 2026 (Herbstferien; der Sommerferien-Zeitraum 13. Juli bis 7. August 2026 ist vorbei)",
+      "end_date_hint": "30. Oktober 2026 (Herbstferien)",
+      "duration_hint": "Tagespraktika mit taeglichem Wechsel zwischen verschiedenen Betrieben, Teilnahmetage im Aktionszeitraum frei waehlbar",
+      "categories": [
+        "business"
+      ],
+      "target_group": "schuelerpraktikum",
+      "eligibility": "offen",
+      "evidence": "Sommerferien: 13. Juli bis 7. August 2026 ... Herbstferien: 19. bis 30. Oktober 2026 ... Die Praktikumswochen Westbrandenburg ist eine Aktion der IHK Potsdam in Zusammenarbeit mit [Agentur fuer Arbeit Potsdam und Neuruppin, Handwerkskammer Potsdam, Wirtschaftsfoerderung Potsdam, Unternehmensverband Brandenburg-Berlin e.V.]",
+      "found_via": "berlin-programme",
+      "eligibility_evidence": "Schuelerinnen und Schuelern ab 15 Jahren erhalten tageweise Einblicke in verschiedene regionale Unternehmen.",
+      "eligibility_reason": "Angabe aus der Anzeige"
+    },
+    {
+      "title": "Schülerpraktikum - Berlin - Technisch - individueller Zeitraum 2027 (w/m/d)",
+      "company": "Siemens Mobility GmbH",
+      "city": "Berlin",
+      "compensation_kind": "unknown",
+      "compensation_text": "Keine praktikumsspezifische Vergütungsangabe. Der Satz \"Überdurchschnittliche Vergütung, Urlaubs- und Weihnachtsgeld, Aktien zu vergünstigten Konditionen & Alte",
+      "description": "Schülerpraktikum im technischen Bereich bei Siemens Mobility am Standort Berlin (Siemensstadt, 10117 Berlin), wo Schienenfahrzeuge und Komponenten für die Bahnautomatisierung entstehen. Dazu gehören eine Betriebsbesichtigung des Werks, Informationen zur technischen Berufsausbildung und das Kennenlernen der Ausbildungsberufe Mechatroniker/in sowie Elektroniker/in für Betriebstechnik. Betreuung durch erfahrene Ausbildende und Azubis; der Praktikumszeitraum wird individuell vereinbart. Ansprechperson laut Anzeige: Vincent Rach.",
+      "url": "https://www.ausbildung.siemens.com/offer/schulerpraktikum-berlin-technisch-i/684ca7cf-856e-4cf0-b1b9-813e2f27f679",
+      "source": "ausbildung.siemens.com",
+      "start_date_hint": "\"ab 01.08.2027\" bzw. \"Startdatum: 01/08/2027\"",
+      "end_date_hint": "",
+      "duration_hint": "\"Ausbildungsdauer: variabel\"; \"Den Zeitraum deines Praktikums bestimmen wir gemeinsam mit dir. Gib bei deiner Bewerbung ",
+      "categories": [
+        "ai_tech"
+      ],
+      "target_group": "schuelerpraktikum",
+      "eligibility": "offen",
+      "evidence": "\"In deinem Schülerpraktikum schnupperst du in technische Bereiche hinein und erlebst hautnah, wie an einem der traditionsreichsten Siemens-Standorte moderne Schienenfahrzeuge und Bahntechnik entstehen.\" / \"Praktikum im technischen Bereich.\" / \"Betriebsbesichtigung unseres Werkes in Berlin – erlebe die Produktion hautnah.\" / \"Während deines Praktikums lernst du folgende Ausbildungsberufe kennen: Me",
+      "found_via": "grosse-tech",
+      "eligibility_evidence": "Titel \"Schülerpraktikum - Berlin - Technisch - individueller Zeitraum 2027 (w/m/d)\" und \"Anstellungsart: Praktikum\"; als einzige formale Hürde steht \"Vorausgesetzter Schulabschluss: Mittlere Reife\" (die ein Oberstufenschüler mit Versetzung in die 11. Klasse besitzt). Die Wörter \"Immatrikulation\", \"Studienbescheinigung\", \"eingeschrieben\", \"Bachelor\" und \"Studierende\" kommen auf der Seite null Mal v",
+      "eligibility_reason": "Angabe aus der Anzeige"
+    },
+    {
+      "title": "Schülerpraktikum (w_m_d) im Department 5 \"Geoinformation\" 2027",
+      "company": "GFZ Helmholtz-Zentrum für Geoforschung",
+      "city": "Potsdam",
+      "compensation_kind": "unknown",
+      "compensation_text": "",
+      "description": "Zweiwöchiges Schülerpraktikum im Department 5 \"Geoinformation\" des GFZ. Inhalte laut Ausschreibung: Einblicke in die Forschungsinhalte des GFZ und des Departments, Einführung in die Programmierung mit Python sowie Webentwicklung nach aktuellen Webstandards (HTML5, CSS3), Einblicke in die Tätigkeiten des Rechenzentrums (Installation eines Betriebssystems, Mitarbeit im Support, kleine Skripte programmieren) sowie in die Arbeit einer wissenschaftlichen Bibliothek und des Forschungsdatenmanagements. Zur Bewerbung sind der Praktikumsvertrag der Schule sowie Angabe von Schuljahr und genauem Zeitraum einzureichen.",
+      "url": "https://www.gfz.de/en/career/job-offers/details/11464",
+      "source": "gfz.de",
+      "start_date_hint": "ab 1. Januar 2027",
+      "end_date_hint": "",
+      "duration_hint": "Praktikumszeitraum: 2 Wochen (ggf. auch 3 Wochen)",
+      "categories": [
+        "ai_tech"
+      ],
+      "target_group": "schuelerpraktikum",
+      "eligibility": "offen",
+      "evidence": "\"Einführung in die Programmierung mit Python sowie die Webentwicklung anhand aktueller Webstandards (HTML5, CSS3)\" und \"Einblicke in die Tätigkeiten des Rechenzentrums (z.B. Installation eines Betriebssystems, Mitarbeit im Support, kleine Scripte programmieren)\"; Kopf der Ausschreibung: \"Schülerpraktikum (w_m_d) im Department 5 \"Geoinformation\" 2027\", \"Startdatum: ab 1. Januar 2027\", \"Praktikumsze",
+      "found_via": "forschung",
+      "eligibility_evidence": "\"gute Leistungen in den naturwissenschaftlichen Schulfächern (Mathematik, Informatik)\" sowie \"den Praktikumsvertrag der Schule\" und \"Bitte gibst Du uns bitte Dein Schuljahr und den genauen Zeitraum des Praktikums an\" – die Seite verlangt ausdrücklich einen Schulbezug und nennt an keiner Stelle Studium, Immatrikulation, Studienbescheinigung, Bachelor oder Master.",
+      "eligibility_reason": "Angabe aus der Anzeige"
+    },
+    {
+      "title": "Schülerpraktikum (w_m_d) im Department 1 \"Geodäsie\" 2027",
+      "company": "GFZ Helmholtz-Zentrum für Geoforschung",
+      "city": "Potsdam",
+      "compensation_kind": "unknown",
+      "compensation_text": "",
+      "description": "Schülerpraktikum von maximal zwei Wochen im Department 1 \"Geodäsie\" des GFZ. Laut Ausschreibung gibt es Einblicke in die Forschungsinhalte des GFZ im Allgemeinen und des Departments Geodäsie im Speziellen, Tätigkeit in allen Sektionen des Departments, Einblick in das Schülerlabor am GFZ, einen Besuch der Bibliothek Wissenschaftspark Albert Einstein sowie Einblick in den Wissenschaftsalltag und den Wissenschaftsbetrieb. Zur Bewerbung sind der Praktikumsvertrag der Schule sowie Schuljahr und genauer Zeitraum anzugeben.",
+      "url": "https://www.gfz.de/en/career/job-offers/details/11460",
+      "source": "gfz.de",
+      "start_date_hint": "ab 1. Januar 2027",
+      "end_date_hint": "",
+      "duration_hint": "Praktikumszeitraum: maximal 2 Wochen",
+      "categories": [
+        "ai_tech"
+      ],
+      "target_group": "schuelerpraktikum",
+      "eligibility": "offen",
+      "evidence": "Titel der Ausschreibung: \"Schülerpraktikum (w_m_d) im Department 1 \"Geodäsie\" 2027\"; Aufgaben: \"Einblicke in die Forschungsinhalte des GFZ im Allgemeinen und des Departments Geodäsie im Speziellen; Tätigkeit in allen Sektionen des Departments Geodäsie; Einblick in das Schülerlabor am GFZ; Besuch der Bibliothek Wissenschaftspark Albert Einstein\"; \"Startdatum: ab 1. Januar 2027; Praktikumszeitraum: ",
+      "found_via": "forschung",
+      "eligibility_evidence": "\"gute Leistungen in den naturwissenschaftlichen Schulfächern (wie Physik, Geografie, Mathematik, Informatik)\", \"gute Englischkenntnisse\" sowie \"Zusätzlich gibst Du uns bitte Dein Schuljahr und den genauen Zeitraum des Praktikums an\" und \"den Praktikumsvertrag der Schule\" – gefordert wird ein Schulbezug, Studium/Immatrikulation/Studienbescheinigung kommen auf der Seite nicht vor.",
+      "eligibility_reason": "Angabe aus der Anzeige"
+    },
+    {
+      "title": "Schulisches Betriebspraktikum zur Berufsorientierung im DLR (Bewerbung über das DLR_School_Lab Berlin)",
+      "company": "Deutsches Zentrum für Luft- und Raumfahrt (DLR)",
+      "city": "Berlin",
+      "compensation_kind": "unknown",
+      "compensation_text": "",
+      "description": "Allgemeine Praktikumsseite der DLR_School_Labs zu schulischen Betriebspraktika zur Berufsorientierung; die Seite listet die DLR-Standorte auf, darunter Berlin, und nennt für Berlin eine eigene Bewerbungsadresse (Tobias Bohnhardt, Leiter DLR_School_Lab Berlin, Rutherfordstr. 2, 12489 Berlin, schoollab-berlin@dlr.de, Bewerbungen ausschließlich per E-Mail). Einzureichen sind laut Seite: Anschreiben, Lebenslauf inkl. Angabe aller Staatsangehörigkeiten, aktuelles Schulzeugnis, Einwilligung zur Verarbeitung personenbezogener Daten, Fragebogen des betreffenden Standorts (falls verfügbar) und gegebenenfalls weitere Referenzen. Eine konkrete Praktikumsdauer, ein Zeitraum oder eine Vergütung werden auf der Seite nicht genannt; die Bearbeitung der Bewerbung dauert laut Seite einige Wochen.",
+      "url": "https://www.dlr.de/de/schoollab/praktikum",
+      "source": "dlr.de",
+      "start_date_hint": "",
+      "end_date_hint": "",
+      "duration_hint": "",
+      "categories": [
+        "ai_tech"
+      ],
+      "target_group": "schuelerpraktikum",
+      "eligibility": "offen",
+      "evidence": "\"Schulische Betriebspraktika zur Berufsorientierung\"; \"Deshalb solltest du dich schon sechs bis neun Monate vor dem gewünschten Praktikumszeitraum bewerben.\"; \"Die Bearbeitung der Bewerbung, insbesondere die Abstimmungen mit den betreffenden Abteilungen, wird einige Wochen in Anspruch nehmen.\"; \"Bewerbungen ausschließlich per E-Mail: Tobias Bohnhardt Leiter DLR_School_Lab Berlin Rutherfordstr. 2 1",
+      "found_via": "forschung",
+      "eligibility_evidence": "\"Wenn du dich als Schülerin oder Schüler für einen Praktikumsplatz im DLR bewerben möchtest\" und die Unterlagenliste mit \"Aktuelles Schulzeugnis\" – für das schulische Betriebspraktikum werden keine Klassenstufe, kein Mindestalter und keine Immatrikulation verlangt; Studium wird nur getrennt davon erwähnt (\"Bewerbungen für Praktika zur Vorbereitung oder während eines Studiums oder im Rahmen einer B",
+      "eligibility_reason": "Angabe aus der Anzeige"
+    },
+    {
+      "title": "Praktikum für die Berufsorientierung (Schülerpraktikum)",
+      "company": "Universität Potsdam",
+      "city": "Potsdam",
+      "compensation_kind": "unpaid",
+      "compensation_text": "Die Universität Potsdam bietet nur unentgeltliche Praktika an.",
+      "description": "Die Universität Potsdam vergibt Praktikumsplätze zur Berufsorientierung. Die Seite unterscheidet mehrere Praktikumsarten, darunter \"Praktikum für Schüler*innen (Pflichtpraktikum, das während der Schulzeit stattfindet)\" und ein freiwilliges Praktikum von bis zu drei Monaten zur Orientierung. Für ein Schülerpraktikum sind die letzten beiden Schulzeugnisse einzureichen, beim Pflichtpraktikum zusätzlich die Praktikumsvereinbarung der Schule. Konkrete Einsatzbereiche werden nicht benannt, die Seite verweist lediglich allgemein auf ein Praktikum im Labor. Die Bewerbung läuft über ein Online-Formular mit mindestens vier Wochen Vorlauf. Ansprechpartnerin ist Denise Kwestereit (praktikum@uni-potsdam.de, 0331-977-153013).",
+      "url": "https://www.uni-potsdam.de/de/bausbildung/praktikum-fuer-die-berufsorientierung",
+      "source": "uni-potsdam.de",
+      "start_date_hint": "",
+      "end_date_hint": "",
+      "duration_hint": "Freiwilliges Praktikum: bis zu drei Monate zur Orientierung",
+      "categories": [
+        "ai_tech"
+      ],
+      "target_group": "schuelerpraktikum",
+      "eligibility": "offen",
+      "evidence": "\"Praktikumsmöglichkeiten an der Universität Potsdam\"; \"Die Universität Potsdam bietet nur unentgeltliche Praktika an.\"; \"Freiwilliges Praktikum (bis zu drei Monate zur Orientierung)\"; \"Bewirb dich online über unser Formular mit einem Vorlauf von mindestens 4 Wochen\".",
+      "found_via": "forschung",
+      "eligibility_evidence": "\"Praktikum für Schüler*innen (Pflichtpraktikum, das während der Schulzeit stattfindet)\" und \"Schülerpraktikum: Bitte reiche die letzten beiden Schulzeugnisse ein.\" sowie \"Bei einem Pflichtpraktikum benötigen wir die Praktikumsvereinbarung deiner Schule\". Die Anforderung \"Für die Bewerbung wird eine Immatrikulationsbescheinigung/Studienbescheinigung und der Auszug aus der Studienordnung\" bezieht si",
+      "eligibility_reason": "Angabe aus der Anzeige"
+    },
+    {
+      "title": "Schüler*innenpraktikum (Betriebspraktikum) an der TU Berlin",
+      "company": "Technische Universität Berlin",
+      "city": "Berlin",
+      "compensation_kind": "unknown",
+      "compensation_text": "Keine Angabe zur Vergütung auf der Seite (schulisches Betriebspraktikum, Formular SenBJS I D 7 des Landes Berlin)",
+      "description": "Die TU Berlin vergibt Plätze für das ein- bis dreiwöchige schulische Betriebspraktikum in Fakultäten, der Universitätsverwaltung, Bibliotheken, Zentraleinrichtungen und handwerklichen Berufen. Die deutsche Übersichtsseite (https://www.tu.berlin/studienberatung/orientieren-einsteigen/erfahrungen-sammeln/schuelerinnenpraktikum-an-der-tu-berlin) listet die Einzelangebote mit Ansprechpartner*innen, u.a. Forschungsschwerpunkt Technologien der Mikroperipherik (Personal/HR, Buchhaltung, Controlling; Klassen 10-11), Servicebereich Ausbildung (Verwaltung; Klassen 8-11), Fachgebiet Handhabungs- und Montagetechnik (Informatik/Elektronik, Batteriefertigung; Klassen 8-11), Zentraleinrichtung Elektronenmikroskopie ZELMI (Analytik und Bildverarbeitung; Klassen 8-11), Fachgebiet Fluidsystemdynamik (Klasse",
+      "url": "https://www.tu.berlin/en/studienberatung/orientation-onboarding/gain-experiences/company-internships-for-pupils-at-tu-berlin",
+      "source": "tu.berlin",
+      "start_date_hint": "ganzjährig möglich bei den meisten Angeboten; Institut für Physik und Astronomie nur Mitte Oktober bis Mitte Februar und",
+      "end_date_hint": "",
+      "duration_hint": "ein bis drei Wochen",
+      "categories": [
+        "ai_tech",
+        "business"
+      ],
+      "target_group": "schuelerpraktikum",
+      "eligibility": "offen",
+      "evidence": "\"During their school years, school students at German schools are required to complete a one to three-week internship in order to gain initial work experience.\" / \"For this purpose, the TU Berlin offers interesting internships at faculties, the university administration, two libraries, three central institutes and in two skilled trades.\" / \"German language skills of at least level B2 are required ",
+      "found_via": "forschung",
+      "eligibility_evidence": "\"Dieses Praktikum ist geeignet für Schüler*innen der Klassen 8-11 mit Interesse am Unterrichtsfach Informatik sowie Elektronik. Es kann ganzjährig stattfinden.\" sowie \"Diese Angebote sind nicht für Personen in Ausbildung oder Umschulung geeignet! TU-Studierende wenden sich bitte an ihren Prüfungsausschuss oder sofern vorhanden Praktikumsbeauftragte/n.\" - die Angebote richten sich also ausdrücklich",
+      "eligibility_reason": "Angabe aus der Anzeige"
+    },
+    {
+      "title": "Software Development Intern",
+      "company": "Pandata GmbH",
+      "city": "Berlin",
+      "compensation_kind": "unknown",
+      "compensation_text": "Keine Angabe zu Gehalt oder Verguetung. Genannt werden nur Sachleistungen: 'Enjoy our superb office first culture and profit from daily breakfast, lunch, snacks",
+      "description": "Vollzeit-Praktikum bei einem Berliner AI- und Data-Beratungsunternehmen (gegruendet 2015) am hauseigenen Softwareprodukt PandaOS. Aufgaben sind Entwurf, Entwicklung und Wartung moderner Full-Stack-Web- und Desktop-Anwendungen, Unterstuetzung der Beta-Phase durch Debugging, Testing und UX-Optimierung sowie das Ausloten, wo KI-Faehigkeiten und Agent-Workflows echten Mehrwert in PandaOS stiften. Stack laut Seite: TypeScript, Next.js, Node.js, Electron, PostgreSQL, Supabase, GCP Cloud Run, Vercel. Arbeitssprache ist Englisch, gefordert wird Verfuegbarkeit von 3 bis 6 Monaten in Vollzeit.",
+      "url": "https://berlinstartupjobs.com/de/praktika/software-development-intern-pandata-gmbh/",
+      "source": "berlinstartupjobs.com",
+      "start_date_hint": "",
+      "end_date_hint": "",
+      "duration_hint": "3-6 months of availability for a full-time internship",
+      "categories": [
+        "ai_tech"
+      ],
+      "target_group": "allgemeines_praktikum",
+      "eligibility": "unklar",
+      "evidence": "'As a Software Development Intern at Pandata, you will work hands-on with our in-house developed software product PandaOS (www.pandaos.ai)' / 'Design, develop and maintain modern full-stack web and desktop applications' / 'Support the beta-phase and continuous improvement of PandaOS through debugging, testing and user experience optimisation' / 'Explore how AI capabilities and agent workflows can ",
+      "found_via": "startups-offen",
+      "eligibility_evidence": "Die Anzeige nennt keinerlei Studien- oder Immatrikulationsvoraussetzung. Das Anforderungsprofil lautet vollstaendig: 'First experience with JavaScript/TypeScript / Genuine interest in AI, agent-based systems, full stack development and modern web technologies / Comfortable with working in a small team where you shape your own responsibilities / Proactive mindset and willingness to take ownership /",
+      "eligibility_reason": "Angabe aus der Anzeige"
+    },
+    {
+      "title": "Praktikum im Bueromanagement (m/w/d)",
+      "company": "MISA Akademie & Service GmbH",
+      "city": "Berlin",
+      "compensation_kind": "unpaid",
+      "compensation_text": "Das Praktikum ist untentgeldlich.",
+      "description": "Unbezahltes Praktikum bei der MISA Akademie & Service GmbH in Berlin-Kreuzberg (Dieffenbachstr. 73, 10967 Berlin) im Bereich Personalbeschaffung, Auftragsgewinnung und Einsatzplanung. Praktikantinnen und Praktikanten unterstuetzen das Team bei laufenden Personalentwicklungsprojekten und wirken im Tagesgeschaeft sowie bei standortuebergreifenden Themen mit, etwa bei Organisation, Beratung und Betreuung der Kunden. Der Einsatz kann in Vollzeit oder Teilzeit absolviert werden und modular beginnen.",
+      "url": "https://berlinstartupjobs.com/de/praktika/praktikum-im-buromanagement-m-w-d-misa-akademie-service-gmbh/",
+      "source": "berlinstartupjobs.com",
+      "start_date_hint": "Der Einsatz kann modular beginnen (kein festes Startdatum genannt)",
+      "end_date_hint": "",
+      "duration_hint": "mindestens 1 - 6 Monate, in Vollzeit oder Teilzeit",
+      "categories": [
+        "business"
+      ],
+      "target_group": "allgemeines_praktikum",
+      "eligibility": "unklar",
+      "evidence": "'Wir, die MISA Akademie & Service GmbH, bieten Dir ein interessantes Praktikum im Bereich Personalbeschaffung, Auftragsgewinnung und Einsatzplanung.' / 'Im Rahmen Deiner Taetigkeit als Praktikant*in (m/w/d) unterstuetzt Du unser Team bei laufenden Personalentwicklungsprojekten.' / 'Die Mitwirkung im Tagesgeschaeft und bei standortuebergreifenden Themen, wie z.B. bei der Organisation, Beratung und ",
+      "found_via": "startups-offen",
+      "eligibility_evidence": "Die Anzeige nennt keine Studien-, Immatrikulations- oder Abschlussvoraussetzung. Der Abschnitt 'Qualifikation' lautet vollstaendig: 'Du beherrscht die gaengigen MS-Office Programme / Du beherrscht die deutsche Sprache verhandlungssicher in Wort und Schrift / Team- und Kommunikationsfaehigkeit.'",
+      "eligibility_reason": "Angabe aus der Anzeige"
+    },
+    {
+      "title": "Chief of Staff to Head of People Internship (m/f/d)",
+      "company": "Buena",
+      "city": "Berlin",
+      "compensation_kind": "paid",
+      "compensation_text": "Attraktives Gehalt, inklusive 500 EUR 'Close-to-Office'-Bonus. 110 EUR Essenszuschuss und 50 EUR Fitnesszuschuss. Zusaetzlich MacBook & Studio Display, taeglich",
+      "description": "Praktikum direkt an der Seite von Christian, dem Head of People des Proptech-Startups Buena (Investor GV), im Buero in Prenzlauer Berg. Buena uebernimmt Hausverwaltungen in ganz Deutschland und ist nach eigenen Angaben mit unter 25 Vollzeitmitarbeitenden im HQ zur drittgroessten Hausverwaltung Deutschlands geworden. Die Rolle umfasst komplette Bewerbungsprozesse (Kandidatensuche, Scorecards, Gespraeche), den Aufbau und Rollout deutschlandweiter Recruiting- und HR-Systeme fuer die Skalierung auf ueber 1.000 Mitarbeitende, Budgetverantwortung im hohen fuenfstelligen Bereich inklusive Tooling-Auswahl und Kaufprozessen sowie Gespraeche mit den Geschaeftsfuehrern der Unternehmensgruppe. Verlangt wird Praesenzarbeit im Buero und Deutsch auf C2-Niveau.",
+      "url": "https://berlinstartupjobs.com/de/praktika/chief-of-staff-to-head-of-people-internship-m-f-d-buena/",
+      "source": "berlinstartupjobs.com",
+      "start_date_hint": "",
+      "end_date_hint": "",
+      "duration_hint": "",
+      "categories": [
+        "business"
+      ],
+      "target_group": "allgemeines_praktikum",
+      "eligibility": "unklar",
+      "evidence": "'Als Chief of Staff, arbeitest du direkt mit unserem Head of People, Christian, zusammen.' / 'Du uebernimmst gesamte Bewerbungsprozesse. Du suchst Kandidaten, erstellst Scorecards, fuehrst Gespraeche und stimmst dich eng mit unseren Teams ab.' / 'Du entwickelst deutschlandweite Recruiting und HR Systeme.' / 'Du verantwortest Budgets im hohen fuenfstelligen Bereich.' / 'Unser Buero ist in Prenzlaue",
+      "found_via": "startups-offen",
+      "eligibility_evidence": "Die Anzeige nennt keine Studien-, Immatrikulations- oder Abschlussvoraussetzung. Der Abschnitt 'Du passt, wenn du' lautet vollstaendig: 'Fliessend (C2-Level) Deutsch sprichst und ein gutes Level an Englisch mitbringst. / In-office arbeiten moechtest. Unser Buero ist in Prenzlauer Berg, Berlin. / Eigenverantwortlich arbeitest. Die meisten unserer Teammitglieder waren selbststaendig oder haben Leist",
+      "eligibility_reason": "Angabe aus der Anzeige"
+    },
+    {
+      "title": "Schülerpraktikum / Beruf Bankkaufmann/-frau (m/w/d) im November und Dezember 2026",
+      "company": "Berliner Sparkasse",
+      "city": "Berlin",
+      "compensation_kind": "unknown",
+      "compensation_text": "",
+      "description": "Schülerpraktikum in den BeratungsCentern der Berliner Sparkasse in verschiedenen Berliner Bezirken. Im Vordergrund stehen Kundenkontakt und das Kennenlernen des Bankalltags; die Anzeige stellt heraus, dass das Praktikum die Chancen auf einen späteren Ausbildungsplatz verbessert. Erwartet werden Freude am Kundenkontakt, Kontaktfreudigkeit, Freundlichkeit, gute Umgangsformen, Teamfähigkeit und Einsatzbereitschaft.",
+      "url": "https://www.stepstone.de/stellenangebote--Schuelerpraktikum-Beruf-Bankkaufmann-frau-m-w-d-im-November-und-Dezember-2026-Berlin-Berliner-Sparkasse--13933028-inline.html",
+      "source": "stepstone.de",
+      "start_date_hint": "November 2026",
+      "end_date_hint": "Dezember 2026",
+      "duration_hint": "",
+      "categories": [
+        "business"
+      ],
+      "target_group": "schuelerpraktikum",
+      "eligibility": "offen",
+      "evidence": "Schülerpraktikum / Beruf Bankkaufmann/-frau (m/w/d) im November und Dezember 2026",
+      "found_via": "wirtschaft-schueler",
+      "eligibility_evidence": "Du bist Schüler bzw. Schülerin der Klassenstufen 8 – 12.",
+      "eligibility_reason": "Angabe aus der Anzeige"
+    },
+    {
+      "title": "Schülerpraktikum für den Beruf Bankkaufmann/Bankkauffrau (m/w/d)",
+      "company": "Berliner Sparkasse - Niederlassung der BSK 1818 AG",
+      "city": "Berlin",
+      "compensation_kind": "unknown",
+      "compensation_text": "",
+      "description": "Zwei- bis dreiwöchiges Schülerpraktikum bei der Berliner Sparkasse in Berlin-Mitte, Zeitraum nach Absprache. Ziel ist herauszufinden, ob der Beruf Bankkaufmann/Bankkauffrau oder das Duale Studium passt. Gefordert werden Freude am Umgang mit Menschen, Kontaktfreudigkeit, Freundlichkeit, gute Umgangsformen, Teamgeist und Einsatzbereitschaft; ein Schulabschluss ist nicht erforderlich.",
+      "url": "https://www.aubi-plus.de/schuelerpraktikum/berliner-sparkasse-niederlassung-der-landesbank-berlin-ag-bankkaufmann-berlin-16399/",
+      "source": "aubi-plus.de",
+      "start_date_hint": "Nach Absprache",
+      "end_date_hint": "",
+      "duration_hint": "zwei bis drei Wochen",
+      "categories": [
+        "business"
+      ],
+      "target_group": "schuelerpraktikum",
+      "eligibility": "offen",
+      "evidence": "Das Schülerpraktikum dauert zwei bis drei Wochen",
+      "found_via": "wirtschaft-schueler",
+      "eligibility_evidence": "Schülerpraktikum für den Beruf Bankkaufmann/Bankkauffrau (m/w/d); Voraussetzung: Kein Schulabschluss",
+      "eligibility_reason": "Angabe aus der Anzeige"
+    },
+    {
+      "title": "Schulpraktikum (all genders)",
+      "company": "adesso SE",
+      "city": "Berlin",
+      "compensation_kind": "unknown",
+      "compensation_text": "Keine Angabe zur Verguetung in der Stellenanzeige",
+      "description": "Schulpraktikum von maximal zwei Wochen bei dem IT-Dienstleister adesso SE. Man bekommt Einblicke in laufende IT-Projekte mit den Schwerpunkten Konzeption, Design und Softwareentwicklung, arbeitet mit erfahrenen Kolleginnen und Kollegen zusammen, stellt Fragen und nutzt moderne Technologien und Hardware. Am Standort Dortmund besteht zusaetzlich die Option, in Netzwerkinfrastrukturen einzutauchen. Erwartet werden Interesse an neuen Technologien, Selbstorganisation, Teamfaehigkeit, gute Noten in Deutsch und Mathematik sowie sehr gute Deutschkenntnisse. Beworben wird sich mit kurzem Anschreiben, Lebenslauf und aktuellem Schulzeugnis unter Angabe des gewuenschten Zeitraums.",
+      "url": "https://jobs.adesso-group.com/job/Berlin-Schulpraktikum-(all-genders)-BE-10969/934225955/",
+      "source": "jobs.adesso-group.com",
+      "start_date_hint": "kein festes Startdatum; Bewerbung mit gewuenschtem Zeitraum",
+      "end_date_hint": "",
+      "duration_hint": "gewuenschter Zeitraum von maximal zwei Wochen",
+      "categories": [
+        "ai_tech"
+      ],
+      "target_group": "schuelerpraktikum",
+      "eligibility": "offen",
+      "evidence": "Schulpraktikum (all genders), adesso SE; Einblicke in IT-Projekte mit den Schwerpunkten Konzeption, Design und Softwareentwicklung; gewuenschter Zeitraum von maximal zwei Wochen; Ausschreibungskennung Berlin-Schulpraktikum-(all-genders)-BE-10969",
+      "found_via": "abiturienten",
+      "eligibility_evidence": "Du stellst Dich bei uns mit einem kurzen Anschreiben, Deinem Lebenslauf und Deinem aktuellen Schulzeugnis vor - Studium, Immatrikulation oder Studienbescheinigung werden an keiner Stelle verlangt",
+      "eligibility_reason": "Angabe aus der Anzeige"
+    },
+    {
+      "title": "Schuelerpraktikum zur beruflichen Orientierung beim ITDZ Berlin",
+      "company": "IT-Dienstleistungszentrum Berlin (ITDZ Berlin)",
+      "city": "Berlin",
+      "compensation_kind": "unknown",
+      "compensation_text": "",
+      "description": "Der zentrale IT-Dienstleister des Landes Berlin bietet ein Praktikum zur beruflichen Orientierung an. Man findet heraus, ob die Arbeit in der IT-Branche passt und welche Bereiche es in einem grossen IT-Unternehmen gibt; das ITDZ bringt dabei seine Erfahrung aus der Ausbildung Fachinformatiker/-in Systemintegration und dem Dualen Studium Wirtschaftsinformatik ein. Die Bewerbung laeuft ausschliesslich ueber das Stellenportal des oeffentlichen Dienstes Interamt, E-Mail-Bewerbungen werden aus Sicherheitsgruenden nicht bearbeitet. Wenn gerade kein passendes Angebot ausgeschrieben ist, ist eine Initiativbewerbung moeglich. Eine Uebersicht der Praktikumsinhalte steht als Download bereit.",
+      "url": "https://www.itdz-berlin.de/karriere/karriereportal/praktikum/inhalte/",
+      "source": "itdz-berlin.de",
+      "start_date_hint": "",
+      "end_date_hint": "",
+      "duration_hint": "",
+      "categories": [
+        "ai_tech"
+      ],
+      "target_group": "schuelerpraktikum",
+      "eligibility": "offen",
+      "evidence": "\"So vielfaeltig die Arbeit des IT-Dienstleistungszentrums Berlin ist, so facettenreich gestaltet sich auch ein Praktikum in unserem Unternehmen fuer Schueler, Schuelerinnen und Studierende.\" / \"Dabei profitierst du von unserer langjaehrigen Erfahrungen in der Ausbildung von Fachinformatiker/-in Systemintegration und im Dualen Studium der Wirtschaftsinformatik. Auch hier gilt: Bewirb Dich so frueh ",
+      "found_via": "ki-spezifisch",
+      "eligibility_evidence": "Eigener Abschnitt \"Praktika fuer Schuelerinnen und Schueler:\" mit dem Satz \"Das ITDZ Berlin ermoeglicht Dir ein Schuelerpraktikum fuer Deine berufliche Orientierung.\" Der Studien-Bezug der Seite steht in einem separaten Abschnitt (\"Ausbildungsvertiefende Praktika\") und gilt nicht fuer das Schuelerpraktikum.",
+      "eligibility_reason": "Angabe aus der Anzeige"
+    },
+    {
       "title": "Technical Product Research Intern in Agentic Payments / Stablecoins / Web3",
       "company": "Atrya",
       "city": "Berlin",
@@ -17,9 +504,10 @@
         "business"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "unklar",
       "evidence": "You won't just research, you'll build prototypes, test integrations, and shape how we position ourselves in a fast-moving market.",
       "found_via": "startupsucht",
-      "eligibility": "unklar",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
@@ -38,9 +526,10 @@
         "business"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "unklar",
       "evidence": "Du suchst Kandidaten, erstellst Scorecards, führst Gespräche und stimmst dich eng mit unseren Teams ab.",
       "found_via": "startupsucht",
-      "eligibility": "unklar",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
@@ -60,9 +549,10 @@
         "business"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "unklar",
       "evidence": "Erstellung und Pflege von Knowledge-Base-Artikeln, Hilfetexten und produktspezifischer Materialien",
       "found_via": "startupsucht",
-      "eligibility": "unklar",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
@@ -82,9 +572,10 @@
         "ai_tech"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "qualifikation_noetig",
       "evidence": "Unterstützung bei der Planung und Steuerung von Lieferkettenprozessen",
       "found_via": "startupsucht",
-      "eligibility": "nur_studierende",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige setzt ein Studium voraus (einschreibung)"
     },
     {
@@ -103,9 +594,10 @@
         "business"
       ],
       "target_group": "pflichtpraktikum",
+      "eligibility": "qualifikation_noetig",
       "evidence": "Dieses Praktikum ist ein unvergütetes Pflichtpraktikum. Es richtet sich an Studierende, die ein Pflichtpraktikum absolvieren",
       "found_via": "startupsucht",
-      "eligibility": "nur_studierende",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige setzt ein Studium voraus (studierende)"
     },
     {
@@ -114,7 +606,7 @@
       "city": "Berlin",
       "compensation_kind": "unknown",
       "compensation_text": "Undisclosed",
-      "description": "Als Praktikum (Startup Praktika) ausgeschriebene Founder's-Associate-Rolle bei AnyTax in Berlin (Hybrid). AnyTax baut eine API-first-Infrastruktur, mit der Finanzinstitute automatisierte Steuererklaerungen direkt in ihre Plattformen integrieren koennen; finanziert unter anderem von IBB Ventures, Heartfelt sowie Angels von N26 und sevDesk. Aufgaben: Growth und GTM-Execution inklusive Scouting des europaeischen Fintech-Oekosystems und Erstellung von Sales-Collateral, Bruecke zwischen Business und Technik (Uebersetzung von Business-Anforderungen in Roadmap-Briefs fuer Engineering), operativer Backbone mit Prozessoptimierung und Investoren-Reporting, strategische Partnerschaften und Business Cases fuer Gespraeche mit Banken und Finanzplattformen sowie Sonderprojekte wie Erkundung von AI-Tools ",
+      "description": "Als Praktikum (Startup Praktika) ausgeschriebene Founder's-Associate-Rolle bei AnyTax in Berlin (Hybrid). AnyTax baut eine API-first-Infrastruktur, mit der Finanzinstitute automatisierte Steuererklaerungen direkt in ihre Plattformen integrieren koennen; finanziert unter anderem von IBB Ventures, Heartfelt sowie Angels von N26 und sevDesk. Aufgaben: Growth und GTM-Execution inklusive Scouting des europaeischen Fintech-Oekosystems und Erstellung von Sales-Collateral, Bruecke zwischen Business und Technik (Uebersetzung von Business-Anforderungen in Roadmap-Briefs fuer Engineering), operativer Backbone mit Prozessoptimierung und Investoren-Reporting, strategische Partnerschaften und Business Cases fuer Gespraeche mit Banken und Finanzplattformen sowie Sonderprojekte wie Erkundung von AI-Tools",
       "url": "https://startupsucht.com/startup-job/startup-praktika-anytax-berlin-founders-associate-vc-backed-startup-first-commercial-hire",
       "source": "startupsucht.com",
       "start_date_hint": "Start Date: asap",
@@ -125,9 +617,10 @@
         "ai_tech"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "unklar",
       "evidence": "As our Founder's Associate you will work closely with the founding team of AnyTax on the most mission-critical parts of scaling our venture-backed pre-seed startup.",
       "found_via": "startupsucht",
-      "eligibility": "unklar",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
@@ -147,30 +640,10 @@
         "business"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "unklar",
       "evidence": "Bei Scio Labs entwickeln wir Mobile Apps und setzen dabei vor allem auf revolutionaere AI-Features. In unserem Marketing Ansatz setzen wir ganz auf Social Media und short-form Videos um so organisch viral zu gehen.",
       "found_via": "potsdam-transfer",
-      "eligibility": "unklar",
-      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
-    },
-    {
-      "title": "Software Development Intern",
-      "company": "Pandata GmbH",
-      "city": "Berlin",
-      "compensation_kind": "unknown",
-      "compensation_text": "",
-      "description": "Berliner Anbieter fuer Digital Analytics und Business Intelligence, gegruendet 2015. Im Praktikum wird am hauseigenen Produkt PandaOS mitgearbeitet: moderne Full-Stack-Web- und Desktop-Anwendungen entwerfen, entwickeln und pflegen, die Beta-Phase durch Debugging, Testing und UX-Optimierung begleiten, Business- und Nutzeranforderungen in skalierbare Software uebersetzen und pruefen, wo sich AI-Faehigkeiten und Agenten-Workflows sinnvoll in PandaOS integrieren lassen. Stack: TypeScript, Next.js, Node.js, Electron, PostgreSQL/Supabase, GCP Cloud Run und Vercel. Verhandlungssicheres Englisch wird vorausgesetzt.",
-      "url": "https://berlinstartupjobs.com/internships/software-development-intern-pandata-gmbh/",
-      "source": "berlinstartupjobs.com",
-      "start_date_hint": "",
-      "end_date_hint": "",
-      "duration_hint": "3-6 months of availability for a full-time internship",
-      "categories": [
-        "ai_tech"
-      ],
-      "target_group": "allgemeines_praktikum",
-      "evidence": "As a Software Development Intern at Pandata, you will work hands-on with our in-house developed software product PandaOS",
-      "found_via": "potsdam-transfer",
-      "eligibility": "unklar",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
@@ -190,10 +663,11 @@
         "ai_tech"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "qualifikation_noetig",
       "evidence": "Laufendes Studium oder abgeschlossene Ausbildung im Bereich BWL, Management, Wirtschaft, Informatik oder Vergleichbares",
       "found_via": "potsdam-transfer",
-      "eligibility": "nur_studierende",
-      "eligibility_reason": "Anzeige setzt ein Studium voraus (laufendes studium)"
+      "eligibility_evidence": "",
+      "eligibility_reason": "Anzeige verlangt eine abgeschlossene Ausbildung (abgeschlossene ausbildung)"
     },
     {
       "title": "Praktikum im Business Development (m/w/d)",
@@ -211,9 +685,10 @@
         "business"
       ],
       "target_group": "unklar",
+      "eligibility": "unklar",
       "evidence": "Gestalte unser Wachstum aktiv mit – Du identifizierst und kontaktierst potenzielle Partnerunternehmen",
       "found_via": "potsdam-transfer",
-      "eligibility": "unklar",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
@@ -232,9 +707,10 @@
         "business"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "qualifikation_noetig",
       "evidence": "Du unterstuetzt das Partner & Payments Team im operativen Tagesgeschaeft rund um Kostenuebernahmen, Erstattungen und Pflegekassenprozesse",
       "found_via": "potsdam-transfer",
-      "eligibility": "nur_studierende",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige setzt ein Studium voraus (studierende)"
     },
     {
@@ -253,9 +729,10 @@
         "business"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "unklar",
       "evidence": "Du unterstuetzt beim Aufbau strategischer Partnerschaften mit Solarteuren",
       "found_via": "potsdam-transfer",
-      "eligibility": "unklar",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
@@ -274,9 +751,10 @@
         "business"
       ],
       "target_group": "pflichtpraktikum",
+      "eligibility": "unklar",
       "evidence": "Studium in Technical Sales, BWL oder vergleichbar: Pflicht- oder Orientierungspraktikum",
       "found_via": "potsdam-transfer",
-      "eligibility": "unklar",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige nennt beides (orientierungspraktikum und im studium)"
     },
     {
@@ -295,9 +773,10 @@
         "business"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "unklar",
       "evidence": "Eigenstaendige Verantwortung fuer ein individuelles Marketingprojekt waehrend des Praktikums",
       "found_via": "potsdam-transfer",
-      "eligibility": "unklar",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
@@ -317,52 +796,11 @@
         "business"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "qualifikation_noetig",
       "evidence": "As GTM Intern, you build the foundation to close leading customers and make them successful with telli. You get complete ownership to build your own territory, learn how to engage with relevant customers across different channels and bring them into our sales process.",
       "found_via": "berlin-ai-scaleups",
-      "eligibility": "nur_studierende",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige setzt ein Studium voraus (im studium)"
-    },
-    {
-      "title": "Praktikum Operations mit Fokus Partner & Payments (m/w/d) – German speaking – Berlin",
-      "company": "Patronus",
-      "city": "Berlin",
-      "compensation_kind": "paid",
-      "compensation_text": "Attraktive Praktikumsvergütung (2410 EUR brutto/Monat)",
-      "description": "Operations-Praktikum bei Patronus, einem Berliner Healthcare-Startup, das Notrufuhren und weitere Produkte fuer mehr Sicherheit und Selbststaendigkeit aelterer Menschen entwickelt. Unterstuetzung des Partner-&-Payments-Teams im operativen Tagesgeschaeft rund um Kostenuebernahmen, Erstattungen und Pflegekassenprozesse: Faelle bearbeiten und dokumentieren, offene Vorgaenge nachhalten, Datenqualitaet in den internen Systemen sichern, Uebersichten und Auswertungen in Google Sheets/Excel erstellen sowie Muster und Verbesserungsmoeglichkeiten in den taeglichen Ablaeufen erkennen. Deutschkenntnisse sind erforderlich.",
-      "url": "https://berlinstartupjobs.com/internships/praktikum-operations-mit-fokus-partner-payments-m-w-d-german-speaking-berlin-patronus/",
-      "source": "berlinstartupjobs.com",
-      "start_date_hint": "",
-      "end_date_hint": "",
-      "duration_hint": "",
-      "categories": [
-        "business"
-      ],
-      "target_group": "allgemeines_praktikum",
-      "evidence": "Du unterstützt das Partner & Payments Team im operativen Tagesgeschäft rund um Kostenübernahmen, Erstattungen und Pflegekassenprozesse",
-      "found_via": "berlin-ai-scaleups",
-      "eligibility": "unklar",
-      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
-    },
-    {
-      "title": "Praktikum im Marketingmanagement / Marketing Management Intern — Winter 2026",
-      "company": "Over99",
-      "city": "Berlin",
-      "compensation_kind": "paid",
-      "compensation_text": "€1,500–€2,000 per month",
-      "description": "Teilzeit-Praktikum im Marketing bei Over99, einem Berliner Games-Unternehmen, das sich selbst als eine der am schnellsten wachsenden Arbeitgebermarken der Branche beschreibt. Aufgaben: Unterstuetzung bei Planung und Umsetzung digitaler Marketingkampagnen, Erstellen und Koordinieren von Content fuer Social Media, Website und Newsletter, Recherche zu Markttrends, Wettbewerbern und Zielgruppen, Mitbetreuung der Social-Media-Kanaele und Communities, Auswertung der Kampagnen-Performance mit Analytics- und Reporting-Tools sowie ein eigenes Marketingprojekt in Eigenverantwortung. Vorausgesetzt wird ein laufendes Studium in Marketing, BWL, Kommunikation, Medien, Management, Psychologie, Wirtschaft oder einem verwandten Fach.",
-      "url": "https://berlinstartupjobs.com/internships/praktikum-im-marketingmanagement-marketing-management-intern-winter-2026-over99/",
-      "source": "berlinstartupjobs.com",
-      "start_date_hint": "1 September 2026",
-      "end_date_hint": "",
-      "duration_hint": "1 September 2026–31 December 2026 (ca. 4 Monate), Teilzeit",
-      "categories": [
-        "business"
-      ],
-      "target_group": "allgemeines_praktikum",
-      "evidence": "Support the planning and execution of digital marketing campaigns",
-      "found_via": "berlin-ai-scaleups",
-      "eligibility": "nur_studierende",
-      "eligibility_reason": "Anzeige setzt ein Studium voraus (laufendes studium)"
     },
     {
       "title": "Data Science Intern (f/m/x)",
@@ -380,9 +818,10 @@
         "ai_tech"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "qualifikation_noetig",
       "evidence": "Develop and deploy lead scoring models to help sales teams prioritize high-value opportunities",
       "found_via": "berlin-ai-scaleups",
-      "eligibility": "nur_studierende",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige setzt ein Studium voraus (einschreibung)"
     },
     {
@@ -401,9 +840,10 @@
         "business"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "qualifikation_noetig",
       "evidence": "Du unterstützt unseren COO Cedric bei Finance-Themen, administrativen & strategischen Aufgaben sowie bei der Weiterentwicklung von Prozessen seines Energy Operations Team.",
       "found_via": "berlin-ai-scaleups",
-      "eligibility": "nur_studierende",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige setzt ein Studium voraus (masterstudium)"
     },
     {
@@ -423,9 +863,10 @@
         "business"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "unklar",
       "evidence": "Please note that for this role, C2 German proficiency is required. This is a full-time, on-site position based in Berlin. [...] Ideally start in September. [...] Available for at least 5 month internship in our Berlin office. [...] Receive competitive pay.",
       "found_via": "boards-greenhouse-join",
-      "eligibility": "unklar",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
@@ -444,9 +885,10 @@
         "ai_tech"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "qualifikation_noetig",
       "evidence": "This is a full-time, on-site internship based in Berlin. [...] Develop product features across our React, TypeScript, and Node.js stack [...] Competitive internship compensation [...] we're a full in-person team (5 days/week) in a beautiful Berlin office near Hackescher Markt.",
       "found_via": "boards-greenhouse-join",
-      "eligibility": "nur_studierende",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige setzt ein Studium voraus (studierende)"
     },
     {
@@ -465,9 +907,10 @@
         "business"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "qualifikation_noetig",
       "evidence": "You are available to work for 6 months, as a full-time intern (40h/week) [...] Assist in customer onboarding, conducting business reviews, and improving operational processes under the guidance of the Business Ops Manager. [...] This internship intends to equip you with the skills necessary for a successful full-time role at finmid, and we will extend job offers to return full-time for the best pe",
       "found_via": "boards-greenhouse-join",
-      "eligibility": "nur_studierende",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige setzt ein Studium voraus (bachelor)"
     },
     {
@@ -487,9 +930,10 @@
         "business"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "qualifikation_noetig",
       "evidence": "We are looking for a Data Science Intern to join our Data team. This is an exciting opportunity for someone early in their career who is hungry to learn and build. [...] Write and optimize production SQL against our data warehouse to power analyses and model features [...] A degree (or pursuing one) in a quantitative or business-related field",
       "found_via": "boards-greenhouse-join",
-      "eligibility": "nur_studierende",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige setzt ein Studium voraus (im studium)"
     },
     {
@@ -509,9 +953,10 @@
         "business"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "qualifikation_noetig",
       "evidence": "We're seeking a highly skilled and proactive Intern to join our team full-time, on-site in Berlin for at least three months.",
       "found_via": "boards-greenhouse-join",
-      "eligibility": "nur_studierende",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige setzt ein Studium voraus (bachelor)"
     },
     {
@@ -520,7 +965,7 @@
       "city": "Berlin",
       "compensation_kind": "paid",
       "compensation_text": "2.000 - 2.570 € pro Monat",
-      "description": "Vollzeit-Praktikum an der Gruenderebene von Afilio, einer Berliner Plattform fuer Vorsorge und Nachlass mit rund 40 Mitarbeitenden und ueber 4.000.000 Nutzer:innen (Investoren u. a. Cherry Ventures, CommerzVentures, Verena Pausder). Aufgaben: Business Cases entwickeln und testen (Hypothesen fuer neue Angebote aufstellen, MVPs entwickeln und mit Nutzer:innen testen), Marketing & Growth Management (Paid & Social Ads, TV-Werbung, Akquise neuer Kooperationspartner gemeinsam mit den Gruendern) sowie Marktanalysen und Reportings inklusive Unterstuetzung bei Investor-Reportings. Erwartet werden erste Arbeitserfahrung aus Praktika oder Werkstudententaetigkeit in Start-up, Banking, Beratung oder Venture Capital, starke analytische und kommunikative Faehigkeiten sowie Deutsch und Englisch. Buero in ",
+      "description": "Vollzeit-Praktikum an der Gruenderebene von Afilio, einer Berliner Plattform fuer Vorsorge und Nachlass mit rund 40 Mitarbeitenden und ueber 4.000.000 Nutzer:innen (Investoren u. a. Cherry Ventures, CommerzVentures, Verena Pausder). Aufgaben: Business Cases entwickeln und testen (Hypothesen fuer neue Angebote aufstellen, MVPs entwickeln und mit Nutzer:innen testen), Marketing & Growth Management (Paid & Social Ads, TV-Werbung, Akquise neuer Kooperationspartner gemeinsam mit den Gruendern) sowie Marktanalysen und Reportings inklusive Unterstuetzung bei Investor-Reportings. Erwartet werden erste Arbeitserfahrung aus Praktika oder Werkstudententaetigkeit in Start-up, Banking, Beratung oder Venture Capital, starke analytische und kommunikative Faehigkeiten sowie Deutsch und Englisch. Buero in",
       "url": "https://afilio.jobs.personio.de/job/1199376?language=de",
       "source": "afilio.jobs.personio.de",
       "start_date_hint": "ab Oktober 2026",
@@ -530,9 +975,10 @@
         "business"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "unklar",
       "evidence": "Für das Konzipieren, Testen und Skalieren dieser neuen Angebote suchen wir ab Oktober 2026 eine:n Founders Associate Praktikant:in für 4-6 Monate.",
       "found_via": "boards-greenhouse-join",
-      "eligibility": "unklar",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
@@ -541,7 +987,7 @@
       "city": "Berlin",
       "compensation_kind": "paid",
       "compensation_text": "1.500 € bis 2.419 € / Monat",
-      "description": "Praktikum im Business Development bei Werkia, einer seit 2024 bestehenden Berliner Jobplattform fuer das Handwerk mit Fokus auf SHK (Sanitaer, Heizung, Klima) und Elektrotechnik, 11-50 Mitarbeitende. Aufgaben: Netzwerkaufbau im Handwerk (neue potenzielle Partnerbetriebe identifizieren und kontaktieren), Marktanalyse und Strategieentwicklung (Wettbewerber, Zielgruppen und Markttrends analysieren), CRM und Datenpflege der Partnerdatenbank, Erstellung von Praesentationen und Pitches sowie Prozessoptimierung. Vorausgesetzt werden sehr gute Deutschkenntnisse in Wort und Schrift, da eigenstaendig Verhandlungs- und Beratungsgespraeche gefuehrt werden, dazu Kommunikationsstaerke, Organisationstalent, analytisches Denken und Sicherheit im Umgang mit Slack, Zoom und CRM-Systemen. Geboten werden ein ",
+      "description": "Praktikum im Business Development bei Werkia, einer seit 2024 bestehenden Berliner Jobplattform fuer das Handwerk mit Fokus auf SHK (Sanitaer, Heizung, Klima) und Elektrotechnik, 11-50 Mitarbeitende. Aufgaben: Netzwerkaufbau im Handwerk (neue potenzielle Partnerbetriebe identifizieren und kontaktieren), Marktanalyse und Strategieentwicklung (Wettbewerber, Zielgruppen und Markttrends analysieren), CRM und Datenpflege der Partnerdatenbank, Erstellung von Praesentationen und Pitches sowie Prozessoptimierung. Vorausgesetzt werden sehr gute Deutschkenntnisse in Wort und Schrift, da eigenstaendig Verhandlungs- und Beratungsgespraeche gefuehrt werden, dazu Kommunikationsstaerke, Organisationstalent, analytisches Denken und Sicherheit im Umgang mit Slack, Zoom und CRM-Systemen. Geboten werden ein",
       "url": "https://join.com/companies/werkia/16649494-praktikum-im-business-development-m-w-d-berlin",
       "source": "join.com",
       "start_date_hint": "",
@@ -551,136 +997,11 @@
         "business"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "unklar",
       "evidence": "Netzwerkaufbau im Handwerk – Du identifizierst neue potenzielle Partnerbetriebe, nimmst Kontakt auf und hilfst uns, unser Netzwerk auszubauen.",
       "found_via": "boards-greenhouse-join",
-      "eligibility": "unklar",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
-    },
-    {
-      "title": "Praktikum softwarenahe Technik",
-      "company": "deZem GmbH",
-      "city": "Berlin (10627), Wilmersdorfer Str. 60, Charlottenburg-Wilmersdorf",
-      "compensation_kind": "unknown",
-      "compensation_text": "Keine Angabe zur Verguetung auf der Seite",
-      "description": "Schuelerpraktikum bei der deZem GmbH, einem Berliner Anbieter von Energiemanagement-Systemen mit ueber 25 Mitarbeitenden. Schwerpunkt sind programmiernahe Aufgaben mit Linux, Raspberry Pi und Python; Praktikanten werden direkt ins Team eingebunden und bekommen echte Aufgaben.",
-      "url": "https://www.xn--schlerpraktikum-1vb.de/praktikumsplatz/dezem/88",
-      "source": "schuelerpraktikum.de",
-      "start_date_hint": "jederzeit",
-      "end_date_hint": "",
-      "duration_hint": "Als Dauer sind 3 Wochen angegeben; fuer den Softwarebereich sind laut Text mindestens 4 Wochen Voraussetzung. Mindestalt",
-      "categories": [
-        "ai_tech"
-      ],
-      "target_group": "schuelerpraktikum",
-      "evidence": "Du hast dich intensiv mit Linux/Raspberry Pi's/Python beschäftigt und kannst programmiertechnische Lösung entwickeln? ... Im Bereich Software sind erste Erfahrungen und eine Dauer von mindestens 4 Wochen Voraussetzung.",
-      "found_via": "schuelerpraktikum-explizit",
-      "eligibility": "offen",
-      "eligibility_reason": "als Schülerpraktikum ausgeschrieben"
-    },
-    {
-      "title": "Praktikum im Bereich Technik",
-      "company": "deZem GmbH",
-      "city": "Berlin (10627), Wilmersdorfer Str. 60, Charlottenburg-Wilmersdorf",
-      "compensation_kind": "unknown",
-      "compensation_text": "Keine Angabe zur Verguetung auf der Seite",
-      "description": "Zweites Schuelerpraktikums-Angebot der deZem GmbH mit Schwerpunkt Elektronik und physikalisch-technischem Verstaendnis statt Programmierung. Das Unternehmen entwickelt mit einem Team von 25+ Kollegen Systeme fuer Energiemanagement; Praktikanten werden direkt ins Team eingebunden und arbeiten an echten Aufgaben fuer das Team und die Kunden. Bewerbung an sekretariat@dezem.de.",
-      "url": "https://www.xn--schlerpraktikum-1vb.de/praktikumsplatz/dezem/16577",
-      "source": "schuelerpraktikum.de",
-      "start_date_hint": "jederzeit",
-      "end_date_hint": "",
-      "duration_hint": "2 Wochen angegeben; Mindestalter 14 Jahre",
-      "categories": [
-        "ai_tech"
-      ],
-      "target_group": "schuelerpraktikum",
-      "evidence": "Du hast ein gutes physikalisches Verständnis, bist technikaffin und magst Elektronik? ... Du wirst direkt ins Team eingebunden und darfst selbst Hand anlegen. Du bekommst echte Aufgaben, die dem deZem Team und auch unseren Kunden helfen.",
-      "found_via": "schuelerpraktikum-explizit",
-      "eligibility": "offen",
-      "eligibility_reason": "als Schülerpraktikum ausgeschrieben"
-    },
-    {
-      "title": "Schulpraktikum / Orientierungspraktikum (m/w/d)",
-      "company": "Deloitte GmbH",
-      "city": "Berlin (10719)",
-      "compensation_kind": "unknown",
-      "compensation_text": "Keine Angabe zur Verguetung in der Anzeige",
-      "description": "Schuelerpraktikum bei der Wirtschaftspruefungs- und Beratungsgesellschaft Deloitte. Praktikanten erhalten Einblicke ins Tagesgeschaeft, koennen sich aktiv einbringen und nehmen gemeinsam mit ihrer Betreuungsperson an Terminen teil. Bei der Bewerbung kann ein Wunschbereich angegeben werden: Audit & Assurance, Tax & Legal, Sekretariat oder National Office - People. Ziel ist die Berufsorientierung und die Frage, ob eine Ausbildung oder ein duales Studium passt.",
-      "url": "https://www.aubi-plus.de/schuelerpraktikum/deloitte-gmbh-steuerfachangestellter-berlin-35499/",
-      "source": "aubi-plus.de",
-      "start_date_hint": "Als Startdatum ist 01.08.2026 angegeben (liegt bereits in der Vergangenheit), die Bewerbungsfrist ist laut Anzeige offen",
-      "end_date_hint": "",
-      "duration_hint": "Schulpraktikum mindestens 2 Wochen (innerhalb der Berufsorientierungsphase der Schule oder in den Schulferien); Orientie",
-      "categories": [
-        "business"
-      ],
-      "target_group": "schuelerpraktikum",
-      "evidence": "In deinem Praktikum erhältst du Einblicke in unser Tagesgeschäft und hast die Möglichkeit dich aktiv mit einzubringen. ... Audit & Assurance, Tax & Legal, Sekretariat oder National Office - People",
-      "found_via": "schuelerpraktikum-explizit",
-      "eligibility": "offen",
-      "eligibility_reason": "als Schülerpraktikum ausgeschrieben"
-    },
-    {
-      "title": "Schülerpraktikum - Berlin - Technisch - individueller Zeitraum 2027 (w/m/d)",
-      "company": "Siemens Mobility GmbH",
-      "city": "Berlin (10117)",
-      "compensation_kind": "unknown",
-      "compensation_text": "Keine Angabe zur Verguetung in der Anzeige",
-      "description": "Technisches Schuelerpraktikum bei Siemens Mobility in Berlin, wo moderne Schienenfahrzeuge und Bahntechnik entstehen (u.a. ICE 4 und hochautomatisierte S-Bahnen). Praktikanten lernen die Ausbildungsberufe Mechatroniker/in und Elektroniker/in fuer Betriebstechnik kennen und nehmen an einer Betriebsbesichtigung des Berliner Werkes teil. Vorausgesetzter Schulabschluss laut Anzeige: Mittlere Reife.",
-      "url": "https://www.ausbildung.siemens.com/offer/schulerpraktikum-berlin-technisch-i/684ca7cf-856e-4cf0-b1b9-813e2f27f679",
-      "source": "ausbildung.siemens.com",
-      "start_date_hint": "01.08.2027; der Zeitraum wird individuell mit dem Unternehmen abgestimmt",
-      "end_date_hint": "",
-      "duration_hint": "variabel, wird gemeinsam festgelegt; keine feste Wochenzahl angegeben",
-      "categories": [
-        "ai_tech"
-      ],
-      "target_group": "schuelerpraktikum",
-      "evidence": "In deinem Schülerpraktikum schnupperst du in technische Bereiche hinein und erlebst hautnah, wie an einem der traditionsreichsten Siemens-Standorte moderne Schienenfahrzeuge und Bahntechnik entstehen. ... Den Zeitraum deines Praktikums bestimmen wir gemeinsam mit dir.",
-      "found_via": "schuelerpraktikum-explizit",
-      "eligibility": "offen",
-      "eligibility_reason": "als Schülerpraktikum ausgeschrieben"
-    },
-    {
-      "title": "Schüler- oder Orientierungspraktikum kaufmännisch (m/w/d)",
-      "company": "Brillux GmbH & Co. KG",
-      "city": "Potsdam (14482)",
-      "compensation_kind": "unknown",
-      "compensation_text": "",
-      "description": "Kaufmaennisches Schueler- oder Orientierungspraktikum in der Potsdamer Niederlassung des Farben- und Lackherstellers Brillux. Aufgaben laut Anzeige: Beratung der Kunden ueber die Produkte, Kontrolle des Wareneingangs, optimale Lagerhaltung und Betreuung des Farbmischsystems. Das Praktikum ist ganzjaehrig und in allen Niederlassungen moeglich; Bewerbung moeglichst 3 bis 4 Monate im Voraus.",
-      "url": "https://www.aubi-plus.de/schuelerpraktikum/brillux-gmbh-co-kg-kaufmann-fuer-gross-und-aussenhandelsmanagement-potsdam-31887/",
-      "source": "aubi-plus.de",
-      "start_date_hint": "Nach Absprache, ganzjaehrig moeglich; Bewerbung moeglichst 3-4 Monate im Voraus",
-      "end_date_hint": "",
-      "duration_hint": "eine, zwei oder drei Wochen",
-      "categories": [
-        "business"
-      ],
-      "target_group": "schuelerpraktikum",
-      "evidence": "Du bist auf der Suche nach einem Schüler- oder Orientierungspraktikum und willst wissen, wie die Ausbildung und der Berufsalltag von Kaufleuten für Groß- und Außenhandelsmanagement aussieht?",
-      "found_via": "schuelerpraktikum-explizit",
-      "eligibility": "offen",
-      "eligibility_reason": "als Schülerpraktikum ausgeschrieben"
-    },
-    {
-      "title": "Lerne die Welt des Großhandels kennen – Büroarbeit, Online-Shop und mehr!",
-      "company": "Laynel",
-      "city": "Berlin-Tempelhof-Schöneberg (Lorenzweg 1, 12099 Berlin)",
-      "compensation_kind": "unknown",
-      "compensation_text": "",
-      "description": "Schuelerpraktikum bei Laynel, einem Berliner Grosshaendler fuer Friseurbedarf, der Salons, Barber und Endkunden ueber mehrere Online-Shops beliefert. Laut Anzeige Einblick in Bueroarbeit und Online-Shop; konkrete Einzelaufgaben werden auf der Seite nicht aufgelistet. Ansprechpartner: Herr Moutasem Alsabh.",
-      "url": "https://www.xn--schlerpraktikum-1vb.de/praktikumsplatz/25102",
-      "source": "schuelerpraktikum.de",
-      "start_date_hint": "jederzeit",
-      "end_date_hint": "",
-      "duration_hint": "2 Wochen; Mindestalter 14 Jahre",
-      "categories": [
-        "business"
-      ],
-      "target_group": "schuelerpraktikum",
-      "evidence": "Wir sind Laynel, ein Großhändler für Friseurbedarf, der Salons, Barber und Endkunden über mehrere Online-Shops beliefert.",
-      "found_via": "schuelerpraktikum-explizit",
-      "eligibility": "offen",
-      "eligibility_reason": "als Schülerpraktikum ausgeschrieben"
     },
     {
       "title": "Praktikum in der Energiewirtschaft: Fokus Technik",
@@ -699,53 +1020,11 @@
         "business"
       ],
       "target_group": "schuelerpraktikum",
+      "eligibility": "offen",
       "evidence": "Um diesen Fragen auf den Grund zu gehen, haben Schülerinnen und Schüler die Möglichkeit, das in der 9. oder 10. Klasse (Realschule und Gymnasium) vorgesehene Betriebspraktikum bei uns zu absolvieren.",
       "found_via": "schuelerpraktikum-explizit",
-      "eligibility": "offen",
+      "eligibility_evidence": "",
       "eligibility_reason": "als Schülerpraktikum ausgeschrieben"
-    },
-    {
-      "title": "Chief of Staff to Head of People Internship (m/f/d)",
-      "company": "Buena",
-      "city": "Berlin (Buero in Prenzlauer Berg)",
-      "compensation_kind": "paid",
-      "compensation_text": "\"Attraktives Gehalt, inklusive 500 € „Close-to-Office“-Bonus.\" Dazu \"110 € Essenszuschuss und 50 € Fitnesszuschuss\", MacBook & Studio Display, taegliches Fruehs",
-      "description": "Praktikum als Chief of Staff direkt an der Seite von Christian, dem Head of People bei Buena (von GV finanziertes PropTech, laut Seite mit unter 25 Vollzeitmitarbeitern zur drittgroessten Hausverwaltung Deutschlands gewachsen). Laut Seite: eigenstaendige Uebernahme ganzer Bewerbungsprozesse (Sourcing, Scorecards, Gespraeche), Entwicklung deutschlandweiter Recruiting- und HR-Systeme fuer Wachstum auf >1.000 Mitarbeiter, Verantwortung fuer Tooling-Budgets im hohen fuenfstelligen Bereich sowie Personalgespraeche mit Geschaeftsfuehrern der uebernommenen Verwaltungen. Voraussetzungen: fliessend Deutsch auf C2-Niveau, gutes Englisch, In-Office-Arbeit in Berlin.",
-      "url": "https://berlinstartupjobs.com/de/praktika/chief-of-staff-to-head-of-people-internship-m-f-d-buena/",
-      "source": "berlinstartupjobs.com",
-      "start_date_hint": "",
-      "end_date_hint": "",
-      "duration_hint": "",
-      "categories": [
-        "business"
-      ],
-      "target_group": "allgemeines_praktikum",
-      "evidence": "Du übernimmst gesamte Bewerbungsprozesse. Du suchst Kandidaten, erstellst Scorecards, führst Gespräche und stimmst dich eng mit unseren Teams ab.",
-      "found_via": "wirtschaft-business",
-      "eligibility": "unklar",
-      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
-    },
-    {
-      "title": "Founder’s Associate | VC-backed startup | First commercial hire (m/w/d)",
-      "company": "AnyTax",
-      "city": "Berlin (Hybrid), Deutschland",
-      "compensation_kind": "unknown",
-      "compensation_text": "Die Seite gibt unter \"Kompensation\" ausdruecklich \"Undisclosed\" an, \"Equity: Nein\". Genannte Zusatzleistungen: \"Additional benefits such as an Urban Sports Club",
-      "description": "Praktikum als Founder's Associate an der Seite des Gruenderteams (Yash, Moritz, Kirill) des API-first Tax-Tech-Startups AnyTax, das laut Seite von IBB Ventures, Heartfelt sowie Angels von N26 und sevDesk finanziert ist. Aufgabenbereiche laut Anzeige: \"Growth & GTM Execution\" inklusive Scouting im europaeischen Fintech-Oekosystem, \"Product & Tech Bridge\" als Uebersetzer zwischen Business und Engineering, \"Operational Backbone\" mit Investor Reporting, \"Strategic Partnerships & Deal Architecture\" mit Business Cases fuer Gespraeche mit Banken und Finanzplattformen sowie Special Projects. Erwartet werden Erfahrung in High-Growth-Startups, Consulting, VC oder Tax Technology und Deutsch auf Muttersprachniveau.",
-      "url": "https://startupsucht.com/startup-job/startup-praktika-anytax-berlin-founders-associate-vc-backed-startup-first-commercial-hire",
-      "source": "startupsucht.com",
-      "start_date_hint": "Beginn: Sofort / \"Start Date: asap\"",
-      "end_date_hint": "",
-      "duration_hint": "\"Duration: 4-6 Months (Internship)\"",
-      "categories": [
-        "business",
-        "ai_tech"
-      ],
-      "target_group": "allgemeines_praktikum",
-      "evidence": "As our Founder's Associate you will work closely with the founding team of AnyTax on the most mission-critical parts of scaling our venture-backed pre-seed startup. Expect an extreme learning curve, high responsibility and ownership on projects across the entire company.",
-      "found_via": "wirtschaft-business",
-      "eligibility": "unklar",
-      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
       "title": "Investment Intern (m/f/d)",
@@ -764,32 +1043,11 @@
         "ai_tech"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "qualifikation_noetig",
       "evidence": "Curiosity that goes beyond the surface: you tend to go deeper than required, ask the question behind the question, and form your own point of view.",
       "found_via": "wirtschaft-business",
-      "eligibility": "nur_studierende",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige setzt ein Studium voraus (bachelor)"
-    },
-    {
-      "title": "Praktikumswoche Berlin - Praktikumstage im Herbst",
-      "company": "Praktikumswoche Berlin (Vermittlungsplattform, teilnehmende Berliner Unternehmen; Schirmherrschaft der Senatorin fuer Bi",
-      "city": "Berlin",
-      "compensation_kind": "unknown",
-      "compensation_text": "Zur Verguetung der Praktikumstage steht nichts auf der Seite. Zur Teilnahmegebuehr heisst es: \"Nein, als Schülerin oder Schüler musst du kein Geld für die Teiln",
-      "description": "Kein einzelnes Stellenangebot, sondern ein Vermittlungsprogramm: Man legt ein Profil an, waehlt Wunsch-Berufsfelder und die Tage aus, an denen man Zeit hat, und wird laut Seite \"automatisch an die passenden Unternehmen vermittelt\". Pro Tag lernt man ein anderes teilnehmendes Berliner Unternehmen kennen. Es stehen 22 Berufsfelder zur Auswahl, darunter \"EDV & IT\" (Programmieren, Wartung und Installation von Hardware und IT-Systemen), Chemie & Pharma, Elektronik & Anlagen, Gastronomie/Hotel/Tourismus, Beauty & Textilien, Holzbau sowie Klima, Heizung & Sanitaer. In der Schulwoche vor den Herbstferien ist die Teilnahme in Absprache mit der Schule auch waehrend der Schulzeit moeglich (Formular auf der Seite).",
-      "url": "https://praktikumswoche.de/berlin",
-      "source": "praktikumswoche.de",
-      "start_date_hint": "Aktionszeitraum \"Herbstferien + 1 Schulwoche vorab (12.10.2026 - 30.10.2026)\"; \"Anmeldeschluss ist der 02.10.2026.\"",
-      "end_date_hint": "",
-      "duration_hint": "Einzelne Praktikumstage innerhalb des Aktionszeitraums 12.10.2026 - 30.10.2026, taeglich ein neues Unternehmen",
-      "categories": [
-        "business",
-        "ai_tech"
-      ],
-      "target_group": "schuelerpraktikum",
-      "evidence": "Gibt es ein Mindestalter für die Praktikumswoche? Ja, du musst mindestens 15 Jahre alt sein. Die freiwilligen Praktika in den Ferien gelten als Beschäftigung. Durch die Kinderarbeitsschutzverordnung § 2 ist es erst ab 15 Jahren möglich bei der Praktikumswoche teilzunehmen.",
-      "found_via": "wirtschaft-business",
-      "eligibility": "offen",
-      "eligibility_reason": "als Schülerpraktikum ausgeschrieben"
     },
     {
       "title": "Informatikpraktikum E-Commerce (Shopware) in einem Berliner Fachverlag (Front/Backend)",
@@ -807,9 +1065,10 @@
         "ai_tech"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "offen",
       "evidence": "umfassenden Einblick in einen modernen Webshop und sein Software-Framework",
       "found_via": "ihk-brandenburg",
-      "eligibility": "offen",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige spricht Schüler an (orientierungspraktikum)"
     },
     {
@@ -829,9 +1088,10 @@
         "business"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "qualifikation_noetig",
       "evidence": "Erstellung und Optimierung von Produktinhalten mittels KI-Tools (Text, Bild, eventuell Video)",
       "found_via": "ihk-brandenburg",
-      "eligibility": "nur_studierende",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige setzt ein Studium voraus (im studium)"
     },
     {
@@ -851,9 +1111,10 @@
         "ai_tech"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "unklar",
       "evidence": "Du übernimmst Verantwortung für die wichtigsten strategischen und operativen Initiativen",
       "found_via": "ihk-brandenburg",
-      "eligibility": "unklar",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
@@ -872,9 +1133,10 @@
         "business"
       ],
       "target_group": "pflichtpraktikum",
+      "eligibility": "qualifikation_noetig",
       "evidence": "Als eingeschriebene_r Student_in bist du auf der Suche nach einem Pflichtpraktikum (mindestens 3 Monate)",
       "found_via": "ihk-brandenburg",
-      "eligibility": "nur_studierende",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige setzt ein Studium voraus (studierende)"
     },
     {
@@ -893,9 +1155,10 @@
         "business"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "qualifikation_noetig",
       "evidence": "Du wirst an der Entwicklung und Umsetzung von Strategien zur effektiven Gewinnung von potenziellen Kunden mitarbeiten",
       "found_via": "ihk-brandenburg",
-      "eligibility": "nur_studierende",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige setzt ein Studium voraus (im studium)"
     },
     {
@@ -914,9 +1177,10 @@
         "ai_tech"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "qualifikation_noetig",
       "evidence": "Setze dein theoretisches Wissen bei spannenden Digitalisierungsprojekten, in der IT-Administration oder im technischen Support ein.",
       "found_via": "ihk-brandenburg",
-      "eligibility": "nur_studierende",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige setzt ein Studium voraus (studierende)"
     },
     {
@@ -935,9 +1199,10 @@
         "business"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "qualifikation_noetig",
       "evidence": "Betreuung und Pflege unserer Social Media Kanäle (Instagram, Facebook, LinkedIn)",
       "found_via": "ihk-brandenburg",
-      "eligibility": "nur_studierende",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige setzt ein Studium voraus (im studium)"
     },
     {
@@ -957,9 +1222,10 @@
         "ai_tech"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "unklar",
       "evidence": "Start date: ASAP / Location: Berlin (AI Campus) with hybrid flexibility / Duration: 6+ months / Compensation: Competitive internship salary",
       "found_via": "hpi-umfeld",
-      "eligibility": "unklar",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
@@ -979,9 +1245,10 @@
         "business"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "unklar",
       "evidence": "You're available for at least 3 months, ideally 6, onsite in Berlin",
       "found_via": "hpi-umfeld",
-      "eligibility": "unklar",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
@@ -1000,9 +1267,10 @@
         "ai_tech"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "unklar",
       "evidence": "This is an unpaid internship.",
       "found_via": "hpi-umfeld",
-      "eligibility": "unklar",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
@@ -1021,10 +1289,11 @@
         "ai_tech"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "qualifikation_noetig",
       "evidence": "Standort: Remote oder Berlin / Dauer: 3-6 Monate",
       "found_via": "hpi-umfeld",
-      "eligibility": "unklar",
-      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
+      "eligibility_evidence": "",
+      "eligibility_reason": "Anzeige verlangt Berufserfahrung (berufserfahrung)"
     },
     {
       "title": "Praktikum Softwareentwicklung (m/w/d)",
@@ -1042,9 +1311,10 @@
         "ai_tech"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "qualifikation_noetig",
       "evidence": "Wir suchen motivierte Praktikantinnen und Praktikanten, die Spaß und Interesse am Programmieren haben.",
       "found_via": "hpi-umfeld",
-      "eligibility": "nur_studierende",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige setzt ein Studium voraus (im studium)"
     },
     {
@@ -1063,9 +1333,10 @@
         "business"
       ],
       "target_group": "pflichtpraktikum",
+      "eligibility": "qualifikation_noetig",
       "evidence": "Zur Verstärkung unseres Teams suchen wir engagierte Praktikant*innen im Bereich Technical Sales & Business Development",
       "found_via": "hpi-umfeld",
-      "eligibility": "nur_studierende",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige setzt ein Studium voraus (einschreibung)"
     },
     {
@@ -1084,9 +1355,10 @@
         "business"
       ],
       "target_group": "pflichtpraktikum",
+      "eligibility": "qualifikation_noetig",
       "evidence": "Damit unser Team weiter wächst, suchen wir dich als Praktikant*in im Bereich Human Resources & Employer Branding",
       "found_via": "hpi-umfeld",
-      "eligibility": "nur_studierende",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige setzt ein Studium voraus (einschreibung)"
     },
     {
@@ -1105,9 +1377,10 @@
         "ai_tech"
       ],
       "target_group": "pflichtpraktikum",
+      "eligibility": "unklar",
       "evidence": "You work AI-first: prototype with AI tools, refine in Figma, ship within weeks.",
       "found_via": "linkedin-xing-stepstone",
-      "eligibility": "unklar",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
@@ -1127,9 +1400,10 @@
         "business"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "unklar",
       "evidence": "identify where AI tools, automation, and modern fintech can make our workflows smarter, faster, and more robust",
       "found_via": "linkedin-xing-stepstone",
-      "eligibility": "unklar",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
@@ -1148,9 +1422,10 @@
         "ai_tech"
       ],
       "target_group": "pflichtpraktikum",
+      "eligibility": "qualifikation_noetig",
       "evidence": "Entwicklung und Pflege moderner Web-Frontends und Backend-Dienste/APIs",
       "found_via": "linkedin-xing-stepstone",
-      "eligibility": "nur_studierende",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige setzt ein Studium voraus (laufendes studium)"
     },
     {
@@ -1169,9 +1444,10 @@
         "business"
       ],
       "target_group": "pflichtpraktikum",
+      "eligibility": "qualifikation_noetig",
       "evidence": "Als Founder Associate Pflichtpraktikant*in (m/w/d) arbeitest du jeden Tag direkt mit dem Chief Operating Officer zusammen.",
       "found_via": "linkedin-xing-stepstone",
-      "eligibility": "nur_studierende",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige setzt ein Studium voraus (pflichtpraktikum im rahmen des studiums)"
     },
     {
@@ -1190,9 +1466,10 @@
         "business"
       ],
       "target_group": "allgemeines_praktikum",
+      "eligibility": "unklar",
       "evidence": "Research market trends, analyze competitors, and help identify new business opportunities in the FinTech space",
       "found_via": "linkedin-xing-stepstone",
-      "eligibility": "unklar",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
@@ -1212,9 +1489,10 @@
         "ai_tech"
       ],
       "target_group": "pflichtpraktikum",
+      "eligibility": "unklar",
       "evidence": "Du entwickelst automatisierte Workflows zur Unterstützung von Vertrieb und Business Development (z. B. CRM-Prozesse, Lead-Routing, Reporting, Follow-up-Automatisierungen).",
       "found_via": "linkedin-xing-stepstone",
-      "eligibility": "unklar",
+      "eligibility_evidence": "",
       "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     }
   ]

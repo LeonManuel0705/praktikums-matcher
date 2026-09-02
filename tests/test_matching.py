@@ -332,14 +332,14 @@ class TestUrlDeduplication:
 
 class TestEligibility:
     def test_enrolled_students_only(self):
-        from backend.app.eligibility import STUDENTS_ONLY, classify
+        from backend.app.eligibility import BLOCKED, classify
         offer = {"title": "Praktikum Data Science", "description": "Voraussetzung ist eine laufende Einschreibung."}
-        assert classify(offer)[0] == STUDENTS_ONLY
+        assert classify(offer)[0] == BLOCKED
 
     def test_bachelor_requirement_excludes(self):
-        from backend.app.eligibility import STUDENTS_ONLY, classify
+        from backend.app.eligibility import BLOCKED, classify
         offer = {"title": "Intern", "description": "You are pursuing a Bachelor in computer science."}
-        assert classify(offer)[0] == STUDENTS_ONLY
+        assert classify(offer)[0] == BLOCKED
 
     def test_declared_school_internship_is_open(self):
         from backend.app.eligibility import OPEN, classify

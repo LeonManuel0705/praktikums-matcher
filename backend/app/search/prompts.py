@@ -9,7 +9,7 @@ FIELD_SPEC = """Jedes Angebot ist ein Objekt mit genau diesen Feldern:
 "source" (Domain), "start_date_hint", "end_date_hint", "duration_hint",
 "categories" (Teilmenge von ["ai_tech","business"]), "target_group"
 (schuelerpraktikum|pflichtpraktikum|allgemeines_praktikum|unklar),
-"eligibility" (offen|nur_studierende|unklar), "evidence" (woertliches Zitat von der Seite)."""
+"eligibility" (offen|qualifikation_noetig|unklar), "evidence" (woertliches Zitat von der Seite)."""
 
 RULES = """HARTE REGELN:
 1. Erfinde nichts. Jedes Angebot muss von einer Seite stammen, die du mit WebFetch tatsaechlich geoeffnet hast.
@@ -18,13 +18,17 @@ RULES = """HARTE REGELN:
 4. Keine Werkstudenten-, Vollzeit- oder Abschlussarbeitsstellen.
 4a. WER DARF SICH BEWERBEN, DAS IST DAS WICHTIGSTE AUSSCHLUSSKRITERIUM:
     Die Person ist Schuelerin oder Schueler in der Oberstufe, hoechstens frisch mit dem Abitur fertig.
-    Sie ist NICHT an einer Hochschule eingeschrieben und hat KEINEN Bachelor.
+    Sie ist NICHT an einer Hochschule eingeschrieben, hat KEINEN Bachelor, KEINE abgeschlossene
+    Ausbildung und KEINE Berufserfahrung.
     Nimm ein Angebot NUR auf, wenn sie sich darauf bewerben koennte. Verlangt die Anzeige eine laufende
     Immatrikulation, eine Studienbescheinigung, ein Pflichtpraktikum im Rahmen eines Studiums, einen
-    Bachelor oder Master, dann gehoert das Angebot NICHT in deine Liste, egal wie gut es sonst passt.
-    Setze "eligibility" auf "offen", wenn die Anzeige Schueler oder Abiturienten ohne Studium zulaesst,
-    auf "nur_studierende", wenn sie ein Studium verlangt, und auf "unklar", wenn die Seite dazu schweigt.
-    Ein "unklar" ist erlaubt, ein "nur_studierende" nicht.
+    Bachelor, einen Master, eine abgeschlossene Ausbildung, einen Gesellen- oder Meisterbrief oder
+    Berufserfahrung, dann gehoert das Angebot NICHT in deine Liste, egal wie gut es sonst passt.
+    Vorsicht beim Unterschied: "du sammelst erste Berufserfahrung" ist ein Angebot und in Ordnung,
+    "Voraussetzung: Berufserfahrung" ist eine Huerde und schliesst aus.
+    Setze "eligibility" auf "offen", wenn die Anzeige Schueler oder Abiturienten ohne Studium und ohne
+    Ausbildung zulaesst, auf "qualifikation_noetig", wenn sie eine solche Qualifikation verlangt, und auf
+    "unklar", wenn die Seite dazu schweigt. Ein "unklar" ist erlaubt, ein "qualifikation_noetig" nicht.
 5. Wenn du nichts Belegtes findest, ist das ein gueltiges Ergebnis. Sag es einfach.
 
 SO GIBST DU ERGEBNISSE AUS, DAS IST WICHTIG:

@@ -13,13 +13,13 @@ const CRITERION_COLORS: Record<string, string> = {
 
 const ELIGIBILITY_LABELS: Record<string, string> = {
   offen: "für Schüler möglich",
-  nur_studierende: "nur für Studierende",
+  qualifikation_noetig: "Studium oder Ausbildung nötig",
   unklar: "Voraussetzung unklar",
 }
 
 const ELIGIBILITY_COLORS: Record<string, string> = {
   offen: "var(--c-location)",
-  nur_studierende: "var(--c-time)",
+  qualifikation_noetig: "var(--c-time)",
   unklar: "var(--ink-faint)",
 }
 

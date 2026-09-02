@@ -587,6 +587,7 @@ body {
 
 .link-button {
   display: inline-flex;
+  white-space: nowrap;
   align-items: center;
   gap: 7px;
   padding: 9px 16px;

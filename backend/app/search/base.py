@@ -7,7 +7,7 @@ from urllib.parse import urlparse
 ALLOWED_COMPENSATION = {"paid", "unpaid", "unknown"}
 ALLOWED_CATEGORIES = {"ai_tech", "business"}
 ALLOWED_TARGET_GROUPS = {"schuelerpraktikum", "pflichtpraktikum", "allgemeines_praktikum", "unklar"}
-ALLOWED_ELIGIBILITY = {"offen", "nur_studierende", "unklar"}
+ALLOWED_ELIGIBILITY = {"offen", "qualifikation_noetig", "unklar"}
 
 
 @dataclass

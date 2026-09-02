@@ -49,7 +49,7 @@ export interface Offer {
   duration_hint: string | null
   categories: Interest[]
   target_group: string | null
-  eligibility: "offen" | "nur_studierende" | "unklar"
+  eligibility: "offen" | "qualifikation_noetig" | "unklar"
   eligibility_reason: string | null
   evidence: string | null
   origin: string
