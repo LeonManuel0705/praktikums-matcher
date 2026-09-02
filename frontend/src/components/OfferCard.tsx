@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { ArrowUpRight, ChevronDown, MapPin, Quote, Wallet } from "lucide-react"
+import { ArrowUpRight, ChevronDown, GraduationCap, MapPin, Quote, Wallet } from "lucide-react"
 import { ScoreRing } from "./ScoreRing"
 import type { Offer } from "../types"
 
@@ -9,6 +9,18 @@ const CRITERION_COLORS: Record<string, string> = {
   location: "var(--c-location)",
   compensation: "var(--c-pay)",
   timeframe: "var(--c-time)",
+}
+
+const ELIGIBILITY_LABELS: Record<string, string> = {
+  offen: "für Schüler möglich",
+  nur_studierende: "nur für Studierende",
+  unklar: "Voraussetzung unklar",
+}
+
+const ELIGIBILITY_COLORS: Record<string, string> = {
+  offen: "var(--c-location)",
+  nur_studierende: "var(--c-time)",
+  unklar: "var(--ink-faint)",
 }
 
 const TARGET_LABELS: Record<string, string> = {
@@ -27,6 +39,7 @@ export function OfferCard({ offer, rank }: { offer: Offer; rank: number }) {
   const [showEvidence, setShowEvidence] = useState(false)
   const [expanded, setExpanded] = useState(false)
   const locationDetail = offer.breakdown.criteria.find((c) => c.key === "location")?.detail
+  const fromCorpus = offer.origin === "grundstock" || offer.origin === "corpus"
 
   return (
     <motion.article
@@ -47,9 +60,17 @@ export function OfferCard({ offer, rank }: { offer: Offer; rank: number }) {
         <div className="tag-row">
           <span
             className="tag tag-accent"
-            style={{ ["--tag-color" as string]: offer.origin === "grundstock" ? "var(--ink-faint)" : "var(--c-location)" }}
+            style={{ ["--tag-color" as string]: fromCorpus ? "var(--ink-faint)" : "var(--c-location)" }}
           >
-            {offer.origin === "grundstock" ? "aus dem Grundstock" : "gerade gefunden"}
+            {fromCorpus ? "aus dem Grundstock" : "gerade gefunden"}
+          </span>
+          <span
+            className="tag tag-accent"
+            style={{ ["--tag-color" as string]: ELIGIBILITY_COLORS[offer.eligibility] }}
+            title={offer.eligibility_reason ?? undefined}
+          >
+            <GraduationCap size={11} />
+            {ELIGIBILITY_LABELS[offer.eligibility]}
           </span>
           {offer.target_group && TARGET_LABELS[offer.target_group] && (
             <span className="tag tag-accent" style={{ ["--tag-color" as string]: "var(--c-interest)" }}>

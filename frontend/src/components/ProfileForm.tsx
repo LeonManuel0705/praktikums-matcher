@@ -34,14 +34,25 @@ interface Props {
 
 export function ProfileForm({ initial, onSaved, onSearch, searching }: Props) {
   const [profile, setProfile] = useState<Profile>(initial ?? EMPTY)
+  const [dirty, setDirty] = useState(initial === null)
   const [anchors, setAnchors] = useState<Anchor[]>([])
   const [geoError, setGeoError] = useState("")
   const [error, setError] = useState("")
   const [saving, setSaving] = useState(false)
-  const [dirty, setDirty] = useState(false)
 
   useEffect(() => {
-    if (!profile.location.trim()) return
+    if (initial) {
+      setProfile(initial)
+      setDirty(false)
+    }
+  }, [initial])
+
+  useEffect(() => {
+    if (!profile.location.trim()) {
+      setAnchors([])
+      setGeoError("")
+      return
+    }
     const timer = setTimeout(() => {
       api.geoPreview(profile.location, profile.radius_km)
         .then((data) => { setAnchors(data.anchors); setGeoError("") })
@@ -205,7 +216,11 @@ export function ProfileForm({ initial, onSaved, onSearch, searching }: Props) {
           {searching ? "Suche läuft" : "Suche starten"}
         </button>
       </div>
-      {dirty && <p className="provider-line">Erst speichern, dann suchen</p>}
+      {dirty && (
+        <p className="provider-line">
+          {initial ? "Erst speichern, dann suchen" : "Profil einmal speichern, dann kann die Suche starten"}
+        </p>
+      )}
     </section>
   )
 }

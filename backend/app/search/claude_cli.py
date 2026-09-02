@@ -2,6 +2,7 @@ import asyncio
 import json
 import os
 import shutil
+import signal
 from datetime import date, timezone, datetime
 from urllib.parse import urlparse
 
@@ -18,6 +19,8 @@ from .base import SearchContext, extract_json_payload, normalize_offer, parse_of
 from .prompts import ANGLES, build_prompt
 
 MAX_TURNS = "26"
+STREAM_LIMIT = 16 * 1024 * 1024
+STDERR_TAIL = 4000
 PER_ANGLE_TIMEOUT = min(SEARCH_TIMEOUT_SECONDS, 420)
 
 
@@ -25,6 +28,36 @@ def resolve_binary() -> str | None:
     if os.path.isfile(CLAUDE_BINARY) and os.access(CLAUDE_BINARY, os.X_OK):
         return CLAUDE_BINARY
     return shutil.which(CLAUDE_BINARY) or shutil.which("claude")
+
+
+async def _drain(stream) -> str:
+    if stream is None:
+        return ""
+    chunks: list[bytes] = []
+    size = 0
+    try:
+        while True:
+            chunk = await stream.read(8192)
+            if not chunk:
+                break
+            chunks.append(chunk)
+            size += len(chunk)
+            if size > STDERR_TAIL * 4:
+                chunks = [b"".join(chunks)[-STDERR_TAIL:]]
+                size = len(chunks[0])
+    except (asyncio.CancelledError, ValueError):
+        pass
+    return b"".join(chunks).decode("utf-8", "replace").strip()
+
+
+def _terminate_tree(process) -> None:
+    try:
+        os.killpg(os.getpgid(process.pid), signal.SIGKILL)
+    except (ProcessLookupError, PermissionError, OSError):
+        try:
+            process.kill()
+        except ProcessLookupError:
+            pass
 
 
 def short_host(url: str) -> str:
@@ -52,9 +85,10 @@ class ClaudeCliProvider:
         tasks = [asyncio.create_task(self._run_angle(binary, ctx, key, text, today)) for key, text in ANGLES]
         try:
             await asyncio.gather(*tasks)
-        except asyncio.CancelledError:
+        except BaseException:
             for task in tasks:
                 task.cancel()
+            await asyncio.gather(*tasks, return_exceptions=True)
             raise
 
     async def _run_angle(self, binary: str, ctx: SearchContext, key: str, angle_text: str, today: date) -> None:
@@ -74,7 +108,10 @@ class ClaudeCliProvider:
             stdin=asyncio.subprocess.DEVNULL,
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
+            limit=STREAM_LIMIT,
+            start_new_session=True,
         )
+        stderr_task = asyncio.create_task(_drain(process.stderr))
 
         final_text = ""
         searches = 0
@@ -86,7 +123,11 @@ class ClaudeCliProvider:
                 while True:
                     if ctx.cancelled():
                         raise asyncio.CancelledError
-                    raw = await process.stdout.readline()
+                    try:
+                        raw = await process.stdout.readline()
+                    except (ValueError, asyncio.LimitOverrunError):
+                        ctx.log(f"[{key}] überlange Ausgabezeile übersprungen", "warn")
+                        continue
                     if not raw:
                         break
                     line = raw.decode("utf-8", "replace").strip()
@@ -138,12 +179,11 @@ class ClaudeCliProvider:
             raise
         finally:
             if process.returncode is None:
-                process.kill()
+                _terminate_tree(process)
             await process.wait()
-            if process.stderr:
-                stderr = (await process.stderr.read()).decode("utf-8", "replace").strip()
-                if stderr and process.returncode not in (0, None):
-                    ctx.log(f"[{key}] Prozess endete mit Code {process.returncode}: {stderr[:200]}", "warn")
+            stderr = await stderr_task
+            if stderr and process.returncode not in (0, None):
+                ctx.log(f"[{key}] Prozess endete mit Code {process.returncode}: {stderr[-200:]}", "warn")
 
         trailing = [offer for offer in (normalize_offer(item) for item in extract_json_payload(final_text)) if offer]
         fresh_trailing = ctx.publish(trailing, key)

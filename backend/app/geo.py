@@ -128,9 +128,13 @@ def geocode(value: str) -> tuple[float, float] | None:
     if key in GAZETTEER:
         return GAZETTEER[key]
 
-    for name, coords in GAZETTEER.items():
-        if key.startswith(name) or name.startswith(key):
-            return coords
+    prefix_matches = [
+        (name, coords) for name, coords in GAZETTEER.items()
+        if key.startswith(name) or name.startswith(key)
+    ]
+    if prefix_matches:
+        best_name, best_coords = min(prefix_matches, key=lambda item: (-len(item[0]), item[0]))
+        return best_coords
 
     tokens = set(key.split())
     best: tuple[int, tuple[float, float]] | None = None

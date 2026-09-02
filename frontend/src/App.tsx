@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
-import { LogOut, Moon, Radar, Sun, X } from "lucide-react"
+import { LogOut, Moon, Radar, Sparkles, Sun, X } from "lucide-react"
 import { api } from "./api"
 import { AgentStream } from "./components/AgentStream"
 import { AuthScreen } from "./components/AuthScreen"
@@ -9,6 +9,8 @@ import { ProfileForm } from "./components/ProfileForm"
 import type { Profile, ProviderInfo, SearchState, User } from "./types"
 
 type Theme = "light" | "dark"
+
+const MAX_POLL_FAILURES = 4
 
 function initialTheme(): Theme {
   const stored = localStorage.getItem("pm-theme")
@@ -25,8 +27,10 @@ export default function App() {
   const [search, setSearch] = useState<SearchState | null>(null)
   const [error, setError] = useState("")
   const [booted, setBooted] = useState(false)
-  const lastEventRef = useRef(0)
-
+  const [rerankAvailable, setRerankAvailable] = useState(false)
+  const [reranking, setReranking] = useState(false)
+  const [rerankNote, setRerankNote] = useState("")
+  const [onlyEligible, setOnlyEligible] = useState(true)
   useEffect(() => {
     document.documentElement.dataset.theme = theme
     localStorage.setItem("pm-theme", theme)
@@ -45,20 +49,25 @@ export default function App() {
       })
       .catch(() => undefined)
       .finally(() => setBooted(true))
-    api.providers().then((data) => setProviders(data.providers)).catch(() => undefined)
+    api.providers()
+      .then((data) => { setProviders(data.providers); setRerankAvailable(data.rerank_available) })
+      .catch(() => undefined)
   }, [])
 
   useEffect(() => {
     if (searchId === null) return
     let stopped = false
     let timer = 0
+    let lastEvent = 0
+    let failures = 0
 
     const tick = async () => {
       try {
-        const state = await api.getSearch(searchId, lastEventRef.current)
+        const state = await api.getSearch(searchId, lastEvent)
         if (stopped) return
+        failures = 0
         if (state.events.length > 0) {
-          lastEventRef.current = state.events[state.events.length - 1].id
+          lastEvent = state.events[state.events.length - 1].id
         }
         setSearch((previous) => ({
           ...state,
@@ -66,7 +75,13 @@ export default function App() {
         }))
         if (state.status === "running") timer = window.setTimeout(tick, 900)
       } catch (err) {
-        if (!stopped) setError((err as Error).message)
+        if (stopped) return
+        failures += 1
+        if (failures <= MAX_POLL_FAILURES) {
+          timer = window.setTimeout(tick, 1400 * failures)
+        } else {
+          setError(`Verbindung zur Suche verloren: ${(err as Error).message}`)
+        }
       }
     }
 
@@ -76,10 +91,10 @@ export default function App() {
 
   const startSearch = useCallback(async () => {
     setError("")
-    lastEventRef.current = 0
-    setSearch(null)
+    setRerankNote("")
     try {
       const { search_id } = await api.startSearch()
+      setSearch(null)
       setSearchId(search_id)
     } catch (err) {
       setError((err as Error).message)
@@ -95,12 +110,30 @@ export default function App() {
     }
   }, [searchId])
 
+  const rerank = useCallback(async () => {
+    if (searchId === null) return
+    setReranking(true)
+    setRerankNote("")
+    try {
+      const result = await api.rerank(searchId)
+      setRerankNote(result.note)
+      const state = await api.getSearch(searchId, Number.MAX_SAFE_INTEGER)
+      setSearch((previous) => ({ ...state, events: previous?.events ?? [] }))
+    } catch (err) {
+      setError((err as Error).message)
+    } finally {
+      setReranking(false)
+    }
+  }, [searchId])
+
   async function logout() {
     await api.logout().catch(() => undefined)
     setUser(null)
     setProfile(null)
     setSearch(null)
     setSearchId(null)
+    setError("")
+    setRerankNote("")
   }
 
   const activeProvider = useMemo(
@@ -109,7 +142,11 @@ export default function App() {
   )
 
   const running = search?.status === "running"
-  const results = search?.results ?? []
+  const allResults = search?.results ?? []
+  const results = onlyEligible
+    ? allResults.filter((offer) => offer.eligibility !== "nur_studierende")
+    : allResults
+  const hidden = allResults.length - results.length
 
   if (!booted) return null
 
@@ -172,14 +209,40 @@ export default function App() {
               <span className="results-count">{results.length}</span>
               <span className="results-label">
                 {running ? "Treffer bisher, die Recherche läuft noch" : "bewertete Treffer"}
+                {hidden > 0 && (
+                  <span className="source-note" style={{ display: "block" }}>
+                    {hidden} ausgeblendet, weil ein Studium verlangt wird
+                  </span>
+                )}
               </span>
-              {running && (
-                <button className="link-button" type="button" onClick={cancelSearch} style={{ marginLeft: "auto" }}>
-                  <X size={14} /> Abbrechen
-                </button>
-              )}
+              <div style={{ marginLeft: "auto", display: "flex", gap: 10, alignItems: "center" }}>
+                {allResults.length > 0 && (
+                  <div className="tabs filter-toggle">
+                    <button type="button" className={onlyEligible ? "tab tab-on" : "tab"}
+                            onClick={() => setOnlyEligible(true)}>
+                      Für dich möglich
+                    </button>
+                    <button type="button" className={onlyEligible ? "tab" : "tab tab-on"}
+                            onClick={() => setOnlyEligible(false)}>
+                      Alle
+                    </button>
+                  </div>
+                )}
+                {!running && results.length > 0 && rerankAvailable && profile?.free_text && (
+                  <button className="link-button" type="button" onClick={rerank} disabled={reranking}>
+                    <Sparkles size={14} />
+                    {reranking ? "Modell liest deinen Wunsch" : "Freitext-Feinschliff"}
+                  </button>
+                )}
+                {running && (
+                  <button className="link-button" type="button" onClick={cancelSearch}>
+                    <X size={14} /> Abbrechen
+                  </button>
+                )}
+              </div>
             </div>
 
+            {rerankNote && <p className="provider-line" style={{ marginBottom: 14 }}>{rerankNote}</p>}
             {error && <p className="notice" style={{ marginBottom: 16 }}>{error}</p>}
             {search?.error && <p className="notice" style={{ marginBottom: 16 }}>{search.error}</p>}
 
@@ -194,8 +257,9 @@ export default function App() {
                 <Radar size={30} color="var(--ink-faint)" />
                 <h2 className="empty-title">Noch keine Treffer</h2>
                 <p className="empty-text">
-                  Profil links prüfen und die Suche starten. Der Agent liest dann Börsen und Karriereseiten und
-                  legt jeden belegten Treffer hier ab.
+                  {hidden > 0
+                    ? `Alle ${hidden} Treffer verlangen ein laufendes Studium. Über "Alle" siehst du sie trotzdem.`
+                    : "Profil links prüfen und die Suche starten. Der Agent liest dann Börsen und Karriereseiten und legt jeden belegten Treffer hier ab."}
                 </p>
               </motion.div>
             )}

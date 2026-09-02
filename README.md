@@ -64,6 +64,28 @@ Laufzeit einer Suche von über acht auf 2,7 Minuten gedrückt, bei gleicher Ausb
 | `PM_CAP_SEARCHES` | 12 | harte Obergrenze, danach wird der Winkel beendet |
 | `PM_CAP_FETCHES` | 18 | harte Obergrenze, danach wird der Winkel beendet |
 
+## Wer darf sich überhaupt bewerben
+
+Die erste Fassung hat einen entscheidenden Punkt übersehen: sehr viele Praktikumsanzeigen verlangen eine
+laufende Immatrikulation. Für einen Schüler sind die wertlos. Eine Prüfung des ersten Grundstocks hat es
+deutlich gezeigt: von 57 recherchierten Angeboten waren nur 9 wirklich zugänglich, 23 verlangten
+ausdrücklich ein Studium.
+
+Jedes Angebot bekommt deshalb eine Einstufung:
+
+| Einstufung | Bedeutung |
+|---|---|
+| `offen` | Schüler oder Abiturienten ohne Studium dürfen sich bewerben |
+| `nur_studierende` | Anzeige verlangt Immatrikulation, Studienbescheinigung, Bachelor oder Master |
+| `unklar` | Die Anzeige sagt nichts über die Voraussetzungen |
+
+Die Einstufung entsteht auf zwei Wegen: der Suchagent liest sie aus dem Anforderungsteil der Anzeige, und
+unabhängig davon prüft `eligibility.py` den Text auf Signalwörter, an Wortgrenzen statt als Teilstring.
+Der Suchagent bekommt zusätzlich die Anweisung, Angebote mit Studienpflicht gar nicht erst zu melden.
+
+In der Ergebnisliste steht der Schalter standardmäßig auf "Für dich möglich", `nur_studierende` ist also
+ausgeblendet. Wie viele das betrifft, steht daneben, und über "Alle" sind sie weiterhin einsehbar.
+
 ## Der Matching-Score
 
 Vier Kriterien, gewichtet wie im Konzept vorgegeben:
@@ -78,6 +100,16 @@ Vier Kriterien, gewichtet wie im Konzept vorgegeben:
 Der Ring auf jeder Karte zeigt nicht nur den Gesamtwert: er besteht aus vier Bögen, deren Länge das Gewicht
 abbildet und deren Füllung den Teilscore. Man sieht also sofort, welches Kriterium einen Treffer runterzieht.
 
+### Freitext-Feinschliff
+
+Der deterministische Teil trifft den Freitext nur über Stichworte und Synonyme. Wer einen Wunsch
+formuliert hat, kann nach der Suche auf "Freitext-Feinschliff" drücken: dann liest ein Modell alle
+Treffer und bewertet, wie gut sie zum Wunsch passen, unabhängig von Wortgleichheit. Das Urteil geht zur
+Hälfte in das Kriterium Interesse ein und ersetzt dessen Begründung durch die des Modells.
+
+Es werden immer alle Treffer bewertet, nie nur die vordersten. Sonst würden unbewertete Angebote mit
+zu hohem Wert die tatsächlich passenden überholen.
+
 Gewichte lassen sich zur Laufzeit ändern:
 
 ```bash
@@ -85,6 +117,14 @@ curl -X PUT localhost:8000/api/weights -H 'Content-Type: application/json' \
      -d '{"interest":0.5,"location":0.3,"compensation":0.05,"timeframe":0.15}'
 curl -X POST localhost:8000/api/searches/1/rescore -b cookies.txt
 ```
+
+## Geprüft
+
+- 61 Unit-Tests für Geo, Datumsparsen, Bewertung, Normalisierung und die Regressionen aus dem Review
+- Ein Playwright-Klickpfad durch den ganzen Ablauf, von der Registrierung bis zum Abmelden
+- Ein Fanout aus 25 Review-Agenten über fünf Dimensionen, jeder Befund gegengeprüft. Ergebnis und
+  Behebung in [docs/REVIEW.md](docs/REVIEW.md)
+- Die Links im Grundstock wurden abgerufen: 56 von 57 antworten mit 200, einer wehrt Abrufe ab
 
 ## Aufbau
 
@@ -98,8 +138,9 @@ backend/app/
   scoring.py      Score mit Begründung je Kriterium
   jobs.py         asynchrone Suchläufe mit Ereignisprotokoll
   search/         Provider, Prompts, Normalisierung
+  rerank.py       optionaler Feinschliff des Freitexts durch ein Modell
 frontend/src/     React, eigenes Design-System, keine UI-Bibliothek
-tests/            46 Tests für Geo, Datum, Scoring, Normalisierung
+tests/            61 Tests für Geo, Datum, Scoring, Normalisierung, Regressionen
 ```
 
 ## Tests

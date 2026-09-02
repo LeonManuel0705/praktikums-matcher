@@ -18,7 +18,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "You won't just research, you'll build prototypes, test integrations, and shape how we position ourselves in a fast-moving market.",
-      "found_via": "startupsucht"
+      "found_via": "startupsucht",
+      "eligibility": "unklar",
+      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
       "title": "Chief of Staff to Head of People Internship",
@@ -37,7 +39,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "Du suchst Kandidaten, erstellst Scorecards, führst Gespräche und stimmst dich eng mit unseren Teams ab.",
-      "found_via": "startupsucht"
+      "found_via": "startupsucht",
+      "eligibility": "unklar",
+      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
       "title": "Praktikum im Produktmanagement",
@@ -57,7 +61,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "Erstellung und Pflege von Knowledge-Base-Artikeln, Hilfetexten und produktspezifischer Materialien",
-      "found_via": "startupsucht"
+      "found_via": "startupsucht",
+      "eligibility": "unklar",
+      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
       "title": "Praktikant/in im Bereich Supply Chain Management, Prototyping und Fertigungsvorbereitung",
@@ -77,7 +83,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "Unterstützung bei der Planung und Steuerung von Lieferkettenprozessen",
-      "found_via": "startupsucht"
+      "found_via": "startupsucht",
+      "eligibility": "nur_studierende",
+      "eligibility_reason": "Anzeige setzt ein Studium voraus (einschreibung)"
     },
     {
       "title": "Pflichtpraktikum Human Resources & Employer Branding (m/w/d)",
@@ -96,7 +104,9 @@
       ],
       "target_group": "pflichtpraktikum",
       "evidence": "Dieses Praktikum ist ein unvergütetes Pflichtpraktikum. Es richtet sich an Studierende, die ein Pflichtpraktikum absolvieren",
-      "found_via": "startupsucht"
+      "found_via": "startupsucht",
+      "eligibility": "nur_studierende",
+      "eligibility_reason": "Anzeige setzt ein Studium voraus (studierende)"
     },
     {
       "title": "Founder's Associate | VC-backed startup | First commercial hire",
@@ -116,7 +126,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "As our Founder's Associate you will work closely with the founding team of AnyTax on the most mission-critical parts of scaling our venture-backed pre-seed startup.",
-      "found_via": "startupsucht"
+      "found_via": "startupsucht",
+      "eligibility": "unklar",
+      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
       "title": "Praktikum Social Media Marketing & Creation",
@@ -136,7 +148,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "Bei Scio Labs entwickeln wir Mobile Apps und setzen dabei vor allem auf revolutionaere AI-Features. In unserem Marketing Ansatz setzen wir ganz auf Social Media und short-form Videos um so organisch viral zu gehen.",
-      "found_via": "potsdam-transfer"
+      "found_via": "potsdam-transfer",
+      "eligibility": "unklar",
+      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
       "title": "Software Development Intern",
@@ -155,7 +169,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "As a Software Development Intern at Pandata, you will work hands-on with our in-house developed software product PandaOS",
-      "found_via": "potsdam-transfer"
+      "found_via": "potsdam-transfer",
+      "eligibility": "unklar",
+      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
       "title": "Praktikum im Produktmanagement (m/w/d)",
@@ -175,7 +191,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "Laufendes Studium oder abgeschlossene Ausbildung im Bereich BWL, Management, Wirtschaft, Informatik oder Vergleichbares",
-      "found_via": "potsdam-transfer"
+      "found_via": "potsdam-transfer",
+      "eligibility": "nur_studierende",
+      "eligibility_reason": "Anzeige setzt ein Studium voraus (laufendes studium)"
     },
     {
       "title": "Praktikum im Business Development (m/w/d)",
@@ -194,7 +212,9 @@
       ],
       "target_group": "unklar",
       "evidence": "Gestalte unser Wachstum aktiv mit – Du identifizierst und kontaktierst potenzielle Partnerunternehmen",
-      "found_via": "potsdam-transfer"
+      "found_via": "potsdam-transfer",
+      "eligibility": "unklar",
+      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
       "title": "Praktikum Operations mit Fokus Partner & Payments (m/w/d)",
@@ -213,7 +233,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "Du unterstuetzt das Partner & Payments Team im operativen Tagesgeschaeft rund um Kostenuebernahmen, Erstattungen und Pflegekassenprozesse",
-      "found_via": "potsdam-transfer"
+      "found_via": "potsdam-transfer",
+      "eligibility": "nur_studierende",
+      "eligibility_reason": "Anzeige setzt ein Studium voraus (studierende)"
     },
     {
       "title": "Growth Intern (w/m/d)",
@@ -232,7 +254,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "Du unterstuetzt beim Aufbau strategischer Partnerschaften mit Solarteuren",
-      "found_via": "potsdam-transfer"
+      "found_via": "potsdam-transfer",
+      "eligibility": "unklar",
+      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
       "title": "Praktikum Business Development",
@@ -251,7 +275,9 @@
       ],
       "target_group": "pflichtpraktikum",
       "evidence": "Studium in Technical Sales, BWL oder vergleichbar: Pflicht- oder Orientierungspraktikum",
-      "found_via": "potsdam-transfer"
+      "found_via": "potsdam-transfer",
+      "eligibility": "unklar",
+      "eligibility_reason": "Anzeige nennt beides (orientierungspraktikum und im studium)"
     },
     {
       "title": "Praktikum im Marketingmanagement / Marketing Management Intern - Winter 2026",
@@ -270,7 +296,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "Eigenstaendige Verantwortung fuer ein individuelles Marketingprojekt waehrend des Praktikums",
-      "found_via": "potsdam-transfer"
+      "found_via": "potsdam-transfer",
+      "eligibility": "unklar",
+      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
       "title": "GTM Intern",
@@ -290,7 +318,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "As GTM Intern, you build the foundation to close leading customers and make them successful with telli. You get complete ownership to build your own territory, learn how to engage with relevant customers across different channels and bring them into our sales process.",
-      "found_via": "berlin-ai-scaleups"
+      "found_via": "berlin-ai-scaleups",
+      "eligibility": "nur_studierende",
+      "eligibility_reason": "Anzeige setzt ein Studium voraus (im studium)"
     },
     {
       "title": "Praktikum Operations mit Fokus Partner & Payments (m/w/d) – German speaking – Berlin",
@@ -309,7 +339,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "Du unterstützt das Partner & Payments Team im operativen Tagesgeschäft rund um Kostenübernahmen, Erstattungen und Pflegekassenprozesse",
-      "found_via": "berlin-ai-scaleups"
+      "found_via": "berlin-ai-scaleups",
+      "eligibility": "unklar",
+      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
       "title": "Praktikum im Marketingmanagement / Marketing Management Intern — Winter 2026",
@@ -328,7 +360,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "Support the planning and execution of digital marketing campaigns",
-      "found_via": "berlin-ai-scaleups"
+      "found_via": "berlin-ai-scaleups",
+      "eligibility": "nur_studierende",
+      "eligibility_reason": "Anzeige setzt ein Studium voraus (laufendes studium)"
     },
     {
       "title": "Data Science Intern (f/m/x)",
@@ -347,7 +381,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "Develop and deploy lead scoring models to help sales teams prioritize high-value opportunities",
-      "found_via": "berlin-ai-scaleups"
+      "found_via": "berlin-ai-scaleups",
+      "eligibility": "nur_studierende",
+      "eligibility_reason": "Anzeige setzt ein Studium voraus (einschreibung)"
     },
     {
       "title": "Founders Associate Intern – Strategy & Finance (m/w/d)",
@@ -366,7 +402,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "Du unterstützt unseren COO Cedric bei Finance-Themen, administrativen & strategischen Aufgaben sowie bei der Weiterentwicklung von Prozessen seines Energy Operations Team.",
-      "found_via": "berlin-ai-scaleups"
+      "found_via": "berlin-ai-scaleups",
+      "eligibility": "nur_studierende",
+      "eligibility_reason": "Anzeige setzt ein Studium voraus (masterstudium)"
     },
     {
       "title": "Operations Management Intern – Germany (AI x Greentech) (m/f/d)",
@@ -386,7 +424,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "Please note that for this role, C2 German proficiency is required. This is a full-time, on-site position based in Berlin. [...] Ideally start in September. [...] Available for at least 5 month internship in our Berlin office. [...] Receive competitive pay.",
-      "found_via": "boards-greenhouse-join"
+      "found_via": "boards-greenhouse-join",
+      "eligibility": "unklar",
+      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
       "title": "Software Engineering Intern (AI x Greentech) (m/f/d)",
@@ -405,7 +445,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "This is a full-time, on-site internship based in Berlin. [...] Develop product features across our React, TypeScript, and Node.js stack [...] Competitive internship compensation [...] we're a full in-person team (5 days/week) in a beautiful Berlin office near Hackescher Markt.",
-      "found_via": "boards-greenhouse-join"
+      "found_via": "boards-greenhouse-join",
+      "eligibility": "nur_studierende",
+      "eligibility_reason": "Anzeige setzt ein Studium voraus (studierende)"
     },
     {
       "title": "Strategy & Operations Intern - Ops Focus",
@@ -424,7 +466,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "You are available to work for 6 months, as a full-time intern (40h/week) [...] Assist in customer onboarding, conducting business reviews, and improving operational processes under the guidance of the Business Ops Manager. [...] This internship intends to equip you with the skills necessary for a successful full-time role at finmid, and we will extend job offers to return full-time for the best pe",
-      "found_via": "boards-greenhouse-join"
+      "found_via": "boards-greenhouse-join",
+      "eligibility": "nur_studierende",
+      "eligibility_reason": "Anzeige setzt ein Studium voraus (bachelor)"
     },
     {
       "title": "Data Science Intern (FT Potential)",
@@ -444,7 +488,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "We are looking for a Data Science Intern to join our Data team. This is an exciting opportunity for someone early in their career who is hungry to learn and build. [...] Write and optimize production SQL against our data warehouse to power analyses and model features [...] A degree (or pursuing one) in a quantitative or business-related field",
-      "found_via": "boards-greenhouse-join"
+      "found_via": "boards-greenhouse-join",
+      "eligibility": "nur_studierende",
+      "eligibility_reason": "Anzeige setzt ein Studium voraus (im studium)"
     },
     {
       "title": "AI Marketing Strategist Intern – Berlin (German Speaking)",
@@ -464,7 +510,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "We're seeking a highly skilled and proactive Intern to join our team full-time, on-site in Berlin for at least three months.",
-      "found_via": "boards-greenhouse-join"
+      "found_via": "boards-greenhouse-join",
+      "eligibility": "nur_studierende",
+      "eligibility_reason": "Anzeige setzt ein Studium voraus (bachelor)"
     },
     {
       "title": "Founders Associate Praktikum (w/m/d)",
@@ -483,7 +531,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "Für das Konzipieren, Testen und Skalieren dieser neuen Angebote suchen wir ab Oktober 2026 eine:n Founders Associate Praktikant:in für 4-6 Monate.",
-      "found_via": "boards-greenhouse-join"
+      "found_via": "boards-greenhouse-join",
+      "eligibility": "unklar",
+      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
       "title": "Praktikum im Business Development (m/w/d) - Berlin",
@@ -502,7 +552,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "Netzwerkaufbau im Handwerk – Du identifizierst neue potenzielle Partnerbetriebe, nimmst Kontakt auf und hilfst uns, unser Netzwerk auszubauen.",
-      "found_via": "boards-greenhouse-join"
+      "found_via": "boards-greenhouse-join",
+      "eligibility": "unklar",
+      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
       "title": "Praktikum softwarenahe Technik",
@@ -521,7 +573,9 @@
       ],
       "target_group": "schuelerpraktikum",
       "evidence": "Du hast dich intensiv mit Linux/Raspberry Pi's/Python beschäftigt und kannst programmiertechnische Lösung entwickeln? ... Im Bereich Software sind erste Erfahrungen und eine Dauer von mindestens 4 Wochen Voraussetzung.",
-      "found_via": "schuelerpraktikum-explizit"
+      "found_via": "schuelerpraktikum-explizit",
+      "eligibility": "offen",
+      "eligibility_reason": "als Schülerpraktikum ausgeschrieben"
     },
     {
       "title": "Praktikum im Bereich Technik",
@@ -540,7 +594,9 @@
       ],
       "target_group": "schuelerpraktikum",
       "evidence": "Du hast ein gutes physikalisches Verständnis, bist technikaffin und magst Elektronik? ... Du wirst direkt ins Team eingebunden und darfst selbst Hand anlegen. Du bekommst echte Aufgaben, die dem deZem Team und auch unseren Kunden helfen.",
-      "found_via": "schuelerpraktikum-explizit"
+      "found_via": "schuelerpraktikum-explizit",
+      "eligibility": "offen",
+      "eligibility_reason": "als Schülerpraktikum ausgeschrieben"
     },
     {
       "title": "Schulpraktikum / Orientierungspraktikum (m/w/d)",
@@ -559,7 +615,9 @@
       ],
       "target_group": "schuelerpraktikum",
       "evidence": "In deinem Praktikum erhältst du Einblicke in unser Tagesgeschäft und hast die Möglichkeit dich aktiv mit einzubringen. ... Audit & Assurance, Tax & Legal, Sekretariat oder National Office - People",
-      "found_via": "schuelerpraktikum-explizit"
+      "found_via": "schuelerpraktikum-explizit",
+      "eligibility": "offen",
+      "eligibility_reason": "als Schülerpraktikum ausgeschrieben"
     },
     {
       "title": "Schülerpraktikum - Berlin - Technisch - individueller Zeitraum 2027 (w/m/d)",
@@ -578,7 +636,9 @@
       ],
       "target_group": "schuelerpraktikum",
       "evidence": "In deinem Schülerpraktikum schnupperst du in technische Bereiche hinein und erlebst hautnah, wie an einem der traditionsreichsten Siemens-Standorte moderne Schienenfahrzeuge und Bahntechnik entstehen. ... Den Zeitraum deines Praktikums bestimmen wir gemeinsam mit dir.",
-      "found_via": "schuelerpraktikum-explizit"
+      "found_via": "schuelerpraktikum-explizit",
+      "eligibility": "offen",
+      "eligibility_reason": "als Schülerpraktikum ausgeschrieben"
     },
     {
       "title": "Schüler- oder Orientierungspraktikum kaufmännisch (m/w/d)",
@@ -597,7 +657,9 @@
       ],
       "target_group": "schuelerpraktikum",
       "evidence": "Du bist auf der Suche nach einem Schüler- oder Orientierungspraktikum und willst wissen, wie die Ausbildung und der Berufsalltag von Kaufleuten für Groß- und Außenhandelsmanagement aussieht?",
-      "found_via": "schuelerpraktikum-explizit"
+      "found_via": "schuelerpraktikum-explizit",
+      "eligibility": "offen",
+      "eligibility_reason": "als Schülerpraktikum ausgeschrieben"
     },
     {
       "title": "Lerne die Welt des Großhandels kennen – Büroarbeit, Online-Shop und mehr!",
@@ -616,7 +678,9 @@
       ],
       "target_group": "schuelerpraktikum",
       "evidence": "Wir sind Laynel, ein Großhändler für Friseurbedarf, der Salons, Barber und Endkunden über mehrere Online-Shops beliefert.",
-      "found_via": "schuelerpraktikum-explizit"
+      "found_via": "schuelerpraktikum-explizit",
+      "eligibility": "offen",
+      "eligibility_reason": "als Schülerpraktikum ausgeschrieben"
     },
     {
       "title": "Praktikum in der Energiewirtschaft: Fokus Technik",
@@ -636,7 +700,9 @@
       ],
       "target_group": "schuelerpraktikum",
       "evidence": "Um diesen Fragen auf den Grund zu gehen, haben Schülerinnen und Schüler die Möglichkeit, das in der 9. oder 10. Klasse (Realschule und Gymnasium) vorgesehene Betriebspraktikum bei uns zu absolvieren.",
-      "found_via": "schuelerpraktikum-explizit"
+      "found_via": "schuelerpraktikum-explizit",
+      "eligibility": "offen",
+      "eligibility_reason": "als Schülerpraktikum ausgeschrieben"
     },
     {
       "title": "Chief of Staff to Head of People Internship (m/f/d)",
@@ -655,7 +721,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "Du übernimmst gesamte Bewerbungsprozesse. Du suchst Kandidaten, erstellst Scorecards, führst Gespräche und stimmst dich eng mit unseren Teams ab.",
-      "found_via": "wirtschaft-business"
+      "found_via": "wirtschaft-business",
+      "eligibility": "unklar",
+      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
       "title": "Founder’s Associate | VC-backed startup | First commercial hire (m/w/d)",
@@ -675,7 +743,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "As our Founder's Associate you will work closely with the founding team of AnyTax on the most mission-critical parts of scaling our venture-backed pre-seed startup. Expect an extreme learning curve, high responsibility and ownership on projects across the entire company.",
-      "found_via": "wirtschaft-business"
+      "found_via": "wirtschaft-business",
+      "eligibility": "unklar",
+      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
       "title": "Investment Intern (m/f/d)",
@@ -695,7 +765,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "Curiosity that goes beyond the surface: you tend to go deeper than required, ask the question behind the question, and form your own point of view.",
-      "found_via": "wirtschaft-business"
+      "found_via": "wirtschaft-business",
+      "eligibility": "nur_studierende",
+      "eligibility_reason": "Anzeige setzt ein Studium voraus (bachelor)"
     },
     {
       "title": "Praktikumswoche Berlin - Praktikumstage im Herbst",
@@ -715,7 +787,9 @@
       ],
       "target_group": "schuelerpraktikum",
       "evidence": "Gibt es ein Mindestalter für die Praktikumswoche? Ja, du musst mindestens 15 Jahre alt sein. Die freiwilligen Praktika in den Ferien gelten als Beschäftigung. Durch die Kinderarbeitsschutzverordnung § 2 ist es erst ab 15 Jahren möglich bei der Praktikumswoche teilzunehmen.",
-      "found_via": "wirtschaft-business"
+      "found_via": "wirtschaft-business",
+      "eligibility": "offen",
+      "eligibility_reason": "als Schülerpraktikum ausgeschrieben"
     },
     {
       "title": "Informatikpraktikum E-Commerce (Shopware) in einem Berliner Fachverlag (Front/Backend)",
@@ -734,7 +808,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "umfassenden Einblick in einen modernen Webshop und sein Software-Framework",
-      "found_via": "ihk-brandenburg"
+      "found_via": "ihk-brandenburg",
+      "eligibility": "offen",
+      "eligibility_reason": "Anzeige spricht Schüler an (orientierungspraktikum)"
     },
     {
       "title": "Praktikum AI Content Creation – neues Produkt",
@@ -754,7 +830,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "Erstellung und Optimierung von Produktinhalten mittels KI-Tools (Text, Bild, eventuell Video)",
-      "found_via": "ihk-brandenburg"
+      "found_via": "ihk-brandenburg",
+      "eligibility": "nur_studierende",
+      "eligibility_reason": "Anzeige setzt ein Studium voraus (im studium)"
     },
     {
       "title": "Praktikum Founder's Associate (m/w/d) - neues Produkt",
@@ -774,7 +852,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "Du übernimmst Verantwortung für die wichtigsten strategischen und operativen Initiativen",
-      "found_via": "ihk-brandenburg"
+      "found_via": "ihk-brandenburg",
+      "eligibility": "unklar",
+      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
       "title": "Praktikum Marketing & Kooperationen (m/w/d)",
@@ -793,7 +873,9 @@
       ],
       "target_group": "pflichtpraktikum",
       "evidence": "Als eingeschriebene_r Student_in bist du auf der Suche nach einem Pflichtpraktikum (mindestens 3 Monate)",
-      "found_via": "ihk-brandenburg"
+      "found_via": "ihk-brandenburg",
+      "eligibility": "nur_studierende",
+      "eligibility_reason": "Anzeige setzt ein Studium voraus (studierende)"
     },
     {
       "title": "Praktikum Key Account Management (f/m/d)",
@@ -812,7 +894,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "Du wirst an der Entwicklung und Umsetzung von Strategien zur effektiven Gewinnung von potenziellen Kunden mitarbeiten",
-      "found_via": "ihk-brandenburg"
+      "found_via": "ihk-brandenburg",
+      "eligibility": "nur_studierende",
+      "eligibility_reason": "Anzeige setzt ein Studium voraus (im studium)"
     },
     {
       "title": "Praktikum für Studierende der IT (m/w/d)",
@@ -831,7 +915,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "Setze dein theoretisches Wissen bei spannenden Digitalisierungsprojekten, in der IT-Administration oder im technischen Support ein.",
-      "found_via": "ihk-brandenburg"
+      "found_via": "ihk-brandenburg",
+      "eligibility": "nur_studierende",
+      "eligibility_reason": "Anzeige setzt ein Studium voraus (studierende)"
     },
     {
       "title": "Praktikant Marketing",
@@ -850,7 +936,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "Betreuung und Pflege unserer Social Media Kanäle (Instagram, Facebook, LinkedIn)",
-      "found_via": "ihk-brandenburg"
+      "found_via": "ihk-brandenburg",
+      "eligibility": "nur_studierende",
+      "eligibility_reason": "Anzeige setzt ein Studium voraus (im studium)"
     },
     {
       "title": "Growth & Sales Intern (f/m/d) (METEORIC)",
@@ -870,7 +958,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "Start date: ASAP / Location: Berlin (AI Campus) with hybrid flexibility / Duration: 6+ months / Compensation: Competitive internship salary",
-      "found_via": "hpi-umfeld"
+      "found_via": "hpi-umfeld",
+      "eligibility": "unklar",
+      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
       "title": "Visiting Analyst: AI Automations & Content (@Merantix Capital)",
@@ -890,7 +980,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "You're available for at least 3 months, ideally 6, onsite in Berlin",
-      "found_via": "hpi-umfeld"
+      "found_via": "hpi-umfeld",
+      "eligibility": "unklar",
+      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
       "title": "Product Engineering Intern",
@@ -909,7 +1001,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "This is an unpaid internship.",
-      "found_via": "hpi-umfeld"
+      "found_via": "hpi-umfeld",
+      "eligibility": "unklar",
+      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
       "title": "Praktikum Backend Developer (m/w/d) - Schwerpunkt Python / Azure",
@@ -928,7 +1022,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "Standort: Remote oder Berlin / Dauer: 3-6 Monate",
-      "found_via": "hpi-umfeld"
+      "found_via": "hpi-umfeld",
+      "eligibility": "unklar",
+      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
       "title": "Praktikum Softwareentwicklung (m/w/d)",
@@ -947,7 +1043,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "Wir suchen motivierte Praktikantinnen und Praktikanten, die Spaß und Interesse am Programmieren haben.",
-      "found_via": "hpi-umfeld"
+      "found_via": "hpi-umfeld",
+      "eligibility": "nur_studierende",
+      "eligibility_reason": "Anzeige setzt ein Studium voraus (im studium)"
     },
     {
       "title": "Pflichtpraktikum Technical Sales & Business Development (m/w/d) - Medizintechnik & 3D-Druck",
@@ -966,7 +1064,9 @@
       ],
       "target_group": "pflichtpraktikum",
       "evidence": "Zur Verstärkung unseres Teams suchen wir engagierte Praktikant*innen im Bereich Technical Sales & Business Development",
-      "found_via": "hpi-umfeld"
+      "found_via": "hpi-umfeld",
+      "eligibility": "nur_studierende",
+      "eligibility_reason": "Anzeige setzt ein Studium voraus (einschreibung)"
     },
     {
       "title": "NEU Pflichtpraktikum Human Resources & Employer Branding (m/w/d) - Recruiting, Kommunikation & Startup-Kultur",
@@ -985,7 +1085,9 @@
       ],
       "target_group": "pflichtpraktikum",
       "evidence": "Damit unser Team weiter wächst, suchen wir dich als Praktikant*in im Bereich Human Resources & Employer Branding",
-      "found_via": "hpi-umfeld"
+      "found_via": "hpi-umfeld",
+      "eligibility": "nur_studierende",
+      "eligibility_reason": "Anzeige setzt ein Studium voraus (einschreibung)"
     },
     {
       "title": "UI/UX Design Intern (m/w/d) - Pflichtpraktikum",
@@ -1004,7 +1106,9 @@
       ],
       "target_group": "pflichtpraktikum",
       "evidence": "You work AI-first: prototype with AI tools, refine in Figma, ship within weeks.",
-      "found_via": "linkedin-xing-stepstone"
+      "found_via": "linkedin-xing-stepstone",
+      "eligibility": "unklar",
+      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
       "title": "Fund Team Intern - Finance & AI Process Automation (f/m/d)",
@@ -1024,7 +1128,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "identify where AI tools, automation, and modern fintech can make our workflows smarter, faster, and more robust",
-      "found_via": "linkedin-xing-stepstone"
+      "found_via": "linkedin-xing-stepstone",
+      "eligibility": "unklar",
+      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
       "title": "Pflichtpraktikum Fullstack Engineer (m/w/d)",
@@ -1043,7 +1149,9 @@
       ],
       "target_group": "pflichtpraktikum",
       "evidence": "Entwicklung und Pflege moderner Web-Frontends und Backend-Dienste/APIs",
-      "found_via": "linkedin-xing-stepstone"
+      "found_via": "linkedin-xing-stepstone",
+      "eligibility": "nur_studierende",
+      "eligibility_reason": "Anzeige setzt ein Studium voraus (laufendes studium)"
     },
     {
       "title": "Founders Associate - Internship (m/w/d)",
@@ -1062,7 +1170,9 @@
       ],
       "target_group": "pflichtpraktikum",
       "evidence": "Als Founder Associate Pflichtpraktikant*in (m/w/d) arbeitest du jeden Tag direkt mit dem Chief Operating Officer zusammen.",
-      "found_via": "linkedin-xing-stepstone"
+      "found_via": "linkedin-xing-stepstone",
+      "eligibility": "nur_studierende",
+      "eligibility_reason": "Anzeige setzt ein Studium voraus (pflichtpraktikum im rahmen des studiums)"
     },
     {
       "title": "Intern - Founders Associate (f/m/d) Fintech Startup (Serial Entrepreneurs) - Starting in September 2026",
@@ -1081,7 +1191,9 @@
       ],
       "target_group": "allgemeines_praktikum",
       "evidence": "Research market trends, analyze competitors, and help identify new business opportunities in the FinTech space",
-      "found_via": "linkedin-xing-stepstone"
+      "found_via": "linkedin-xing-stepstone",
+      "eligibility": "unklar",
+      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     },
     {
       "title": "Pflichtpraktikant Business Development (m/w/d)",
@@ -1101,7 +1213,9 @@
       ],
       "target_group": "pflichtpraktikum",
       "evidence": "Du entwickelst automatisierte Workflows zur Unterstützung von Vertrieb und Business Development (z. B. CRM-Prozesse, Lead-Routing, Reporting, Follow-up-Automatisierungen).",
-      "found_via": "linkedin-xing-stepstone"
+      "found_via": "linkedin-xing-stepstone",
+      "eligibility": "unklar",
+      "eligibility_reason": "Anzeige sagt nichts über die Voraussetzungen"
     }
   ]
 }

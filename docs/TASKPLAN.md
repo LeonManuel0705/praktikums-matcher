@@ -52,9 +52,21 @@ Stand: 2026-09-02
 ### F. Abschluss
 - [x] F1 Grundstock aus der laufenden Recherche einspielen
 - [x] F2 Ein Startbefehl für Backend und Frontend
-- [ ] F3 End-to-End im Browser durchklicken
-- [ ] F4 Adversarialer Code-Review und Design-Kritik
+- [x] F3 End-to-End im Browser durchklicken
+- [x] F4 Adversarialer Code-Review und Design-Kritik
 - [x] F5 README mit Kosten- und Grenzen-Hinweis
+
+## Nach dem Review
+- [x] G1 25 Befunde aus 5 Prüfdimensionen, 19 nach Gegenprüfung bestätigt, siehe [REVIEW.md](REVIEW.md)
+- [x] G2 13 schwerwiegende und 9 mittlere Befunde behoben, 12 Regressionstests dazu
+- [x] G3 LLM-Feinschliff für den Freitext nachgereicht, bewertet alle Treffer in parallelen Stapeln
+
+## Zugänglichkeit, auf Zuruf ergänzt
+- [x] H1 Prüfung, wer sich bewerben darf: offen, nur_studierende, unklar
+- [x] H2 Suchagenten melden Angebote mit Studienpflicht gar nicht erst
+- [x] H3 Filter in der Ergebnisliste, Standard blendet Studienpflicht aus
+- [x] H4 11 Tests für die Einstufung
+- [x] H5 Zweite Recherche gezielt nach zugänglichen Angeboten
 
 ## Zusätzlich gebaut, nicht ursprünglich geplant
 - [x] Grundstock als Vorwelle: 54 geprüfte Angebote sind sofort bewertet, die Liste ist nie leer

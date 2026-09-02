@@ -76,6 +76,7 @@ def parse_window(*hints: str) -> Window:
             explicit.append(found)
 
     month_granular = False
+    month_tokens: list[date] = []
     if not explicit:
         years = [(m.start(), int(m.group(1))) for m in YEAR_RE.finditer(text)]
         for match in WORD_RE.finditer(text):
@@ -101,8 +102,13 @@ def parse_window(*hints: str) -> Window:
             else:
                 found = _safe_date(year, month, 1)
                 if found:
-                    explicit.append(found)
+                    month_tokens.append(found)
                     month_granular = True
+
+    for index in range(len(month_tokens) - 2, -1, -1):
+        while month_tokens[index] >= month_tokens[index + 1]:
+            month_tokens[index] = month_tokens[index].replace(year=month_tokens[index].year - 1)
+    explicit.extend(month_tokens)
 
     duration = DURATION_RE.search(text)
     if duration:
@@ -141,8 +147,6 @@ def overlap_ratio(desired_start: date, desired_end: date, window: Window, horizo
 
     start = window.start or desired_start
     end = window.end or (start + timedelta(days=window.duration_days or horizon_days))
-    if window.month_granular and end < desired_end:
-        end = max(end, min(desired_end, start + timedelta(days=horizon_days)))
     if end < start:
         start, end = end, start
 

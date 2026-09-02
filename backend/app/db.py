@@ -74,6 +74,8 @@ CREATE TABLE IF NOT EXISTS offers (
     duration_hint TEXT,
     categories TEXT NOT NULL,
     target_group TEXT,
+    eligibility TEXT NOT NULL DEFAULT 'unklar',
+    eligibility_reason TEXT,
     evidence TEXT,
     created_at TEXT NOT NULL
 );
@@ -118,6 +120,13 @@ def session():
 def init_db() -> None:
     with session() as conn:
         conn.executescript(SCHEMA)
+        existing = {row["name"] for row in conn.execute("PRAGMA table_info(offers)")}
+        for column, definition in (
+            ("eligibility", "TEXT NOT NULL DEFAULT 'unklar'"),
+            ("eligibility_reason", "TEXT"),
+        ):
+            if column not in existing:
+                conn.execute(f"ALTER TABLE offers ADD COLUMN {column} {definition}")
 
 
 def row_to_offer(row: sqlite3.Row) -> dict:

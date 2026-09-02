@@ -49,6 +49,8 @@ export interface Offer {
   duration_hint: string | null
   categories: Interest[]
   target_group: string | null
+  eligibility: "offen" | "nur_studierende" | "unklar"
+  eligibility_reason: string | null
   evidence: string | null
   origin: string
   score: number
@@ -77,6 +79,11 @@ export interface Anchor {
   inside: boolean
   dx: number
   dy: number
+}
+
+export interface RerankResult {
+  reranked: number
+  note: string
 }
 
 export interface ProviderInfo {

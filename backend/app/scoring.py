@@ -39,17 +39,20 @@ CATEGORY_KEYWORDS = {
     "ai_tech": [
         "ai", "ki", "machine learning", "ml", "llm", "data", "daten", "software", "engineer", "engineering",
         "developer", "entwickl", "python", "backend", "frontend", "fullstack", "devops", "cloud", "robot",
-        "computer vision", "nlp", "informatik", "tech", "it ", "coding", "programmier", "deep learning",
+        "computer vision", "nlp", "informatik", "tech", "it", "coding", "deep learning",
     ],
     "business": [
         "marketing", "sales", "vertrieb", "business development", "bizdev", "finance", "finanzen", "controlling",
         "operations", "strategy", "strategie", "consulting", "product management", "produktmanagement",
-        "human resources", "hr ", "personal", "recruiting", "venture", "investment", "wirtschaft", "growth",
+        "human resources", "hr", "personal", "recruiting", "venture", "investment", "wirtschaft", "growth",
         "communications", "kommunikation", "content", "brand",
     ],
 }
 
 CATEGORY_LABELS = {"ai_tech": "KI/Tech", "business": "Wirtschaft"}
+
+INSIDE_FALLOFF = 0.15
+OUTSIDE_REACH = 1.5
 
 
 @dataclass
@@ -106,9 +109,16 @@ def expand_keyword(keyword: str) -> list[str]:
     return SYNONYMS.get(keyword, [keyword])
 
 
+def _contains_term(haystack: str, term: str) -> bool:
+    cleaned = normalize(term)
+    if not cleaned:
+        return False
+    return re.search(rf"(?<![a-z0-9]){re.escape(cleaned)}(?![a-z0-9])", haystack) is not None
+
+
 def infer_categories(offer: dict) -> list[str]:
     haystack = normalize(f"{offer.get('title', '')} {offer.get('description', '')}")
-    found = [key for key, words in CATEGORY_KEYWORDS.items() if any(normalize(w) in haystack for w in words)]
+    found = [key for key, words in CATEGORY_KEYWORDS.items() if any(_contains_term(haystack, w) for w in words)]
     return found or ["ai_tech", "business"]
 
 
@@ -127,7 +137,7 @@ def score_interest(profile: dict, offer: dict) -> tuple[Criterion, list[str]]:
 
     haystack = normalize(f"{offer.get('title', '')} {offer.get('description', '')} {offer.get('company', '')}")
     keywords = extract_keywords(profile.get("free_text", ""))
-    matched = [kw for kw in keywords if any(normalize(v) in haystack for v in expand_keyword(kw))]
+    matched = [kw for kw in keywords if any(_contains_term(haystack, v) for v in expand_keyword(kw))]
 
     bonus = 0.0
     if keywords:
@@ -159,11 +169,11 @@ def score_location(profile: dict, offer: dict) -> Criterion:
 
     rounded = round(distance)
     if distance <= radius:
-        score = 1.0 if radius <= 1 else max(0.85, 1.0 - 0.15 * (distance / radius))
+        score = 1.0 - INSIDE_FALLOFF * (distance / radius)
         return Criterion("location", "Ort", weight, score, f"{rounded} km, liegt in deinem Umkreis")
 
-    overshoot = (distance - radius) / (radius * 1.5)
-    score = max(0.0, 1.0 - overshoot)
+    overshoot = (distance - radius) / (radius * OUTSIDE_REACH)
+    score = (1.0 - INSIDE_FALLOFF) * max(0.0, 1.0 - overshoot)
     return Criterion("location", "Ort", weight, score, f"{rounded} km, {round(distance - radius)} km über deinem Umkreis")
 
 
@@ -198,7 +208,6 @@ def score_timeframe(profile: dict, offer: dict) -> Criterion:
         offer.get("start_date_hint", ""),
         offer.get("end_date_hint", ""),
         offer.get("duration_hint", ""),
-        offer.get("description", ""),
     )
     ratio, reason = overlap_ratio(date.fromisoformat(start), date.fromisoformat(end), window)
     return Criterion("timeframe", "Zeitraum", weight, ratio, reason)

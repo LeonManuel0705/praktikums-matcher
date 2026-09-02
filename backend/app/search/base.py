@@ -7,6 +7,7 @@ from urllib.parse import urlparse
 ALLOWED_COMPENSATION = {"paid", "unpaid", "unknown"}
 ALLOWED_CATEGORIES = {"ai_tech", "business"}
 ALLOWED_TARGET_GROUPS = {"schuelerpraktikum", "pflichtpraktikum", "allgemeines_praktikum", "unklar"}
+ALLOWED_ELIGIBILITY = {"offen", "nur_studierende", "unklar"}
 
 
 @dataclass
@@ -39,6 +40,23 @@ def valid_url(value: str) -> bool:
     return parsed.scheme in {"http", "https"} and bool(parsed.netloc)
 
 
+TRACKING_PARAMS = {"utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid", "fbclid", "ref", "source"}
+
+
+def canonical_url(url: str) -> str:
+    try:
+        parsed = urlparse(url)
+    except ValueError:
+        return url
+    query = "&".join(
+        part for part in parsed.query.split("&")
+        if part and part.split("=")[0].lower() not in TRACKING_PARAMS
+    )
+    host = parsed.netloc.lower().removeprefix("www.")
+    path = parsed.path.rstrip("/") or "/"
+    return f"{parsed.scheme}://{host}{path}" + (f"?{query}" if query else "")
+
+
 def normalize_offer(raw: dict) -> dict | None:
     if not isinstance(raw, dict):
         return None
@@ -67,6 +85,8 @@ def normalize_offer(raw: dict) -> dict | None:
         "duration_hint": clean_text(raw.get("duration_hint"), 120),
         "categories": categories,
         "target_group": target_group if target_group in ALLOWED_TARGET_GROUPS else "unklar",
+        "eligibility": (str(raw.get("eligibility") or "").lower()
+                        if str(raw.get("eligibility") or "").lower() in ALLOWED_ELIGIBILITY else ""),
         "evidence": clean_text(raw.get("evidence"), 400),
     }
 

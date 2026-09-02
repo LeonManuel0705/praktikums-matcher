@@ -1,4 +1,5 @@
 import json
+import sqlite3
 from contextlib import asynccontextmanager
 from datetime import date
 from pathlib import Path
@@ -13,6 +14,7 @@ from .db import init_db, now, row_to_offer, session
 from .auth import create_session, destroy_session, hash_password, is_valid_email, resolve_session, verify_password
 from .jobs import add_event, cancel_search, start_search
 from .geo import GAZETTEER, geocode, haversine_km
+from .rerank import available as rerank_available, rerank_search
 from .scoring import score_offer
 from .search.registry import provider_status
 
@@ -135,11 +137,14 @@ def register(payload: RegisterInput, response: Response):
         existing = conn.execute("SELECT id FROM users WHERE email = ?", (email,)).fetchone()
         if existing:
             raise HTTPException(status_code=409, detail="Für diese E-Mail gibt es schon ein Konto")
-        cursor = conn.execute(
-            """INSERT INTO users (email, password_hash, password_salt, name, school, grade_level, created_at)
-               VALUES (?, ?, ?, ?, ?, ?, ?)""",
-            (email, password_hash, salt, payload.name.strip(), payload.school, payload.grade_level, now()),
-        )
+        try:
+            cursor = conn.execute(
+                """INSERT INTO users (email, password_hash, password_salt, name, school, grade_level, created_at)
+                   VALUES (?, ?, ?, ?, ?, ?, ?)""",
+                (email, password_hash, salt, payload.name.strip(), payload.school, payload.grade_level, now()),
+            )
+        except sqlite3.IntegrityError as exc:
+            raise HTTPException(status_code=409, detail="Für diese E-Mail gibt es schon ein Konto") from exc
         user_id = int(cursor.lastrowid)
 
     set_session_cookie(response, create_session(user_id))
@@ -225,21 +230,27 @@ def geo_preview(location: str, radius_km: int = 30):
 
 @app.get("/api/providers")
 def providers():
-    return {"providers": provider_status(), "weights": WEIGHTS}
+    return {"providers": provider_status(), "weights": WEIGHTS, "rerank_available": rerank_available()}
 
 
 @app.put("/api/weights")
-def put_weights(payload: dict = Body(...)):
-    total = 0.0
+def put_weights(payload: dict = Body(...), user: dict = Depends(current_user)):
+    candidate = dict(WEIGHTS)
     for key in WEIGHTS:
-        if key in payload:
+        if key not in payload:
+            continue
+        try:
             value = float(payload[key])
-            if value < 0:
-                raise HTTPException(status_code=400, detail="Gewichte dürfen nicht negativ sein")
-            WEIGHTS[key] = value
-        total += WEIGHTS[key]
-    if total <= 0:
+        except (TypeError, ValueError) as exc:
+            raise HTTPException(status_code=400, detail=f"„{key}“ ist keine Zahl") from exc
+        if value < 0 or value != value or value in (float("inf"), float("-inf")):
+            raise HTTPException(status_code=400, detail="Gewichte müssen Zahlen ab null sein")
+        candidate[key] = value
+
+    if sum(candidate.values()) <= 0:
         raise HTTPException(status_code=400, detail="Mindestens ein Gewicht muss größer als null sein")
+
+    WEIGHTS.update(candidate)
     return WEIGHTS
 
 
@@ -317,9 +328,9 @@ async def post_cancel(search_id: int, user: dict = Depends(current_user)):
 
 
 @app.post("/api/searches/{search_id}/rescore")
-def post_rescore(search_id: int, user: dict = Depends(current_user)):
-    owned_search(search_id, int(user["id"]))
-    profile = load_profile(int(user["id"]))
+def post_rescore(search_id: int, use_current_profile: bool = False, user: dict = Depends(current_user)):
+    search = owned_search(search_id, int(user["id"]))
+    profile = load_profile(int(user["id"])) if use_current_profile else json.loads(search["profile_snapshot"])
     if not profile:
         raise HTTPException(status_code=400, detail="Kein Profil vorhanden")
 
@@ -337,6 +348,18 @@ def post_rescore(search_id: int, user: dict = Depends(current_user)):
                 (result.score, json.dumps(result.to_dict(), ensure_ascii=False), row["match_id"]),
             )
     return {"rescored": len(rows)}
+
+
+@app.post("/api/searches/{search_id}/rerank")
+async def post_rerank(search_id: int, user: dict = Depends(current_user)):
+    owned_search(search_id, int(user["id"]))
+    profile = load_profile(int(user["id"]))
+    if not profile:
+        raise HTTPException(status_code=400, detail="Kein Profil vorhanden")
+    try:
+        return await rerank_search(search_id, profile)
+    except RuntimeError as exc:
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
 
 
 if FRONTEND_DIST.exists():

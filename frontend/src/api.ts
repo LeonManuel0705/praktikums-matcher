@@ -1,4 +1,4 @@
-import type { Anchor, Offer, Profile, ProviderInfo, SearchState, User } from "./types"
+import type { Anchor, Offer, Profile, ProviderInfo, RerankResult, SearchState, User } from "./types"
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const response = await fetch(path, {
@@ -30,7 +30,9 @@ export const api = {
   saveProfile: (profile: Profile) =>
     request<Profile>("/api/profile", { method: "PUT", body: JSON.stringify(profile) }),
   providers: () =>
-    request<{ providers: ProviderInfo[]; weights: Record<string, number> }>("/api/providers"),
+    request<{ providers: ProviderInfo[]; weights: Record<string, number>; rerank_available: boolean }>(
+      "/api/providers",
+    ),
   geoPreview: (location: string, radius: number) =>
     request<{ anchors: Anchor[] }>(
       `/api/geo/preview?location=${encodeURIComponent(location)}&radius_km=${radius}`,
@@ -47,6 +49,7 @@ export const api = {
   cancelSearch: (id: number) =>
     request<{ cancelled: boolean }>(`/api/searches/${id}/cancel`, { method: "POST" }),
   rescore: (id: number) => request<{ rescored: number }>(`/api/searches/${id}/rescore`, { method: "POST" }),
+  rerank: (id: number) => request<RerankResult>(`/api/searches/${id}/rerank`, { method: "POST" }),
 }
 
 export type { Offer }

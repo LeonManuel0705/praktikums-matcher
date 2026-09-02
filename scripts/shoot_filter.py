@@ -1,0 +1,20 @@
+from playwright.sync_api import sync_playwright
+
+with sync_playwright() as p:
+    b = p.chromium.launch(headless=True)
+    page = b.new_page(viewport={"width": 1440, "height": 980}, device_scale_factor=2)
+    page.goto("http://127.0.0.1:8001")
+    page.wait_for_load_state("networkidle")
+    page.get_by_role("button", name="Anmelden").first.click()
+    page.fill("#email", "klick@example.com")
+    page.fill("#password", "geheim12345")
+    page.get_by_role("button", name="Anmelden").last.click()
+    page.wait_for_selector(".card", timeout=15000)
+    page.wait_for_timeout(2000)
+    page.screenshot(path="/tmp/pm-shots/07-filter-an.png")
+    print("nur zugaenglich:", page.locator(".card").count())
+    page.get_by_role("button", name="Alle", exact=True).click()
+    page.wait_for_timeout(1200)
+    page.screenshot(path="/tmp/pm-shots/08-filter-aus.png")
+    print("alle:", page.locator(".card").count())
+    b.close()

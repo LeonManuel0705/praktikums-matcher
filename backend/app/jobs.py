@@ -4,8 +4,9 @@ import sqlite3
 from dataclasses import dataclass, field
 
 from .db import now, session
+from .eligibility import classify
 from .scoring import score_offer
-from .search.base import SearchContext
+from .search.base import SearchContext, canonical_url
 from .search.corpus import load_corpus
 from .search.registry import pick_provider
 
@@ -51,24 +52,27 @@ def store_offers(search_id: int, profile: dict, offers: list[dict], angle: str, 
     added: list[dict] = []
     with session() as conn:
         for offer in offers:
+            key = canonical_url(offer["url"])
             pair = (offer["company"].lower(), offer["title"].lower())
-            if offer["url"] in handle.seen_urls or pair in handle.seen_pairs:
+            if key in handle.seen_urls or pair in handle.seen_pairs:
                 continue
-            handle.seen_urls.add(offer["url"])
+            handle.seen_urls.add(key)
             handle.seen_pairs.add(pair)
+            eligibility, eligibility_reason = classify(offer)
+            offer = {**offer, "eligibility": eligibility, "eligibility_reason": eligibility_reason}
             try:
                 cursor = conn.execute(
                     """INSERT INTO offers
                        (search_id, origin, title, company, city, compensation_kind, compensation_text,
                         description, url, source, start_date_hint, end_date_hint, duration_hint,
-                        categories, target_group, evidence, created_at)
-                       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                        categories, target_group, eligibility, eligibility_reason, evidence, created_at)
+                       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
                     (
                         search_id, angle, offer["title"], offer["company"], offer["city"],
                         offer["compensation_kind"], offer["compensation_text"], offer["description"],
                         offer["url"], offer["source"], offer["start_date_hint"], offer["end_date_hint"],
                         offer["duration_hint"], json.dumps(offer["categories"]), offer["target_group"],
-                        offer["evidence"], now(),
+                        eligibility, eligibility_reason, offer["evidence"], now(),
                     ),
                 )
             except sqlite3.IntegrityError:

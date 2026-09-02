@@ -740,6 +740,17 @@ body {
   color: var(--ground);
 }
 
+.filter-toggle {
+  margin-bottom: 0;
+  width: auto;
+}
+
+.filter-toggle .tab {
+  padding: 6px 14px;
+  font-size: 12.5px;
+  white-space: nowrap;
+}
+
 .segmented {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
