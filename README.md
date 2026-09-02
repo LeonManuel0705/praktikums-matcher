@@ -1,0 +1,124 @@
+# Praktikums-Matcher
+
+Prototyp einer Web-App für Oberstufenschüler, die ein Praktikum im Bereich KI/Tech oder Wirtschaft bei
+Startups in Berlin und Potsdam suchen. Der Schüler legt ein Wunsch-Profil an, startet eine Suche, und ein
+Agent recherchiert in dem Moment live im Netz. Jeder Treffer bekommt einen Prozentwert, der offenlegt,
+wie er zustande kommt.
+
+## Starten
+
+```bash
+./scripts/run.sh
+```
+
+Danach http://127.0.0.1:8000 öffnen. Das Skript baut das Frontend beim ersten Start selbst.
+
+Für die Frontend-Entwicklung mit Hot Reload:
+
+```bash
+./.venv/bin/python -m uvicorn backend.app.main:app --port 8000   # Terminal 1
+cd frontend && npm run dev                                       # Terminal 2, http://localhost:5173
+```
+
+## Wie die Live-Suche funktioniert
+
+Beim Klick auf "Suche starten" passiert Folgendes:
+
+1. Der geprüfte Grundstock wird sofort gegen das Profil bewertet, damit die Liste nicht leer bleibt.
+2. Vier Suchwinkel starten parallel: Praktikumsbörsen, Karriereseiten von Startups, regionale und
+   öffentliche Börsen, sowie explizit ausgeschriebene Schülerpraktika.
+3. Jeder Winkel sucht und öffnet Seiten. Jede Suchanfrage und jeder Seitenabruf erscheint live im Protokoll.
+4. Sobald ein Angebot belegt ist, meldet der Agent es sofort einzeln. Es wird direkt bewertet und erscheint
+   in der Liste, noch während die Recherche weiterläuft.
+
+Jedes Angebot muss ein wörtliches Zitat von der abgerufenen Seite mitbringen. Angebote ohne Beleg oder ohne
+gültige URL werden verworfen. Das Zitat ist in der Oberfläche unter "Beleg" einsehbar.
+
+## Suchprovider
+
+Die App wählt automatisch den ersten verfügbaren Provider. `GET /api/providers` zeigt den Stand.
+
+| Provider | Braucht | Status |
+|---|---|---|
+| `anthropic_api` | `ANTHROPIC_API_KEY` | Anthropic-Websuche über `web_search_20260209`, ungetestet mangels Key |
+| `claude_cli` | Claude Code auf dem Rechner | Standard hier, nutzt die bestehende Anmeldung, kein Key nötig |
+| `tavily` | `TAVILY_API_KEY` und `ANTHROPIC_API_KEY` | Tavily sucht, Claude extrahiert, ungetestet mangels Key |
+| `corpus` | nichts | Offline-Rückfall auf den geprüften Grundstock |
+
+Erzwingen lässt sich einer über `PM_PROVIDER=corpus ./scripts/run.sh` oder pro Suche über den Request-Body.
+
+Weitere Umgebungsvariablen: `PM_CLAUDE_MODEL` (Standard `claude-sonnet-5`), `PM_CLAUDE_BINARY`,
+`PM_SEARCH_TIMEOUT`, `PM_DB_PATH`.
+
+### Aufwandsbudget
+
+Ohne Begrenzung hat ein einzelner Suchwinkel bis zu 43 Suchanfragen und 41 Seitenabrufe verbraucht und
+trotzdem nur ein bis zwei Angebote geliefert. Jeder Winkel bekommt deshalb ein Budget im Prompt, dazu eine
+harte Obergrenze im Code, die den Prozess beendet, falls er sich nicht daran hält. Gemessen hat das die
+Laufzeit einer Suche von über acht auf 2,7 Minuten gedrückt, bei gleicher Ausbeute.
+
+| Variable | Standard | Bedeutung |
+|---|---|---|
+| `PM_BUDGET_SEARCHES` | 6 | Suchanfragen pro Winkel, dem Agenten im Prompt vorgegeben |
+| `PM_BUDGET_FETCHES` | 10 | Seitenabrufe pro Winkel, dem Agenten im Prompt vorgegeben |
+| `PM_CAP_SEARCHES` | 12 | harte Obergrenze, danach wird der Winkel beendet |
+| `PM_CAP_FETCHES` | 18 | harte Obergrenze, danach wird der Winkel beendet |
+
+## Der Matching-Score
+
+Vier Kriterien, gewichtet wie im Konzept vorgegeben:
+
+| Kriterium | Gewicht | Wie gerechnet wird |
+|---|---|---|
+| Interesse | 40 % | Bereichsabgleich plus Treffer deiner Freitext-Stichworte in Titel und Beschreibung, mit Synonymen |
+| Ort | 25 % | Echte Luftlinie über Koordinaten. Innerhalb des Umkreises voll, darüber linear abfallend |
+| Vergütung | 15 % | Abgleich mit deinem Wunsch. Fehlende Angabe zählt neutral, nicht negativ |
+| Zeitraum | 20 % | Überlappung deines Wunschzeitraums mit dem Angebot, deutsche Datumsangaben werden geparst |
+
+Der Ring auf jeder Karte zeigt nicht nur den Gesamtwert: er besteht aus vier Bögen, deren Länge das Gewicht
+abbildet und deren Füllung den Teilscore. Man sieht also sofort, welches Kriterium einen Treffer runterzieht.
+
+Gewichte lassen sich zur Laufzeit ändern:
+
+```bash
+curl -X PUT localhost:8000/api/weights -H 'Content-Type: application/json' \
+     -d '{"interest":0.5,"location":0.3,"compensation":0.05,"timeframe":0.15}'
+curl -X POST localhost:8000/api/searches/1/rescore -b cookies.txt
+```
+
+## Aufbau
+
+```
+backend/app/
+  main.py         API und Auslieferung des Frontends
+  db.py           SQLite-Schema
+  auth.py         scrypt-Passwörter, Sessions als SHA-256-Token
+  geo.py          Ortsverzeichnis, Haversine, unscharfe Ortsauflösung
+  dateparse.py    deutsche Zeitraumangaben
+  scoring.py      Score mit Begründung je Kriterium
+  jobs.py         asynchrone Suchläufe mit Ereignisprotokoll
+  search/         Provider, Prompts, Normalisierung
+frontend/src/     React, eigenes Design-System, keine UI-Bibliothek
+tests/            46 Tests für Geo, Datum, Scoring, Normalisierung
+```
+
+## Tests
+
+```bash
+./.venv/bin/python -m pytest tests -q
+```
+
+## Grenzen dieses Prototyps
+
+- Der Grundstock in `backend/data/seed_offers.json` ist eine Momentaufnahme vom 2. September 2026.
+  Praktikumsanzeigen laufen ab, die Links können ins Leere führen.
+- Eine Live-Suche startet vier Agentenprozesse mit echter Websuche. Sie dauert rund drei Minuten und kostet
+  Guthaben auf dem Konto, mit dem Claude Code angemeldet ist.
+- Je voller der Grundstock, desto häufiger findet die Live-Suche etwas, das schon drinsteht. Das Protokoll
+  weist das als "waren schon bekannt" aus, statt es als neuen Treffer zu zählen.
+- Sessions liegen unverschlüsselt in SQLite, das Cookie ist nicht auf `secure` gesetzt. Für lokalen Betrieb
+  gedacht, nicht für ein öffentliches Deployment.
+- Die Gewichte gelten prozessweit, nicht pro Benutzer.
+- Das Ortsverzeichnis ist eine feste Liste. Orte, die darin fehlen, bekommen beim Ort-Kriterium einen
+  neutralen Wert statt einer echten Entfernung.
+- Kein Bewerbungs-Flow, keine Unternehmensseite, keine Zahlungslogik. Das war so vorgegeben.
